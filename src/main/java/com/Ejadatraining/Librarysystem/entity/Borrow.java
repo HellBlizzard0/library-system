@@ -25,17 +25,19 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "user-borrow-publication")
 public class Borrow implements Serializable {
 
+    public Borrow(int id, User user, Book book, BorrowStatus status, Date dateOfCreation, Date lastUpdate) {
+        this.id = id;
+        this.user = user;
+        this.book = book;
+        this.status = status;
+        this.dateOfCreation = dateOfCreation;
+        this.lastUpdate = lastUpdate;
+    }
+
     @Id
     @Column(name = "id")
     private int id;
 
-    public Borrow(int id, User user, Book book, Date dateOfCreation, Date lastUpdate) {
-        this.id = id;
-        this.user = user;
-        this.book = book;
-        this.dateOfCreation = dateOfCreation;
-        this.lastUpdate = lastUpdate;
-    }
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
@@ -43,6 +45,10 @@ public class Borrow implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "status_id", referencedColumnName = "id")
+    private BorrowStatus status;
 
     @Column(name = "dateOfCreation")
     @CreationTimestamp
