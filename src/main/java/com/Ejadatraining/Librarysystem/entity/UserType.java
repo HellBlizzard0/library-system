@@ -18,6 +18,9 @@ import lombok.Setter;
 @Table(name = "usertype")
 public class UserType implements Serializable {
 
+    public UserType() {
+    }
+
     public UserType(int id, String type) {
         this.id = id;
         this.type = type;

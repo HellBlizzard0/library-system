@@ -26,7 +26,7 @@ public class UserController {
     }
     @RequestMapping("/getAllUsers")
     public List<User> getAllUsers() {
-        return null;
+        return this.userService.findAll();
     }
     @PostMapping("/getUserByIdOrUsername")
     @ResponseBody

@@ -8,11 +8,13 @@ import com.Ejadatraining.Librarysystem.dao.BorrowDAO;
 import com.Ejadatraining.Librarysystem.entity.Borrow;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author aalsaqqa
  */
+@Repository
 public class BorrowService {
     private BorrowDAO borrowDAO;
 

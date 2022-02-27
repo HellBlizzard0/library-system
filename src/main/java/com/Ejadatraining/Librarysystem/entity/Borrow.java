@@ -25,6 +25,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "user-borrow-publication")
 public class Borrow implements Serializable {
 
+    public Borrow() {
+    }
+
     public Borrow(int id, User user, Book book, BorrowStatus status, Date dateOfCreation, Date lastUpdate) {
         this.id = id;
         this.user = user;
@@ -50,12 +53,12 @@ public class Borrow implements Serializable {
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     private BorrowStatus status;
 
-    @Column(name = "dateOfCreation")
+    @Column(name = "date_of_creation")
     @CreationTimestamp
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateOfCreation;
 
-    @Column(name = "lastUpdated")
+    @Column(name = "last_updated")
     @UpdateTimestamp
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date lastUpdate;

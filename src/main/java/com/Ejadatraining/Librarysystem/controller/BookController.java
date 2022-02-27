@@ -26,31 +26,31 @@ public class BookController {
     }
     @RequestMapping("/getAllBooks")
     public List<Book> getAllBooks() {
-        return null;
+        return this.bookService.findAll();
     }
     @RequestMapping("/getBookByNameOrIdOrAuthorname")
     @ResponseBody
-    public Book getBookByNameOrIdOrAuthorname(@RequestParam(name = "id") Long id, @RequestParam(name = "name") String name, @RequestParam(name = "authorName") String authorName) {
-        return null;
+    public Book getBookByNameOrIdOrAuthorname(@RequestParam(name = "id") int id, @RequestParam(name = "name") String name, @RequestParam(name = "authorName") String authorName) {
+        return this.bookService.getBookByNameOrIdOrAuthorname(id, name, authorName);
     }
     @PostMapping("/addBook")
     @ResponseBody
-    public Book addBook(@RequestParam(name = "book") Book book) {
-        return null;
+    public void addBook(@RequestParam(name = "book") Book book) {
+        this.bookService.addBook(book);
     }
     @PostMapping("/addBooks")
     @ResponseBody
     public void addBooks(@RequestParam(name = "books") List<Book> books) {
-        return;
+        this.bookService.addBooks(books);
     }
     @RequestMapping("/updateBook")
     @ResponseBody
-    public void updateBook(@RequestParam(name = "id") Long id) {
+    public void updateBook(@RequestParam(name = "id") int id) {
         return;
     }
     @RequestMapping("/deleteBook")
     @ResponseBody
-    public void deleteBook(@RequestParam(name = "id") Long id) {
+    public void deleteBook(@RequestParam(name = "id") int id) {
         return;
     }
 }

@@ -24,6 +24,9 @@ import lombok.Setter;
 @Table(name = "borrowstatus")
 public class BorrowStatus implements Serializable {
 
+    public BorrowStatus() {
+    }
+
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

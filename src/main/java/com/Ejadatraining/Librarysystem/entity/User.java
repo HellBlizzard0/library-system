@@ -28,6 +28,9 @@ import org.springframework.lang.NonNull;
 @Table(name = "user")
 public class User implements Serializable {
 
+    public User() {
+    }
+
     public User(int id, String name, String username, String password, Date dateOfCreation, Date lastUpdate, UserType type) {
         this.id = id;
         this.name = name;
@@ -54,18 +57,18 @@ public class User implements Serializable {
     private String password;
 
     
-    @Column(name = "dateOfCreation")
+    @Column(name = "date_of_creation")
     @CreationTimestamp
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateOfCreation;
 
-    @Column(name = "lastUpdated")
+    @Column(name = "last_updated")
     @UpdateTimestamp
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date lastUpdate;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_type", referencedColumnName = "id")
+    @JoinColumn(name = "type_id", referencedColumnName = "id")
     public UserType type;
 
 }

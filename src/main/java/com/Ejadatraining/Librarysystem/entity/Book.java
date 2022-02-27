@@ -2,14 +2,11 @@ package com.Ejadatraining.Librarysystem.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import lombok.Getter;
@@ -24,8 +21,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Getter
 @Setter
 @Entity
-@Table(name = "publication")
+@Table(name = "book")
 public class Book implements Serializable {
+
+    public Book() {
+    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -35,12 +35,12 @@ public class Book implements Serializable {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "dateOfCreation")
+    @Column(name = "date_of_creation")
     @CreationTimestamp
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateOfCreation;
 
-    @Column(name = "lastUpdated")
+    @Column(name = "last_updated")
     @UpdateTimestamp
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date lastUpdate;
