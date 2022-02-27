@@ -31,19 +31,25 @@ public class BorrowController {
     }
     @RequestMapping("/getBorrowByIdOrUserIdOrBookId")
     @ResponseBody
-    public Borrow getBorrowByIdOrUserIdOrBookId(@RequestParam(name = "id") Long id, @RequestParam(name = "userId") Long userId, @RequestParam(name = "bookId") Long bookId) {
-        return null;
+    public Borrow getBorrowByIdOrUserIdOrBookId(
+            @RequestParam(name = "id", required = false) Integer id,
+            @RequestParam(name = "userId", required = false) Integer userId,
+            @RequestParam(name = "bookId", required = false) Integer bookId
+    ) {
+        return this.borrowService.getBorrowByIdOrUserIdOrBookId(id, userId, bookId);
     }
     @PostMapping("/addBorrow")
     @ResponseBody
     public void addBorrow(@RequestParam(name = "borrow") Borrow borrow) {
+        this.borrowService.addBorrow(borrow);
     }
     @RequestMapping("/updateBorrow")
     @ResponseBody
-    public void updateBorrow(@RequestParam(name = "id") Long id) {
+    public void updateBorrow(@RequestParam(name = "id") Integer id) {
     }
     @RequestMapping("/deleteBorrow")
     @ResponseBody
-    public void deleteBorrow(@RequestParam(name = "id") Long id) {
+    public void deleteBorrow(@RequestParam(name = "id") Integer id) {
+        this.borrowService.deleteBorrow(id);
     }
 }

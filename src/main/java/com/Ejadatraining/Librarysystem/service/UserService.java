@@ -5,6 +5,7 @@ import com.Ejadatraining.Librarysystem.entity.User;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -21,5 +22,32 @@ public class UserService {
 
     public List<User> findAll() {
         return this.userDAO.findAll();
+    }
+
+    public User getUserByIdOrUsername(Integer id, String username) {
+        User user;
+        if (id != null) {
+            user = this.userDAO.findById(id).get();
+            if (user != null) {
+                return user;
+            }
+        }
+        if (username != null) {
+            user = this.userDAO.findByUsername(username);
+            if (user != null) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Transactional
+    public void createUser(User user) {
+        this.userDAO.save(user);
+    }
+
+    @Transactional
+    public void deleteUser(int id) {
+        this.userDAO.deleteById(id);
     }
 }

@@ -30,12 +30,13 @@ public class UserController {
     }
     @PostMapping("/getUserByIdOrUsername")
     @ResponseBody
-    public User getUserByIdOrUsername(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username) {
-        return null;
+    public User getUserByIdOrUsername(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "username", required = false) String username) {
+        return this.userService.getUserByIdOrUsername(id, username);
     }
     @PostMapping("/createUser")
     @ResponseBody
     public void createUser(@RequestParam(name = "user") User user) {
+        this.userService.createUser(user);
     }
     @RequestMapping("/updateUser")
     @ResponseBody
@@ -43,6 +44,7 @@ public class UserController {
     }
     @RequestMapping("/deleteUser")
     @ResponseBody
-    public void deleteUser(@RequestParam(name = "id") Long id) {
+    public void deleteUser(@RequestParam(name = "id") int id) {
+        this.userService.deleteUser(id);
     }
 }
