@@ -48,12 +48,7 @@ public class Book implements Serializable {
     @Column(name = "serial_number")
     private String serialNumber;
 
-    public Book(int id, String title, Date dateOfCreation, Date lastUpdate, String serialNumber) {
-        this.id = id;
-        this.title = title;
-        this.dateOfCreation = dateOfCreation;
-        this.lastUpdate = lastUpdate;
-        this.serialNumber = serialNumber;
-    }
+    @Column(name = "author_name")
+    private String authorName;
 
 }

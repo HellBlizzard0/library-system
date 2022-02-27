@@ -30,7 +30,7 @@ public class BookController {
     }
     @RequestMapping("/getBookByNameOrIdOrAuthorname")
     @ResponseBody
-    public Book getBookByNameOrIdOrAuthorname(@RequestParam(name = "id") int id, @RequestParam(name = "name") String name, @RequestParam(name = "authorName") String authorName) {
+    public Book getBookByNameOrIdOrAuthorname(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "authorName", required = false) String authorName) {
         return this.bookService.getBookByNameOrIdOrAuthorname(id, name, authorName);
     }
     @PostMapping("/addBook")
@@ -51,6 +51,6 @@ public class BookController {
     @RequestMapping("/deleteBook")
     @ResponseBody
     public void deleteBook(@RequestParam(name = "id") int id) {
-        return;
+        this.bookService.deleteBook(id);
     }
 }
