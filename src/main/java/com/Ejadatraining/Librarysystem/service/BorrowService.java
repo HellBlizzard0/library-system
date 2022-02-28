@@ -6,6 +6,7 @@ import com.Ejadatraining.Librarysystem.entity.Borrow;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -49,15 +50,15 @@ public class BorrowService {
 
         return null;
     }
-
+    @Transactional
     public void deleteBorrow(Integer id) {
         this.borrowDAO.deleteById(id);
     }
-
+    @Transactional
     public void addBorrow(Borrow borrow) {
         this.borrowDAO.save(borrow);
     }
-
+    @Transactional
     public void updateBorrow(Borrow borrow) {
         this.borrowDAO.save(borrow);
     }

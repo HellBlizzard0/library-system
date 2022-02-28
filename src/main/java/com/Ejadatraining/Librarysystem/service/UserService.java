@@ -51,6 +51,7 @@ public class UserService {
         this.userDAO.deleteById(id);
     }
 
+    @Transactional
     public void updateUser(User user) {
         this.userDAO.save(user);
     }
