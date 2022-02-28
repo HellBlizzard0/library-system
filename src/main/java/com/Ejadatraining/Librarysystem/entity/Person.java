@@ -1,6 +1,5 @@
 package com.Ejadatraining.Librarysystem.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,21 +25,7 @@ import org.springframework.lang.NonNull;
 @Getter
 @Setter
 @Table(name = "users")
-public class User implements Serializable {
-
-    public User() {
-    }
-
-    public User(int id, String name, String username, String password, boolean enabled, Date dateOfCreation, Date lastUpdate, UserType type) {
-        this.id = id;
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-        this.dateOfCreation = dateOfCreation;
-        this.lastUpdate = lastUpdate;
-        this.type = type;
-    }
+public class Person {
 
     @Id
     @GeneratedValue()
@@ -60,7 +45,6 @@ public class User implements Serializable {
     @Column(name = "enabled")
     private boolean enabled;
 
-    
     @Column(name = "date_of_creation")
     @CreationTimestamp
     @Temporal(javax.persistence.TemporalType.DATE)

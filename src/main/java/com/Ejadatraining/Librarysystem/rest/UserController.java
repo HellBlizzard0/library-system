@@ -1,4 +1,4 @@
-package com.Ejadatraining.Librarysystem.controller;
+package com.Ejadatraining.Librarysystem.rest;
 
 import com.Ejadatraining.Librarysystem.entity.User;
 import com.Ejadatraining.Librarysystem.service.UserService;

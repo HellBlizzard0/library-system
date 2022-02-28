@@ -1,4 +1,4 @@
-package com.Ejadatraining.Librarysystem.controller;
+package com.Ejadatraining.Librarysystem.rest;
 
 import com.Ejadatraining.Librarysystem.entity.Borrow;
 import com.Ejadatraining.Librarysystem.service.BorrowService;
