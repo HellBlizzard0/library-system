@@ -21,16 +21,14 @@ import org.springframework.lang.NonNull;
  *
  * @author aalsaqqa
  */
-@Entity
-@Getter
-@Setter
-@Table(name = "users")
-public class Person {
+@Entity@Getter@Setter@Table(name = "users")
+public class Person extends User {
 
     @Id
     @GeneratedValue()
     @Column(name = "id")
     private int id;
+
     @Column(name = "name")
     private String name;
 
@@ -58,5 +56,11 @@ public class Person {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     public UserType type;
+	public User(){
+
+	}
+
+	@Id@GeneratedValue()@Column(name = "id")
+	private int userId;
 
 }

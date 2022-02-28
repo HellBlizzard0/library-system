@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -22,57 +23,22 @@ import org.springframework.lang.NonNull;
  *
  * @author aalsaqqa
  */
-@Entity
-@Getter
-@Setter
-@Table(name = "users")
+@Entity@Getter@Setter@Table(name = "users")
 public class User implements Serializable {
 
     public User() {
     }
 
-    public User(int id, String name, String username, String password, boolean enabled, Date dateOfCreation, Date lastUpdate, UserType type) {
-        this.id = id;
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-        this.dateOfCreation = dateOfCreation;
-        this.lastUpdate = lastUpdate;
-        this.type = type;
-    }
-
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "name")
-    private String name;
 
-    @Column(name = "username")
-    private String username;
+	private boolean enabled;
+	private int password;
+	private Authorities role;
+	private String username;
+    public Authorities role;
 
-    @NonNull
-    @NotBlank(message = "New password is mandatory")
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "enabled")
-    private boolean enabled;
-
-    
-    @Column(name = "date_of_creation")
-    @CreationTimestamp
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateOfCreation;
-
-    @Column(name = "last_updated")
-    @UpdateTimestamp
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date lastUpdate;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "type_id", referencedColumnName = "id")
-    public UserType type;
 
 }
