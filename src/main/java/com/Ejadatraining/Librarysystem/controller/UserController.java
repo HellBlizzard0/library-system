@@ -40,7 +40,8 @@ public class UserController {
     }
     @RequestMapping("/updateUser")
     @ResponseBody
-    public void updateUser(@RequestParam(name = "id") Long id) {
+    public void updateUser(@RequestParam(name = "user") User user) {
+        this.userService.updateUser(user);
     }
     @RequestMapping("/deleteUser")
     @ResponseBody

@@ -50,4 +50,8 @@ public class UserService {
     public void deleteUser(int id) {
         this.userDAO.deleteById(id);
     }
+
+    public void updateUser(User user) {
+        this.userDAO.save(user);
+    }
 }

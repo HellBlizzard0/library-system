@@ -45,7 +45,8 @@ public class BorrowController {
     }
     @RequestMapping("/updateBorrow")
     @ResponseBody
-    public void updateBorrow(@RequestParam(name = "id") Integer id) {
+    public void updateBorrow(@RequestParam(name = "borrow") Borrow borrow) {
+        this.borrowService.updateBorrow(borrow);
     }
     @RequestMapping("/deleteBorrow")
     @ResponseBody

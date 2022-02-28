@@ -58,4 +58,7 @@ public class BorrowService {
         this.borrowDAO.save(borrow);
     }
 
+    public void updateBorrow(Borrow borrow) {
+        this.borrowDAO.save(borrow);
+    }
 }

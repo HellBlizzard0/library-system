@@ -45,8 +45,8 @@ public class BookController {
     }
     @RequestMapping("/updateBook")
     @ResponseBody
-    public void updateBook(@RequestParam(name = "id") int id) {
-        return;
+    public void updateBook(@RequestParam(name = "book") Book book) {
+        this.bookService.updateBook(book);
     }
     @RequestMapping("/deleteBook")
     @ResponseBody

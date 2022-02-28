@@ -67,4 +67,8 @@ public class BookService {
         this.bookDAO.deleteById(id);
     }
 
+    public void updateBook(Book book) {
+        this.bookDAO.save(book);
+    }
+
 }

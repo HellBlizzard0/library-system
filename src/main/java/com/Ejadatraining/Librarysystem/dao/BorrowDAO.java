@@ -12,4 +12,5 @@ public interface BorrowDAO extends JpaRepository<Borrow, Integer> {
     public Borrow findByUserId(Integer userId);
 
     public Borrow findByBookId(Integer bookId);
+
 }
