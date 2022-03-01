@@ -39,10 +39,10 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/authenticateTheUser")
                 .permitAll()
-                .and().logout().permitAll();
+                .and().logout().logoutUrl("/logout").permitAll();
 
-		// This is to enable calls from Postman
-		http.csrf().disable();
+        // This is to enable calls from Postman
+        http.csrf().disable();
 
     }
 }
