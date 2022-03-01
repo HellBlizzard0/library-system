@@ -1,12 +1,13 @@
 package com.Ejadatraining.Librarysystem.service;
 
-import com.Ejadatraining.Librarysystem.dao.BorrowDAO;
-import com.Ejadatraining.Librarysystem.entity.Book;
-import com.Ejadatraining.Librarysystem.entity.Borrow;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.Ejadatraining.Librarysystem.dao.BorrowDAO;
+import com.Ejadatraining.Librarysystem.entity.Borrow;
 
 /**
  *
@@ -26,7 +27,7 @@ public class BorrowService {
     }
 
     public Borrow getBorrowByIdOrUserIdOrBookId(Integer id, Integer userId, Integer bookId) {
-        Borrow borrow;
+		Borrow borrow = null;
         if (id != null) {
             borrow = this.borrowDAO.findById(id).get();
             if (borrow != null) {
@@ -35,7 +36,7 @@ public class BorrowService {
         }
 
         if (userId != null) {
-            borrow = this.borrowDAO.findByUserId(userId);
+			// borrow = this.borrowDAO.findByUserId(userId);
             if (borrow != null) {
                 return borrow;
             }

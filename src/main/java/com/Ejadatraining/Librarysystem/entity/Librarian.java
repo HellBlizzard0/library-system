@@ -1,7 +1,13 @@
 package com.Ejadatraining.Librarysystem.entity;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author aalsaqqa
@@ -11,20 +17,21 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Table(name = "users")
-public class Librarian extends User {
+@Table(name = "librarian")
+public class Librarian extends Users {
 
-	private Date dateOfCreation;
-	private Date lastUpdate;
-	private String name;
-	private int userId;
-
-	public Librarian(){
-
+	public Librarian() {
+		super();
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	// @OneToOne(cascade = CascadeType.ALL)
+	// @JoinColumn(referencedColumnName = "id")
+	// private User user;
 
 }//end Librarian

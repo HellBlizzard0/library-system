@@ -1,7 +1,8 @@
 package com.Ejadatraining.Librarysystem.dao;
 
-import com.Ejadatraining.Librarysystem.entity.Borrow;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.Ejadatraining.Librarysystem.entity.Borrow;
 
 /**
  *
@@ -9,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface BorrowDAO extends JpaRepository<Borrow, Integer> {
 
-    public Borrow findByUserId(Integer userId);
+	// public Borrow findByUserId(Integer userId);
 
     public Borrow findByBookId(Integer bookId);
 

@@ -1,7 +1,7 @@
 package com.Ejadatraining.Librarysystem.service;
 
 import com.Ejadatraining.Librarysystem.dao.UserDAO;
-import com.Ejadatraining.Librarysystem.entity.User;
+import com.Ejadatraining.Librarysystem.entity.Users;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,12 +20,12 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
-    public List<User> findAll() {
+    public List<Users> findAll() {
         return this.userDAO.findAll();
     }
 
-    public User getUserByIdOrUsername(Integer id, String username) {
-        User user;
+    public Users getUserByIdOrUsername(Integer id, String username) {
+        Users user;
         if (id != null) {
             user = this.userDAO.findById(id).get();
             if (user != null) {
@@ -42,7 +42,7 @@ public class UserService {
     }
 
     @Transactional
-    public void createUser(User user) {
+    public void createUser(Users user) {
         this.userDAO.save(user);
     }
 
@@ -52,7 +52,7 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUser(User user) {
+    public void updateUser(Users user) {
         this.userDAO.save(user);
     }
 }

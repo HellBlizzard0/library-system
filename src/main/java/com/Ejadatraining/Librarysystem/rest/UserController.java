@@ -1,14 +1,16 @@
 package com.Ejadatraining.Librarysystem.rest;
 
-import com.Ejadatraining.Librarysystem.entity.User;
-import com.Ejadatraining.Librarysystem.service.UserService;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.Ejadatraining.Librarysystem.entity.Users;
+import com.Ejadatraining.Librarysystem.service.UserService;
 
 /**
  *
@@ -25,22 +27,23 @@ public class UserController {
         this.userService = userService;
     }
     @RequestMapping("/getAllUsers")
-    public List<User> getAllUsers() {
+    public List<Users> getAllUsers() {
         return this.userService.findAll();
     }
     @PostMapping("/getUserByIdOrUsername")
     @ResponseBody
-    public User getUserByIdOrUsername(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "username", required = false) String username) {
+    public Users getUserByIdOrUsername(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "username", required = false) String username) {
         return this.userService.getUserByIdOrUsername(id, username);
     }
     @PostMapping("/createUser")
     @ResponseBody
-    public void createUser(@RequestParam(name = "user") User user) {
+    public void createUser(@RequestParam(name = "user") Users user) {
+		System.err.println(user);
         this.userService.createUser(user);
     }
     @RequestMapping("/updateUser")
     @ResponseBody
-    public void updateUser(@RequestParam(name = "user") User user) {
+    public void updateUser(@RequestParam(name = "user") Users user) {
         this.userService.updateUser(user);
     }
     @RequestMapping("/deleteUser")

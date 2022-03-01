@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+a.eapx
+.gitignore
+a.ldb

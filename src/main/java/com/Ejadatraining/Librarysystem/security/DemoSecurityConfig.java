@@ -1,6 +1,7 @@
 package com.Ejadatraining.Librarysystem.security;
 
 import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -30,8 +31,10 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/authenticateTheUser")
                 .permitAll()
-                .and()
-                .logout().permitAll();
+				.and().logout().permitAll();
+
+		// This is to enable calls from Postman
+		http.csrf().disable();
 
     }
 }
