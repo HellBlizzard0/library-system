@@ -11,13 +11,16 @@
     <body>
         <h1>Home Page</h1>
         <sec:authorize access="hasRole('CUSTOMER')">
-            CUSTOMER Role
+            You are a Customer
         </sec:authorize>
-            <sec:authorize access="hasRole('ADMINISTRATOR')">
-                ADMINISTRATOR Role
-            </sec:authorize>
+            <sec:authorize access="hasRole('LIBRARIAN')">
+                You are a Librarian
+            </sec:authorize></br>
             <sec:authorize access="isAuthenticated()">
-                Welcome Back, <sec:authentication property="name"/>
-            </sec:authorize>
+                Username: <sec:authentication property="name"/>
+            </sec:authorize></br>
+            <form action="/logout">
+                <input type="submit" value="Logout" />
+            </form>
     </body>
 </html>
