@@ -11,46 +11,47 @@ import com.Ejadatraining.Librarysystem.entity.Customer;
 
 @Repository
 public class CustomerService {
-	private CustomerDAO customerDAO;
 
-	@Autowired
-	public CustomerService(CustomerDAO customerDAO) {
-		this.customerDAO = customerDAO;
+    private CustomerDAO customerDAO;
+
+    @Autowired
+    public CustomerService(CustomerDAO customerDAO) {
+        this.customerDAO = customerDAO;
     }
 
-	public List<Customer> findAll() {
-		return this.customerDAO.findAll();
-	}
+    public List<Customer> findAll() {
+        return this.customerDAO.findAll();
+    }
 
-	public Customer getCustomerByIdOrName(Integer id, String customername) {
-		Customer customer;
-		if (id != null) {
-			customer = this.customerDAO.findById(id).get();
-			if (customer != null) {
-				return customer;
-			}
-		}
-		if (customername != null) {
-			customer = this.customerDAO.findByName(customername);
-			if (customer != null) {
-				return customer;
-			}
-		}
-		return null;
-	}
+    public Customer getCustomerByIdOrName(Integer id, String customername) {
+        Customer customer;
+        if (id != null) {
+            customer = this.customerDAO.findById(id).get();
+            if (customer != null) {
+                return customer;
+            }
+        }
+        if (customername != null) {
+            customer = this.customerDAO.findByName(customername);
+            if (customer != null) {
+                return customer;
+            }
+        }
+        return null;
+    }
 
-	@Transactional
-	public void createCustomer(Customer customer) {
-		this.customerDAO.save(customer);
-	}
+    @Transactional
+    public void createCustomer(Customer customer) {
+        this.customerDAO.save(customer);
+    }
 
-	@Transactional
-	public void deleteCustomer(int id) {
-		this.customerDAO.deleteById(id);
-	}
+    @Transactional
+    public void deleteCustomer(int id) {
+        this.customerDAO.deleteById(id);
+    }
 
-	@Transactional
-	public void updateCustomer(Customer customer) {
-		this.customerDAO.save(customer);
-	}
+    @Transactional
+    public void updateCustomer(Customer customer) {
+        this.customerDAO.save(customer);
+    }
 }
