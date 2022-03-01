@@ -18,7 +18,10 @@ public class MainController {
     public String login() {
         return "login";
     }
-
+    @GetMapping("/homepage")
+    public String homepage() {
+        return "homepage";
+    }
     @GetMapping("/access-denied")
     public String showAccessDenied() {
         return "access-denied";

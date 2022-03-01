@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,22 +37,17 @@
                                     <div>
 
                                         <!-- Check for login error -->
-
                                         <c:if test="${param.error != null}">
-
                                             <div class="alert alert-danger col-xs-offset-1 col-xs-10">
                                                 Invalid username and password.
                                             </div>
-
                                         </c:if>
+
                                         <!-- Check for logout -->
-
                                         <c:if test="${param.logout != null}">
-
                                             <div class="alert alert-success col-xs-offset-1 col-xs-10">
                                                 You have been logged out.
                                             </div>
-
                                         </c:if>
 
                                     </div>
