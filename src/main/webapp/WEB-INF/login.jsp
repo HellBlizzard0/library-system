@@ -44,7 +44,6 @@
                                             </div>
 
                                         </c:if>
-
                                         <!-- Check for logout -->
 
                                         <c:if test="${param.logout != null}">
