@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Ejadatraining.Librarysystem.entity.Librarian;
 import com.Ejadatraining.Librarysystem.service.LibrarianService;
 import java.util.HashMap;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api/Librarian")
@@ -31,7 +32,7 @@ public class LibrarianController {
         return this.librarianService.findAll();
     }
 
-    @PostMapping("/getLibrarianByIdOrName")
+    @GetMapping("/getLibrarianByIdOrName")
     @ResponseBody
     public Librarian getLibrarianByIdOrName(@RequestParam(name = "id", required = false) Integer id,
             @RequestParam(name = "librarianname", required = false) String librarianName) {
@@ -45,7 +46,7 @@ public class LibrarianController {
         this.librarianService.createLibrarian(librarian);
     }
 
-    @RequestMapping("/updateLibrarian")
+    @PostMapping("/updateLibrarian")
     @ResponseBody
     public void updateLibrarian(@RequestParam(name = "librarian") HashMap<String, String> param) {
         Librarian librarian = new Librarian(Integer.parseInt(param.get("id")), Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"), param.get("name"));
@@ -53,7 +54,7 @@ public class LibrarianController {
         this.librarianService.updateLibrarian(librarian);
     }
 
-    @RequestMapping("/deleteLibrarian")
+    @GetMapping("/deleteLibrarian")
     @ResponseBody
     public void deleteLibrarian(@RequestParam(name = "id") int id) {
         this.librarianService.deleteLibrarian(id);

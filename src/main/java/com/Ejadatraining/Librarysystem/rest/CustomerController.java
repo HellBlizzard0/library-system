@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Ejadatraining.Librarysystem.entity.Customer;
 import com.Ejadatraining.Librarysystem.service.CustomerService;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api/Customer")
@@ -31,14 +32,14 @@ public class CustomerController {
         return a;
     }
 
-    @PostMapping("/getCustomerByIdOrName")
+    @GetMapping("/getCustomerByIdOrName")
     @ResponseBody
     public Customer getCustomerByIdOrName(@RequestParam(name = "id", required = false) Integer id,
             @RequestParam(name = "customername", required = false) String customerName) {
         return this.customerService.getCustomerByIdOrName(id, customerName);
     }
 
-    @RequestMapping("/createCustomer")
+    @PostMapping("/createCustomer")
     @ResponseBody
     public void createCustomer(@RequestParam HashMap<String, String> param) {
         Customer customer = new Customer(0, param.get("name"), param.get("phoneNumber"),
@@ -46,7 +47,7 @@ public class CustomerController {
         this.customerService.createCustomer(customer);
     }
 
-    @RequestMapping("/updateCustomer")
+    @PostMapping("/updateCustomer")
     @ResponseBody
     public void updateCustomer(@RequestParam HashMap<String, String> param) {
         Customer customer = new Customer(Integer.parseInt(param.get("id")), param.get("name"), param.get("phoneNumber"),
@@ -55,7 +56,7 @@ public class CustomerController {
         this.customerService.updateCustomer(customer);
     }
 
-    @RequestMapping("/deleteCustomer")
+    @GetMapping("/deleteCustomer")
     @ResponseBody
     public void deleteCustomer(@RequestParam(name = "id") int id) {
         this.customerService.deleteCustomer(id);
