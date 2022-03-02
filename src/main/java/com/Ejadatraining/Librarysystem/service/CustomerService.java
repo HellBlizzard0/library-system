@@ -67,8 +67,6 @@ public class CustomerService {
         // Get Authority pre-update.
         Authority a = new Authority(c.getUsername(), "ROLE_CUSTOMER");
 
-        // Set the ID to force the update.
-        // customer.setId(c.getId());
         // Update Customer/User entry, hopefully.
         this.customerDAO.save(customer);
 

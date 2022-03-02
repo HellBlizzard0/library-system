@@ -6,6 +6,8 @@ import com.Ejadatraining.Librarysystem.entity.Librarian;
 
 public interface LibrarianDAO extends JpaRepository<Librarian, Integer> {
 
-	// Librarian findByName(String librarianname);
+    public Librarian findByName(String librarianname);
+
+    // Librarian findByName(String librarianname);
 
 }

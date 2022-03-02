@@ -1,9 +1,7 @@
 package com.Ejadatraining.Librarysystem.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -20,18 +18,25 @@ import lombok.Setter;
 @Table(name = "librarian")
 public class Librarian extends Users {
 
-	public Librarian() {
-            super();
-	}
+    public Librarian() {
+        super();
+    }
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+    @Column(name = "name")
+    private String name;
 
-	// @OneToOne(cascade = CascadeType.ALL)
-	// @JoinColumn(referencedColumnName = "id")
-	// private User user;
+    public Librarian(String name) {
+        this.name = name;
+    }
 
+    public Librarian(int id, boolean enabled, String password, String username) {
+        super(id, enabled, password, username);
+    }
+
+    public Librarian(int id, boolean enabled, String password, String username, String name) {
+        super(id, enabled, password, username);
+        this.name = name;
+    }
 }//end Librarian
