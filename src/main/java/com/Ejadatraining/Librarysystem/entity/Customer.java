@@ -1,29 +1,42 @@
 package com.Ejadatraining.Librarysystem.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
  * @author aalsaqqa
  */
 @Entity
-@Getter
-@Setter
 @Table(name = "customer")
 public class Customer extends Users {
 
     private static final long serialVersionUID = 1L;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
 
     public Customer() {
         super();
@@ -40,8 +53,8 @@ public class Customer extends Users {
         this.phoneNumber = phoneNumber;
     }
 
-    public Customer(String name, String phoneNumber, boolean enabled, String password, String username) {
-        super(0, enabled, password, username);
+    public Customer(int id, String name, String phoneNumber, boolean enabled, String password, String username) {
+        super(id, enabled, password, username);
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
@@ -52,13 +65,4 @@ public class Customer extends Users {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(referencedColumnName = "id")
-//    @Column(name = "user_id")
-//    private int userId;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
 }

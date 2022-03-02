@@ -16,45 +16,48 @@ import com.Ejadatraining.Librarysystem.service.CustomerService;
 @RestController
 @RequestMapping("/api/Customer")
 public class CustomerController {
-	private CustomerService customerService;
 
-	@Autowired
-	public CustomerController(CustomerService customerService) {
-		super();
-		this.customerService = customerService;
-	}
+    private CustomerService customerService;
 
-	@RequestMapping("/getAllCustomers")
-	public List<Customer> getAllCustomers() {
-		List<Customer> a = this.customerService.findAll();
-		return a;
-	}
+    @Autowired
+    public CustomerController(CustomerService customerService) {
+        super();
+        this.customerService = customerService;
+    }
 
-	@PostMapping("/getCustomerByIdOrName")
-	@ResponseBody
-	public Customer getCustomerByIdOrName(@RequestParam(name = "id", required = false) Integer id,
-			@RequestParam(name = "customername", required = false) String customerName) {
-		return this.customerService.getCustomerByIdOrName(id, customerName);
-	}
+    @RequestMapping("/getAllCustomers")
+    public List<Customer> getAllCustomers() {
+        List<Customer> a = this.customerService.findAll();
+        return a;
+    }
 
-	@RequestMapping("/createCustomer")
-	@ResponseBody
-	public void createCustomer(@RequestParam HashMap<String, String> param) {
-		System.out.println(param);
-		Customer customer = new Customer(param.get("name"), param.get("phoneNumber"),
-				Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"));
-		this.customerService.createCustomer(customer);
-	}
+    @PostMapping("/getCustomerByIdOrName")
+    @ResponseBody
+    public Customer getCustomerByIdOrName(@RequestParam(name = "id", required = false) Integer id,
+            @RequestParam(name = "customername", required = false) String customerName) {
+        return this.customerService.getCustomerByIdOrName(id, customerName);
+    }
 
-	@RequestMapping("/updateCustomer")
-	@ResponseBody
-	public void updateCustomer(@RequestParam Customer customer) {
-		this.customerService.updateCustomer(customer);
-	}
+    @RequestMapping("/createCustomer")
+    @ResponseBody
+    public void createCustomer(@RequestParam HashMap<String, String> param) {
+        Customer customer = new Customer(0, param.get("name"), param.get("phoneNumber"),
+                Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"));
+        this.customerService.createCustomer(customer);
+    }
 
-	@RequestMapping("/deleteCustomer")
-	@ResponseBody
-	public void deleteCustomer(@RequestParam(name = "id") int id) {
-		this.customerService.deleteCustomer(id);
-	}
+    @RequestMapping("/updateCustomer")
+    @ResponseBody
+    public void updateCustomer(@RequestParam HashMap<String, String> param) {
+        Customer customer = new Customer(Integer.parseInt(param.get("id")), param.get("name"), param.get("phoneNumber"),
+                Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"));
+        customer.setId(Integer.parseInt(param.get("id")));
+        this.customerService.updateCustomer(customer);
+    }
+
+    @RequestMapping("/deleteCustomer")
+    @ResponseBody
+    public void deleteCustomer(@RequestParam(name = "id") int id) {
+        this.customerService.deleteCustomer(id);
+    }
 }

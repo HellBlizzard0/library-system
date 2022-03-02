@@ -91,7 +91,7 @@ public abstract class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "enabled")
