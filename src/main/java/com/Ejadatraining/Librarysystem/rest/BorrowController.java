@@ -4,7 +4,9 @@ import com.Ejadatraining.Librarysystem.entity.Borrow;
 import com.Ejadatraining.Librarysystem.service.BorrowService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,11 +27,11 @@ public class BorrowController {
     public BorrowController(BorrowService borrowService) {
         this.borrowService = borrowService;
     }
-    @RequestMapping("/getAllBorrows")
+    @GetMapping("/getAllBorrows")
     public List<Borrow> getAllBorrows() {
         return borrowService.findAll();
     }
-    @RequestMapping("/getBorrowByIdOrUserIdOrBookId")
+    @GetMapping("/getBorrowByIdOrUserIdOrBookId")
     @ResponseBody
     public Borrow getBorrowByIdOrUserIdOrBookId(
             @RequestParam(name = "id", required = false) Integer id,
@@ -40,15 +42,15 @@ public class BorrowController {
     }
     @PostMapping("/addBorrow")
     @ResponseBody
-    public void addBorrow(@RequestParam(name = "borrow") Borrow borrow) {
+    public void addBorrow(@RequestBody Borrow borrow) {
         this.borrowService.addBorrow(borrow);
     }
-    @RequestMapping("/updateBorrow")
+    @PostMapping("/updateBorrow")
     @ResponseBody
-    public void updateBorrow(@RequestParam(name = "borrow") Borrow borrow) {
+    public void updateBorrow(@RequestBody Borrow borrow) {
         this.borrowService.updateBorrow(borrow);
     }
-    @RequestMapping("/deleteBorrow")
+    @GetMapping("/deleteBorrow")
     @ResponseBody
     public void deleteBorrow(@RequestParam(name = "id") Integer id) {
         this.borrowService.deleteBorrow(id);

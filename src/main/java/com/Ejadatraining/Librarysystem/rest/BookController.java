@@ -4,7 +4,9 @@ import com.Ejadatraining.Librarysystem.entity.Book;
 import com.Ejadatraining.Librarysystem.service.BookService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,31 +26,37 @@ public class BookController {
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
-    @RequestMapping("/getAllBooks")
+
+    @GetMapping("/getAllBooks")
     public List<Book> getAllBooks() {
         return this.bookService.findAll();
     }
-    @RequestMapping("/getBookByNameOrIdOrAuthorname")
+
+    @GetMapping("/getBookByNameOrIdOrAuthorname")
     @ResponseBody
     public Book getBookByNameOrIdOrAuthorname(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "authorName", required = false) String authorName) {
         return this.bookService.getBookByNameOrIdOrAuthorname(id, name, authorName);
     }
+
     @PostMapping("/addBook")
     @ResponseBody
-    public void addBook(@RequestParam(name = "book") Book book) {
+    public void addBook(@RequestBody Book book) {
         this.bookService.addBook(book);
     }
+
     @PostMapping("/addBooks")
     @ResponseBody
-    public void addBooks(@RequestParam(name = "books") List<Book> books) {
+    public void addBooks(@RequestBody List<Book> books) {
         this.bookService.addBooks(books);
     }
-    @RequestMapping("/updateBook")
+
+    @PostMapping("/updateBook")
     @ResponseBody
-    public void updateBook(@RequestParam(name = "book") Book book) {
+    public void updateBook(@RequestBody Book book) {
         this.bookService.updateBook(book);
     }
-    @RequestMapping("/deleteBook")
+
+    @GetMapping("/deleteBook")
     @ResponseBody
     public void deleteBook(@RequestParam(name = "id") int id) {
         this.bookService.deleteBook(id);

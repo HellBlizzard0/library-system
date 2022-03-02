@@ -61,6 +61,8 @@ public class BorrowService {
     }
     @Transactional
     public void updateBorrow(Borrow borrow) {
+        Borrow b = this.borrowDAO.findById(borrow.getId()).get();
+        borrow.setDateOfCreation(b.getDateOfCreation());
         this.borrowDAO.save(borrow);
     }
 }
