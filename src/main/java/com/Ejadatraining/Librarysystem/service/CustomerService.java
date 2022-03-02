@@ -17,13 +17,12 @@ public class CustomerService {
 
     private CustomerDAO customerDAO;
     private AuthorityDAO authorityDAO;
-    private UserDAO userDAO;
+
 
     @Autowired
-    public CustomerService(CustomerDAO customerDAO, AuthorityDAO authorityDAO, UserDAO userDAO) {
+    public CustomerService(CustomerDAO customerDAO, AuthorityDAO authorityDAO) {
         this.customerDAO = customerDAO;
         this.authorityDAO = authorityDAO;
-        this.userDAO = userDAO;
     }
 
     public List<Customer> findAll() {
