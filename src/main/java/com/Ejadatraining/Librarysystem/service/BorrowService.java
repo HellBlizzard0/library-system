@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Ejadatraining.Librarysystem.dao.BorrowDAO;
 import com.Ejadatraining.Librarysystem.entity.Borrow;
+import com.Ejadatraining.Librarysystem.entity.Customer;
 
 /**
  *
@@ -36,7 +37,8 @@ public class BorrowService {
         }
 
         if (userId != null) {
-			// borrow = this.borrowDAO.findByUserId(userId);
+            Customer customer = new Customer(userId, "", "", true, "", "");
+            borrow = this.borrowDAO.findByCustomer(customer);
             if (borrow != null) {
                 return borrow;
             }
@@ -61,8 +63,6 @@ public class BorrowService {
     }
     @Transactional
     public void updateBorrow(Borrow borrow) {
-        Borrow b = this.borrowDAO.findById(borrow.getId()).get();
-        borrow.setDateOfCreation(b.getDateOfCreation());
         this.borrowDAO.save(borrow);
     }
 }

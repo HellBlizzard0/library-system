@@ -60,7 +60,6 @@ public class LibrarianService {
     public void updateLibrarian(Librarian librarian) {
         // Get Librarian pre-update.
         Librarian l = this.librarianDAO.findById(librarian.getId()).get();
-        librarian.setDateOfCreation(l.getDateOfCreation());
         // Get Authority pre-update.
         Authority a = new Authority(l.getUsername(), "ROLE_LIBRARIAN");
 

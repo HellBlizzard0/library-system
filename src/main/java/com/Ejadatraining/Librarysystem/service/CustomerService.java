@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.Ejadatraining.Librarysystem.dao.CustomerDAO;
-import com.Ejadatraining.Librarysystem.dao.UserDAO;
 import com.Ejadatraining.Librarysystem.entity.Authority;
 import com.Ejadatraining.Librarysystem.entity.Customer;
 
@@ -62,7 +61,6 @@ public class CustomerService {
     public void updateCustomer(Customer customer) {
         // Get Customer pre-update.
         Customer c = this.customerDAO.findById(customer.getId()).get();
-        customer.setDateOfCreation(c.getDateOfCreation());
         // Get Authority pre-update.
         Authority a = new Authority(c.getUsername(), "ROLE_CUSTOMER");
 

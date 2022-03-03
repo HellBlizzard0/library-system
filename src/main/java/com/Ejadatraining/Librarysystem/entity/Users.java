@@ -1,7 +1,7 @@
 package com.Ejadatraining.Librarysystem.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -65,19 +65,19 @@ public abstract class Users implements Serializable {
         this.username = username;
     }
 
-    public Date getDateOfCreation() {
+    public Timestamp getTimestampOfCreation() {
         return dateOfCreation;
     }
 
-    public void setDateOfCreation(Date dateOfCreation) {
+    public void setTimestampOfCreation(Timestamp dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public Date getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
@@ -105,14 +105,12 @@ public abstract class Users implements Serializable {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "date_of_creation")
+    @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateOfCreation;
+    private Timestamp dateOfCreation;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date lastUpdate;
+    private Timestamp lastUpdate;
 
 }

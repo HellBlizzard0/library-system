@@ -68,8 +68,6 @@ public class BookService {
     }
     @Transactional
     public void updateBook(Book book) {
-        Book b = this.bookDAO.findById(book.getId()).get();
-        book.setDateOfCreation(b.getDateOfCreation());
         this.bookDAO.save(book);
     }
 

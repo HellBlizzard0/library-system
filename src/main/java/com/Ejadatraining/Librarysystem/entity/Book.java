@@ -1,7 +1,7 @@
 package com.Ejadatraining.Librarysystem.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,15 +35,13 @@ public class Book implements Serializable {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "date_of_creation")
+    @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateOfCreation;
+    private Timestamp dateOfCreation;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date lastUpdate;
+    private Timestamp lastUpdate;
 
     @Column(name = "serial_number")
     private String serialNumber;
