@@ -1,8 +1,9 @@
 package com.Ejadatraining.Librarysystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.sql.Timestamp;
-
+import java.time.LocalDateTime;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,7 +29,7 @@ public class Borrow implements Serializable {
     public Borrow() {
     }
 
-    public Borrow(int id, Customer customer, Book book, BorrowStatus status, Timestamp dateOfCreation, Timestamp lastUpdate) {
+    public Borrow(int id, Customer customer, Book book, BorrowStatus status, LocalDateTime dateOfCreation, LocalDateTime lastUpdate) {
         super();
         this.id = id;
         this.customer = customer;
@@ -58,9 +57,11 @@ public class Borrow implements Serializable {
 
     @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
-    private Timestamp dateOfCreation;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime dateOfCreation;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
-    private Timestamp lastUpdate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime lastUpdate;
 }

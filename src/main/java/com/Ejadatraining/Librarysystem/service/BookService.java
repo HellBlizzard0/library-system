@@ -66,6 +66,7 @@ public class BookService {
     public void deleteBook(int id) {
         this.bookDAO.deleteById(id);
     }
+
     @Transactional
     public void updateBook(Book book) {
         this.bookDAO.save(book);

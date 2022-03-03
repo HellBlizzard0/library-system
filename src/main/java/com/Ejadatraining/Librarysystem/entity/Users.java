@@ -1,7 +1,8 @@
 package com.Ejadatraining.Librarysystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Temporal;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -65,19 +65,19 @@ public abstract class Users implements Serializable {
         this.username = username;
     }
 
-    public Timestamp getTimestampOfCreation() {
+    public LocalDateTime getTimestampOfCreation() {
         return dateOfCreation;
     }
 
-    public void setTimestampOfCreation(Timestamp dateOfCreation) {
+    public void setTimestampOfCreation(LocalDateTime dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public Timestamp getLastUpdate() {
+    public LocalDateTime getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
+    public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
@@ -107,10 +107,12 @@ public abstract class Users implements Serializable {
 
     @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
-    private Timestamp dateOfCreation;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+private LocalDateTime dateOfCreation;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
-    private Timestamp lastUpdate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime lastUpdate;
 
 }
