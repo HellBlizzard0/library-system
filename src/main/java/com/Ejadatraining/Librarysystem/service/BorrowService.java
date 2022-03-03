@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Ejadatraining.Librarysystem.dao.BorrowDAO;
 import com.Ejadatraining.Librarysystem.entity.Borrow;
-import com.Ejadatraining.Librarysystem.entity.Customer;
 
 /**
  *
@@ -28,30 +27,8 @@ public class BorrowService {
     }
 
     public Borrow getBorrowByIdOrUserIdOrBookId(Integer id, Integer userId, Integer bookId) {
-		Borrow borrow = null;
-        if (id != null) {
-            borrow = this.borrowDAO.findById(id).get();
-            if (borrow != null) {
-                return borrow;
-            }
-        }
-
-        if (userId != null) {
-            Customer customer = new Customer(userId, "", "", true, "", "");
-            borrow = this.borrowDAO.findByCustomer(customer);
-            if (borrow != null) {
-                return borrow;
-            }
-        }
-
-        if (bookId != null) {
-            borrow = this.borrowDAO.findByBookId(bookId);
-            if (borrow != null) {
-                return borrow;
-            }
-        }
-
-        return null;
+        return this.borrowDAO.findBorrowByIdOrUserIdOrBookId(id, userId, bookId
+        );
     }
     @Transactional
     public void deleteBorrow(Integer id) {

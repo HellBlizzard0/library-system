@@ -28,20 +28,7 @@ public class LibrarianService {
     }
 
     public Librarian getLibrarianByIdOrName(Integer id, String librarianname) {
-        Librarian librarian = null;
-        if (id != null) {
-            librarian = this.librarianDAO.findById(id).get();
-            if (librarian != null) {
-                return librarian;
-            }
-        }
-        if (librarianname != null) {
-            librarian = this.librarianDAO.findByName(librarianname);
-            if (librarian != null) {
-                return librarian;
-            }
-        }
-        return null;
+        return this.librarianDAO.findLibrarianByIdOrName(id, librarianname);
     }
 
     @Transactional

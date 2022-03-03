@@ -25,20 +25,7 @@ public class UserService {
     }
 
     public Users getUserByIdOrUsername(Integer id, String username) {
-        Users user;
-        if (id != null) {
-            user = this.userDAO.findById(id).get();
-            if (user != null) {
-                return user;
-            }
-        }
-        if (username != null) {
-            user = this.userDAO.findByUsername(username);
-            if (user != null) {
-                return user;
-            }
-        }
-        return null;
+        return this.userDAO.findByUserByIdOrUsername(id, username);
     }
 
     @Transactional

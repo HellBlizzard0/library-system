@@ -25,31 +25,9 @@ public class BookService {
         return this.bookDAO.findAll();
     }
 
-    public Book getBookByNameOrIdOrAuthorname(Integer id, String name, String authorName) {
-
-        Book book;
-        if (id != null) {
-            book = this.bookDAO.findById(id).get();
-        if (book != null) {
-            return book;
-            }
-        }
-
-        if (name != null) {
-        book = this.bookDAO.findByTitle(name);
-        if (book != null) {
-            return book;
-            }
-        }
-
-        if (authorName != null) {
-        book = this.bookDAO.findByAuthorName(authorName);
-        if (book != null) {
-            return book;
-            }
-        }
-
-        return null;
+    public List<Book> getBookByNameOrIdOrAuthorname(String name, Integer id, String authorName) {
+        List<Book> b = this.bookDAO.getBookByNameOrIdOrAuthorname(name, id, authorName);
+        return b;
     }
 
     @Transactional

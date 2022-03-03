@@ -29,20 +29,7 @@ public class CustomerService {
     }
 
     public Customer getCustomerByIdOrName(Integer id, String customername) {
-        Customer customer;
-        if (id != null) {
-            customer = this.customerDAO.findById(id).get();
-            if (customer != null) {
-                return customer;
-            }
-        }
-        if (customername != null) {
-            customer = this.customerDAO.findByName(customername);
-            if (customer != null) {
-                return customer;
-            }
-        }
-        return null;
+        return this.customerDAO.findByIdOrName(id, customername);
     }
 
     @Transactional

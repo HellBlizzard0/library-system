@@ -34,8 +34,8 @@ public class BookController {
 
     @GetMapping("/getBookByNameOrIdOrAuthorname")
     @ResponseBody
-    public Book getBookByNameOrIdOrAuthorname(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "authorName", required = false) String authorName) {
-        return this.bookService.getBookByNameOrIdOrAuthorname(id, name, authorName);
+    public List<Book> getBookByNameOrIdOrAuthorname(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "authorName", required = false) String authorName) {
+        return this.bookService.getBookByNameOrIdOrAuthorname(name, id, authorName);
     }
 
     @PostMapping("/addBook")
