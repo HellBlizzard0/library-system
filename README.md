@@ -19,10 +19,52 @@ Library System
 
 **How to run**:
 
-1.  In your IDE, perform a Maven clean install.
+1. Extract the database schema "Dump20220303.zip". Create the imported to mysql using your Database client.
 
-2.  Run
+2.  In your IDE, perform a Maven clean install.
+
+3.  Run
     "com.​Ejadatraining.​Librarysystem.LibrarySystemApplication.java"
+    
+**Requests List**:
+
+*REST Commands "/api/XXXX/YYYY*
+
+where XXXX is the name of the Object being inspected
+and YYYY is the command selected from the ones below
+
+* GET requests
+    + /getAllBooks
+    + /getBookByNameOrIdOrAuthorname
+    + /deleteBook
+    + /getAllBorrows
+    + /getBorrowByIdOrUserIdOrBookId
+    + /deleteBorrow
+    + /getAllCustomers
+    + /getCustomerByIdOrName
+    + /deleteCustomer
+    + /getAllLibrarians
+    + /getLibrarianByIdOrName
+    + /deleteLibrarian
+    + /getAllUsers
+    + /getUserByIdOrUsername
+    + /deleteUser
+* POST requests
+    + /addBook
+    + /addBooks
+    + /updateBook
+    + /addCustomer
+    + /addCustomers
+    + /updateCustomer
+    + /addLibrarian
+    + /addLibrarians
+    + /updateLibrarian
+    + /addUser
+    + /addUsers
+    + /updateUser
+    + /addBorrow
+    + /addBorrows
+    + /updateBorrow
 
 # Diagrams
 
