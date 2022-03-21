@@ -13,6 +13,7 @@ import com.Ejadatraining.Librarysystem.entity.Librarian;
 import com.Ejadatraining.Librarysystem.service.LibrarianService;
 import java.util.HashMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/Librarian")
@@ -41,7 +42,7 @@ public class LibrarianController {
 
     @PostMapping("/createLibrarian")
     @ResponseBody
-    public void createLibrarian(@RequestParam HashMap<String, String> param) {
+    public void createLibrarian(@RequestBody HashMap<String, String> param) {
         Librarian librarian = new Librarian(0, Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"), param.get("name"));
         this.librarianService.createLibrarian(librarian);
     }
