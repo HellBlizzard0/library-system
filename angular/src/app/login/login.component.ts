@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../backend/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,8 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
   isLoginMode: boolean = true;
-  constructor() {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  constructor(private loginService: LoginService) {}
+  ngOnInit(): void {}
   onSubmit() {}
   switchMode() {
     this.isLoginMode = !this.isLoginMode;
