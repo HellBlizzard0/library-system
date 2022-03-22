@@ -1,0 +1,29 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <h2 style="padding: left 20%;">Log in</h2>
+  </ng-template>
+  <div class="grid p-fluid">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText [(ngModel)]="username" />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+        <input type="password" pInputText [(ngModel)]="password" />
+      </div>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <button pButton class="btn btn-primary" type="button" [label]="isLoginMode ? 'Login' : 'Sign up'"
+      (click)="onSubmit()">
+    </button>
+    <p-button styleClass="px-3" style="padding-left:5%" (onClick)="switchMode()">
+      <ng-template pTemplate="content">
+        <img alt="logo" src="assets/showcase/images/primeng-icon-white.svg" style="width: 1.2rem" />
+      </ng-template>
+    </p-button>
+  </ng-template>
+</p-card>
