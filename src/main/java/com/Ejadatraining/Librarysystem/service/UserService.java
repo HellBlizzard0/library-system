@@ -42,4 +42,8 @@ public class UserService {
     public void updateUser(Users user) {
         this.userDAO.save(user);
     }
+
+    public Users login(String username, String password) {
+        return this.userDAO.login(username, password);
+    }
 }

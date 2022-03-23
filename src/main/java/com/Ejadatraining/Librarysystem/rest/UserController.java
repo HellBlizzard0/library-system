@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Ejadatraining.Librarysystem.entity.Users;
 import com.Ejadatraining.Librarysystem.service.UserService;
+import java.util.HashMap;
 
 /**
  *
@@ -41,6 +42,15 @@ public class UserController {
 		System.err.println(user);
         this.userService.createUser(user);
     }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public Users login(@RequestParam HashMap<String, String> parm) {
+        Users u = this.userService.login(parm.get("username"), parm.get("password"));
+        System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login(): " + u);
+        return u;
+    }
+
     @RequestMapping("/updateUser")
     @ResponseBody
     public void updateUser(@RequestParam(name = "user") Users user) {
