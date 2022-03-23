@@ -12,7 +12,10 @@ export class LoginComponent implements OnInit {
   isLoginMode: boolean = true;
   constructor(private loginService: LoginService) {}
   ngOnInit(): void {}
-  onSubmit() {}
+  onSubmit() {
+    const result = this.loginService.login(this.username, this.password);
+    console.log(result);
+  }
   switchMode() {
     this.isLoginMode = !this.isLoginMode;
   }

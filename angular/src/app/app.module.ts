@@ -9,6 +9,8 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './backend/login.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -20,8 +22,9 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     InputTextModule,
     ButtonModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [LoginService, HttpClient],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
