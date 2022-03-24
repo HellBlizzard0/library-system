@@ -11,9 +11,14 @@ import { ButtonModule } from 'primeng/button';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './backend/login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { CustomerMainComponent } from './customer-main/customer-main.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarModule } from 'primeng/sidebar';
+import { TabViewModule } from 'primeng/tabview';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BooksComponent } from './customer-main/books/books.component';
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, CustomerMainComponent, BooksComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +28,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     InputTextModule,
     ButtonModule,
     HttpClientModule,
+    NgbModule,
+    SidebarModule,
+    TabViewModule,
+    BrowserAnimationsModule,
   ],
   providers: [LoginService, HttpClient],
   bootstrap: [AppComponent],

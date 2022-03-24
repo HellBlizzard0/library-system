@@ -20,10 +20,9 @@
     <button pButton class="btn btn-primary" type="button" [label]="isLoginMode ? 'Login' : 'Sign up'"
       (click)="onSubmit()">
     </button>
-    <p-button styleClass="px-3" style="padding-left:5%" (onClick)="switchMode()">
-      <ng-template pTemplate="content">
-        <img alt="logo" src="assets/showcase/images/primeng-icon-white.svg" style="width: 1.2rem" />
-      </ng-template>
-    </p-button>
+
+    <button pButton (click)="switchMode()" type="button" class="p-button-rounded p-button-info p-button-outlined">
+      <img alt="logo" src="assets/images/refresh.png" style="width: 1.2rem" />
+    </button>
   </ng-template>
 </p-card>
