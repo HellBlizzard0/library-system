@@ -20,7 +20,7 @@ public interface UserDAO extends JpaRepository<Users, Integer> {
 
     @Query(value = "select * from "
             + "Users u "
-            + "where u.username = ?1 "
+            + "where  u.username = ?1 "
             + "and u.password = ?2", nativeQuery = true)
     public Users login(String username, String password);
 }

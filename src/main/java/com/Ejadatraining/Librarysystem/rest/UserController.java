@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Ejadatraining.Librarysystem.entity.Users;
 import com.Ejadatraining.Librarysystem.service.UserService;
 import java.util.HashMap;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -46,9 +47,9 @@ public class UserController {
     @PostMapping("/login")
     @ResponseBody
     public Users login(@RequestParam HashMap<String, String> parm) {
-        Users u = this.userService.login(parm.get("username"), parm.get("password"));
-        System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login(): " + u);
-        return u;
+        Users users = null;
+        System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login(): " + parm);
+        return this.userService.login(parm.get("username"), parm.get("password"));
     }
 
     @RequestMapping("/updateUser")
