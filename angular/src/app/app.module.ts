@@ -17,8 +17,9 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TabViewModule } from 'primeng/tabview';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BooksComponent } from './customer-main/books/books.component';
+import { BookPanelComponent } from './books/book-panel/book-panel.component';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CustomerMainComponent, BooksComponent],
+  declarations: [AppComponent, LoginComponent, CustomerMainComponent, BooksComponent, BookPanelComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

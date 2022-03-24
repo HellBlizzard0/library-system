@@ -3,9 +3,13 @@
     <div *ngIf="getScreenWidth <= maxWidth">
       <p-sidebar [(visible)]="yourVisibleVaraible" [baseZIndex]="baseZIndex">
         <h3>Library System</h3>
-        <a class="nav-item nav-link"
-          ><i class="pi pi-book" style="padding: 0% 5%"></i>Books
-          <span class="visually-hidden">(current)</span></a
+        <a class="nav-item nav-link" [routerLink]="['books']"
+          ><i
+            class="pi pi-book"
+            style="padding: 0% 5%"
+            (click)="yourVisibleVaraible = false"
+          ></i
+          >Books <span class="visually-hidden">(current)</span></a
         >
         <a class="nav-item nav-link"
           ><i class="pi pi-clock" style="padding: 0% 5%"></i>Borrows</a
@@ -21,7 +25,10 @@
       </button>
     </div>
     <a class="navbar-brand"> Library System</a>
-    <a class="nav-item nav-link" *ngIf="getScreenWidth > maxWidth"
+    <a
+      class="nav-item nav-link"
+      [routerLink]="['books']"
+      *ngIf="getScreenWidth > maxWidth"
       >Books<span class="visually-hidden">(current)</span></a
     >
     <a class="nav-item nav-link" *ngIf="getScreenWidth > maxWidth">Borrows</a>
