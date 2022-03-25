@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "install": "^0.13.0",
+    "primeicons": "^5.0.0",
+    "primeng": "^13.3.0"
+  }
+}

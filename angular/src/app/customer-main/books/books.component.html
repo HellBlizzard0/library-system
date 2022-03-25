@@ -1,4 +1,4 @@
-<p-table [value]="products" responsiveLayout="scroll">
+<p-table  responsiveLayout="scroll">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
             Products
@@ -26,8 +26,8 @@
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
-        <div class="flex align-items-center justify-content-between">
+        <!-- <div class="flex align-items-center justify-content-between">
             In total there are {{products ? products.length : 0 }} products.
-        </div>
+        </div> -->
     </ng-template>
 </p-table>
