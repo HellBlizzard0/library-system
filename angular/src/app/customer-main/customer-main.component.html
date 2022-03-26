@@ -13,7 +13,9 @@
         >
         <a class="nav-item nav-link"
           ><i class="pi pi-clock" style="padding: 0% 5%"></i>Borrows</a
-        >
+        ><a class="nav-item nav-link" [routerLink]="['profile']"
+        ><i class="pi pi-clock" style="padding: 0% 5%"></i>Profile</a
+      >
       </p-sidebar>
       <button
         pButton
@@ -32,6 +34,12 @@
       >Books<span class="visually-hidden">(current)</span></a
     >
     <a class="nav-item nav-link" *ngIf="getScreenWidth > maxWidth">Borrows</a>
+    <a
+      class="nav-item nav-link"
+      [routerLink]="['profile']"
+      *ngIf="getScreenWidth > maxWidth"
+      >Profile<span class="visually-hidden">(current)</span></a
+    >
   </div>
 </nav>
 <router-outlet></router-outlet>

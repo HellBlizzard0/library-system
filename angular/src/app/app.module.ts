@@ -20,6 +20,7 @@ import { BooksComponent } from './customer-main/books/books.component';
 import { BookPanelComponent } from './customer-main/books/book-panel/book-panel.component';
 import { BookService } from './customer-main/books/book.service';
 import { TableModule } from 'primeng/table';
+import { ProfileComponent } from './customer-main/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { TableModule } from 'primeng/table';
     CustomerMainComponent,
     BooksComponent,
     BookPanelComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
