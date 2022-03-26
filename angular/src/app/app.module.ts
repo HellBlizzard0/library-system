@@ -18,8 +18,16 @@ import { TabViewModule } from 'primeng/tabview';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BooksComponent } from './customer-main/books/books.component';
 import { BookPanelComponent } from './customer-main/books/book-panel/book-panel.component';
+import { BookService } from './customer-main/books/book.service';
+import { TableModule } from 'primeng/table';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CustomerMainComponent, BooksComponent, BookPanelComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    CustomerMainComponent,
+    BooksComponent,
+    BookPanelComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,8 +41,9 @@ import { BookPanelComponent } from './customer-main/books/book-panel/book-panel.
     SidebarModule,
     TabViewModule,
     BrowserAnimationsModule,
+    TableModule,
   ],
-  providers: [LoginService, HttpClient],
+  providers: [LoginService, HttpClient, BookService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
