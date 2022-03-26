@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -24,5 +25,19 @@ export class BookService {
       authorName: 'string',
     },
   ];
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  fetchBooks() {
+    // this.http.get('');
+    console.log(this.fetchBooks.name + ': Unimplemented');
+  }
+  removeBooks() {
+    console.log(this.removeBooks.name + ': Unimplemented');
+  }
+  updateBook() {
+    console.log(this.updateBook.name + ': Unimplemented');
+  }
+  createBook() {
+    console.log(this.createBook.name + ': Unimplemented');
+  }
 }
