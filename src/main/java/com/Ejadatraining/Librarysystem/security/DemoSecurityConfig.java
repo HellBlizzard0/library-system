@@ -49,7 +49,10 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/authenticateTheUser")
                 .defaultSuccessUrl("/homepage", true)
                 .permitAll()
-                .and().logout().logoutUrl("/logout").permitAll();
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .permitAll();
 //                .anyRequest()
 //                .authenticated();
 //                .antMatchers("/customer/**").hasRole("CUSTOMER")

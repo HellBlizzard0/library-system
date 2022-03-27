@@ -2,6 +2,7 @@ package com.Ejadatraining.Librarysystem.service;
 
 import com.Ejadatraining.Librarysystem.dao.UserDAO;
 import com.Ejadatraining.Librarysystem.entity.Users;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,6 +45,7 @@ public class UserService {
     }
 
     public Users login(String username, String password) {
-        return this.userDAO.findByUsernameAndPassword(username, password);
+        Users u = this.userDAO.findByUsernameAndPassword(username, password);
+        return u;
     }
 }

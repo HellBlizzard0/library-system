@@ -1,5 +1,6 @@
 package com.Ejadatraining.Librarysystem.rest;
 
+import com.Ejadatraining.Librarysystem.entity.Authority;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Ejadatraining.Librarysystem.entity.Users;
+import com.Ejadatraining.Librarysystem.service.AuthorityService;
+import com.Ejadatraining.Librarysystem.service.CustomerService;
+import com.Ejadatraining.Librarysystem.service.LibrarianService;
 import com.Ejadatraining.Librarysystem.service.UserService;
 import java.util.HashMap;
-import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -23,10 +26,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class UserController {
 
     private UserService userService;
+    private AuthorityService authorityService;
+    private CustomerService customerService;
+    private LibrarianService librarianService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService,
+            AuthorityService authorityService,
+            LibrarianService librarianService,
+            CustomerService customerService) {
         this.userService = userService;
+        this.authorityService = authorityService;
+        this.customerService = customerService;
+        this.librarianService = librarianService;
     }
     @RequestMapping("/getAllUsers")
     public List<Users> getAllUsers() {
@@ -46,10 +58,22 @@ public class UserController {
 
     @PostMapping("/login")
     @ResponseBody
-    public Users login(@RequestParam HashMap<String, String> parm) {
+    public HashMap<String, Object> login(@RequestParam HashMap<String, String> parm) {
 //        Users users = null;
 //        System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login(): " + parm);
-        return this.userService.login(parm.get("username"), parm.get("password"));
+    Users u = this.userService.login(parm.get("username"), parm.get("password"));
+        if (u == null) {
+            return null;
+        }
+        HashMap<String, Object> res = new HashMap<String, Object>();
+        Authority a = this.authorityService.getAuthority(u.getUsername());
+        switch (a.getAuthority()) {
+            case "ROLE_CUSTOMER" ->
+                res.put("Customer", this.customerService.getCustomerByIdOrName(u.getId(), u.getUsername()));
+            case "ROLE_LIBRARIAN" ->
+                res.put("Librarian", this.librarianService.getLibrarianByIdOrName(u.getId(), null));
+        }
+        return res;
     }
 
     @RequestMapping("/updateUser")
