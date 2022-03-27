@@ -14,14 +14,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
   onSubmit() {
     // Reserved for Spring Boot Integration
-    // const result = this.loginService.login(this.username, this.password);
-    // console.log(result);
+    this.loginService.login(this.username, this.password);
 
-    console.log({
-      Submitted: 'FALSE',
-      username: this.username,
-      password: this.password,
-    });
+    // console.log({
+    //   Submitted: 'FALSE',
+    //   username: this.username,
+    //   password: this.password,
+    // });
   }
   switchMode() {
     this.isLoginMode = !this.isLoginMode;

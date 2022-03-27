@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 'customer',
     component: CustomerMainComponent,
     children: [
+      { path: '', redirectTo: '/customer/profile', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },
       { path: 'profile', component: ProfileComponent },
     ],
