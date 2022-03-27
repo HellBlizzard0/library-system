@@ -68,10 +68,16 @@ public class UserController {
         HashMap<String, Object> res = new HashMap<String, Object>();
         Authority a = this.authorityService.getAuthority(u.getUsername());
         switch (a.getAuthority()) {
-            case "ROLE_CUSTOMER" ->
-                res.put("Customer", this.customerService.getCustomerByIdOrName(u.getId(), u.getUsername()));
-            case "ROLE_LIBRARIAN" ->
+            case "ROLE_CUSTOMER":
+                res.put("role", "CUSTOMER");
+                res.put("data", this.customerService.getCustomerByIdOrName(u.getId(), u.getUsername()));
+                break;
+            case "ROLE_LIBRARIAN":
+                res.put("role", "LIBRARIAN");
                 res.put("Librarian", this.librarianService.getLibrarianByIdOrName(u.getId(), null));
+                break;
+            default:
+                throw new AssertionError();
         }
         return res;
     }
