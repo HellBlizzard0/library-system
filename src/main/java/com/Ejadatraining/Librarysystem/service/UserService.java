@@ -44,6 +44,6 @@ public class UserService {
     }
 
     public Users login(String username, String password) {
-        return this.userDAO.login(username, password);
+        return this.userDAO.findByUsernameAndPassword(username, password);
     }
 }

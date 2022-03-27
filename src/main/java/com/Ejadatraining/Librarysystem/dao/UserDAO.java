@@ -18,9 +18,9 @@ public interface UserDAO extends JpaRepository<Users, Integer> {
             + "or (u.username is null or u.username = ?2) ", nativeQuery = true)
     public Users findByUserByIdOrUsername(Integer id, String username);
 
-    @Query(value = "select * from "
-            + "Users u "
-            + "where  u.username = ?1 "
-            + "and u.password = ?2", nativeQuery = true)
-    public Users login(String username, String password);
+//    @Query(value = "select * from "
+//            + "Users u "
+//            + "where  u.username = ?1 "
+//            + "and u.password = ?2", nativeQuery = true)
+    public Users findByUsernameAndPassword(String username, String password);
 }

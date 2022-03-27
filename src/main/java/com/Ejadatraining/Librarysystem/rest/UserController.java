@@ -47,8 +47,8 @@ public class UserController {
     @PostMapping("/login")
     @ResponseBody
     public Users login(@RequestParam HashMap<String, String> parm) {
-        Users users = null;
-        System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login(): " + parm);
+//        Users users = null;
+//        System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login(): " + parm);
         return this.userService.login(parm.get("username"), parm.get("password"));
     }
 
