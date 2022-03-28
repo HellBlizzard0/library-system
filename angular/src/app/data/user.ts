@@ -8,10 +8,10 @@ export interface User {
 }
 
 export interface Customer extends User {
-  name: string;
-  phoneNumber: string;
+  name?: string;
+  phoneNumber?: string;
 }
 
 export interface Librarian extends User {
-  name: string;
+  name?: string;
 }
