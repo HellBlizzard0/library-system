@@ -18,7 +18,7 @@ export class CustomerMainComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    // this.getScreenWidth = window.innerWidth;
+    this.getScreenWidth = window.innerWidth;
     this.customer = this.loginService.cust;
     // this.customer = this.loginService.toCustomer(this.loginService.userData);
     this.loginService.subject.subscribe((data) => (this.customer = data));
