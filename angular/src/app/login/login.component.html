@@ -1,6 +1,6 @@
 <p-card>
   <ng-template pTemplate="header">
-    <h2 style="padding: left 20%;">Log in</h2>
+    <h2 style="padding: left 20%">Log in</h2>
   </ng-template>
   <div class="grid p-fluid">
     <div class="col-12 md:col-4">
@@ -17,11 +17,20 @@
     </div>
   </div>
   <ng-template pTemplate="footer">
-    <button pButton class="btn btn-primary" type="button" [label]="isLoginMode ? 'Login' : 'Sign up'"
-      (click)="onSubmit()">
-    </button>
+    <button
+      pButton
+      class="btn btn-primary"
+      type="button"
+      [label]="isLoginMode ? 'Login' : 'Sign up'"
+      (click)="onSubmit()"
+    ></button>
 
-    <button pButton (click)="switchMode()" type="button" class="p-button-rounded p-button-info p-button-outlined">
+    <button
+      pButton
+      (click)="switchMode()"
+      type="button"
+      class="p-button-rounded p-button-info p-button-outlined"
+    >
       <img alt="logo" src="assets/images/refresh.png" style="width: 1.2rem" />
     </button>
   </ng-template>

@@ -21,6 +21,14 @@ import { BookPanelComponent } from './customer-main/books/book-panel/book-panel.
 import { BookService } from './backend/book.service';
 import { TableModule } from 'primeng/table';
 import { ProfileComponent } from './customer-main/profile/profile.component';
+import { PrimeNGConfig } from 'primeng/api';
+import { DataViewModule } from 'primeng/dataview';
+import { PanelModule } from 'primeng/panel';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+import { RatingModule } from 'primeng/rating';
+import { RippleModule } from 'primeng/ripple';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +52,14 @@ import { ProfileComponent } from './customer-main/profile/profile.component';
     TabViewModule,
     BrowserAnimationsModule,
     TableModule,
+    DataViewModule,
+    PanelModule,
+    DialogModule,
+    DropdownModule,
+    RippleModule,
+    RatingModule,
   ],
-  providers: [LoginService, HttpClient, BookService],
+  providers: [LoginService, HttpClient, BookService, PrimeNGConfig],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

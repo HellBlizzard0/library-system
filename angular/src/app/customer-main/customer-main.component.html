@@ -1,5 +1,20 @@
+<style>
+  .navbar-nav {
+    margin-left: auto;
+  }
+</style>
 <nav class="navbar navbar-expand navbar-light bg-light">
-  <div class="nav navbar-nav">
+  <button
+    pButton
+    type="button"
+    *ngIf="getScreenWidth <= maxWidth"
+    (click)="yourVisibleVaraible = true"
+    class="p-button-outlined p-button-text p-button-secondary"
+  >
+    <i class="pi pi-bars"></i></button
+  ><a class="navbar-brand"> Library System</a>
+
+  <div class="nav navbar-nav ml-auto">
     <div *ngIf="getScreenWidth <= maxWidth">
       <p-sidebar [(visible)]="yourVisibleVaraible" [baseZIndex]="baseZIndex">
         <h3>Library System</h3>
@@ -17,16 +32,7 @@
           ><i class="pi pi-user-edit" style="padding: 0% 5%"></i>Profile</a
         >
       </p-sidebar>
-      <button
-        pButton
-        type="button"
-        (click)="yourVisibleVaraible = true"
-        class="p-button-outlined p-button-text p-button-secondary"
-      >
-        <i class="pi pi-bars"></i>
-      </button>
     </div>
-    <a class="navbar-brand"> Library System</a>
     <a
       class="nav-item nav-link"
       [routerLink]="['books']"
