@@ -50,5 +50,27 @@ private LocalDateTime lastUpdate;
 
     @Column(name = "author_name")
     private String authorName;
+    
+    @Column(name = "description")
+    private String description;
+    
+    
+    @Column(name = "page_count")
+    private Number pageCount;
+    
+    
+    @Column(name = "rating")
+    private String rating;
+    
+    
+    @Column(name = "genres")
+    private String genres;
+
+    @Override
+    public String toString() {
+        return "Book{" + "id=" + id + ", title=" + title + ", dateOfCreation=" + dateOfCreation + ", lastUpdate=" + lastUpdate + ", serialNumber=" + serialNumber + ", authorName=" + authorName + ", description=" + description + ", pageCount=" + pageCount + ", rating=" + rating + ", genres=" + genres + '}';
+    }
+    
+    
 
 }
