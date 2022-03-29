@@ -25,22 +25,7 @@ public class Book implements Serializable {
     public Book() {
     }
 
-    public Book(int id, String title, LocalDateTime dateOfCreation, LocalDateTime lastUpdate, String serialNumber, String authorName, String description, Number pageCount, String rating, String genres) {
-        this.id = id;
-        this.title = title;
-        this.dateOfCreation = dateOfCreation;
-        this.lastUpdate = lastUpdate;
-        this.serialNumber = serialNumber;
-        this.authorName = authorName;
-        this.description = description;
-        this.pageCount = pageCount;
-        this.rating = rating;
-        this.genres = genres;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -66,9 +51,7 @@ public class Book implements Serializable {
         this.description = description;
     }
 
-    public void setPageCount(Number pageCount) {
-        this.pageCount = pageCount;
-    }
+
 
     public void setRating(String rating) {
         this.rating = rating;
@@ -78,9 +61,7 @@ public class Book implements Serializable {
         this.genres = genres;
     }
 
-    public int getId() {
-        return id;
-    }
+  
 
     public String getTitle() {
         return title;
@@ -106,9 +87,23 @@ public class Book implements Serializable {
         return description;
     }
 
-    public Number getPageCount() {
+    public int getId() {
+        return id;
+    }
+
+    public int getPageCount() {
         return pageCount;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+
+
 
     public String getRating() {
         return rating;
@@ -121,7 +116,7 @@ public class Book implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @Id
-    private Long id;
+    private int id;
 
     @Column(name = "title")
     private String title;
@@ -142,25 +137,21 @@ public class Book implements Serializable {
     @Column(name = "author_name")
     private String authorName;
     
-    @Column(name = "description")
-    private String description;
+     @Column(name = "description")
+     private String description;
     
     
-    @Column(name = "page_count")
-    private Number pageCount;
+     @Column(name = "page_count")
+     private int pageCount;
     
     
-    @Column(name = "rating")
-    private String rating;
+     @Column(name = "rating")
+     private String rating;
     
     
-    @Column(name = "genres")
-    private String genres;
+     @Column(name = "genres")
+     private String genres;
 
-    @Override
-    public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", dateOfCreation=" + dateOfCreation + ", lastUpdate=" + lastUpdate + ", serialNumber=" + serialNumber + ", authorName=" + authorName + ", description=" + description + ", pageCount=" + pageCount + ", rating=" + rating + ", genres=" + genres + '}';
-    }
     
     
 
