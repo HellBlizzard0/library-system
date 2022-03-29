@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.Ejadatraining.Librarysystem.dao.BookDAO;
+import java.io.Serializable;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author aalsaqqa
  */
 @Repository
-public class BookService {
+public class BookService implements Serializable {
 
     private BookDAO bookDAO;
 

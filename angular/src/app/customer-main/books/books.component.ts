@@ -1,18 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Book, BookService } from './book.service';
+import { Book, BookService } from '../../backend/book.service';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css'],
 })
 export class BooksComponent implements OnInit {
-  books: Book[];
+  books: Book[] = [];
+
   constructor(private bookService: BookService) {
-    this.books = this.getBooks();
+    this.bookService.fetchBooks();
   }
 
   ngOnInit(): void {
-    console.log(this.books);
+    this.bookService.booksList.subscribe((data: Book[]) => {
+      this.books = data;
+      console.log(this.books);
+    });
   }
 
   getBooks() {
