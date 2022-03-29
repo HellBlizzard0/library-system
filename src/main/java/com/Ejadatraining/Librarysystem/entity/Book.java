@@ -152,6 +152,19 @@ public class Book implements Serializable {
      @Column(name = "genres")
      private String genres;
 
+    public Book(int id, String title, LocalDateTime dateOfCreation, LocalDateTime lastUpdate, String serialNumber, String authorName, String description, int pageCount, String rating, String genres) {
+        this.id = id;
+        this.title = title;
+        this.dateOfCreation = dateOfCreation;
+        this.lastUpdate = lastUpdate;
+        this.serialNumber = serialNumber;
+        this.authorName = authorName;
+        this.description = description;
+        this.pageCount = pageCount;
+        this.rating = rating;
+        this.genres = genres;
+    }
+
     
     
 
