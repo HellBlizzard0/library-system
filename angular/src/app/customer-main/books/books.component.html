@@ -1,15 +1,35 @@
 <p-table [value]="books" dataKey="title" [paginator]="true" [rows]="10">
   <ng-template pTemplate="header">
     <tr>
-      <th>EXP</th>
-      <th>Title</th>
-      <th>authorName</th>
-      <th>dateOfCreation</th>
-      <th>pageCount</th>
+      <th pSortableColumn="title" width="30%">
+        Title<p-sortIcon field="title"></p-sortIcon>
+      </th>
+      <th pSortableColumn="authorName" width="18%">
+        authorName<p-sortIcon field="authorName"></p-sortIcon>
+      </th>
+      <th pSortableColumn="dateOfCreation" width="20%">
+        dateOfCreation<p-sortIcon field="dateOfCreation"></p-sortIcon>
+      </th>
+      <th pSortableColumn="pageCount" width="15%">
+        pageCount<p-sortIcon field="pageCount"></p-sortIcon>
+      </th>
+      <th pSortableColumn="Rating" width="10%">
+        Rating<p-sortIcon field="Rating"></p-sortIcon>
+      </th>
+      <th></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-book let-expanded="expanded">
     <tr>
+      <td>{{ book.title }}</td>
+      <td>{{ book.authorName }}</td>
+      <td>{{ book.dateOfCreation }}</td>
+      <td>{{ book.pageCount }}</td>
+      <p-rating
+        [cancel]="false"
+        [readonly]="true"
+        [(ngModel)]="book.rating"
+      ></p-rating>
       <td>
         <button
           type="button"
@@ -20,20 +40,26 @@
           [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
         ></button>
       </td>
-      <td>{{ book.title }}</td>
-      <td>{{ book.authorName }}</td>
-      <td>{{ book.dateOfCreation }}</td>
-      <td>{{ book.pageCount }}</td>
     </tr>
   </ng-template>
   <ng-template pTemplate="rowexpansion" let-book>
-    <hr />
-    <p-panel>
-      <p-header> {{ book.title }} </p-header>
-      {{ book.description }}
-      <p-footer>
-        <p-rating [(ngModel)]="book.rating"></p-rating>
-      </p-footer>
-    </p-panel>
+    <tr>
+      <td colspan="5">
+        <div class="p-3">
+          <p-panel>
+            <p-header> {{ book.title }} </p-header>
+            <h3>By: {{ book.authorName }}</h3>
+            {{ book.description }}
+            <p-footer>
+              <p-rating
+                [readonly]="true"
+                [cancel]="false"
+                [(ngModel)]="book.rating"
+              ></p-rating>
+            </p-footer>
+          </p-panel>
+        </div>
+      </td>
+    </tr>
   </ng-template>
 </p-table>
