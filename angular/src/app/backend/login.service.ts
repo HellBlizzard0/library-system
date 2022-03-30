@@ -8,7 +8,9 @@ import { CustomerMainComponent } from '../customer-main/customer-main.component'
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    if (!this.isUserLoggedIn) router.navigate(['/']);
+  }
   link: string = 'http://localhost:8080/api/User/login';
   isUserLoggedIn = false;
   cust!: Customer;
