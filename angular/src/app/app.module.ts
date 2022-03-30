@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardModule } from 'primeng/card';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 
 import { InputTextModule } from 'primeng/inputtext';
@@ -28,6 +28,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DialogModule } from 'primeng/dialog';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
+import { PasswordPipe } from './util/password.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RippleModule } from 'primeng/ripple';
     BooksComponent,
     BookPanelComponent,
     ProfileComponent,
+    PasswordPipe,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,7 @@ import { RippleModule } from 'primeng/ripple';
     DropdownModule,
     RippleModule,
     RatingModule,
+    ReactiveFormsModule,
   ],
   providers: [LoginService, HttpClient, BookService, PrimeNGConfig],
   bootstrap: [AppComponent],
