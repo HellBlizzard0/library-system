@@ -131,7 +131,7 @@ public class Book implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime lastUpdate;
 
-    @Column(name = "serial_number")
+    @Column(name = "ISBN")
     private String serialNumber;
 
     @Column(name = "author_name")
@@ -149,7 +149,7 @@ public class Book implements Serializable {
      private String rating;
     
     
-     @Column(name = "genres")
+    @Column(name = "generes")
      private String genres;
 
     public Book(int id, String title, LocalDateTime dateOfCreation, LocalDateTime lastUpdate, String serialNumber, String authorName, String description, int pageCount, String rating, String genres) {
