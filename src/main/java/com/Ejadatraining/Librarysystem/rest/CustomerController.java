@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Ejadatraining.Librarysystem.entity.Customer;
 import com.Ejadatraining.Librarysystem.service.CustomerService;
+import java.util.logging.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/Customer")
@@ -49,11 +51,19 @@ public class CustomerController {
 
     @PostMapping("/updateCustomer")
     @ResponseBody
-    public void updateCustomer(@RequestParam HashMap<String, String> param) {
-        Customer customer = new Customer(Integer.parseInt(param.get("id")), param.get("name"), param.get("phoneNumber"),
-                Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"));
-        customer.setId(Integer.parseInt(param.get("id")));
-        this.customerService.updateCustomer(customer);
+    public void updateCustomer(@RequestBody HashMap<String, String> param) {
+        try {
+            Customer customer = new Customer(Integer.parseInt(param.get("id")), param.get("name"), param.get("phoneNumber"),
+                    Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"));
+            customer.setId(Integer.parseInt(param.get("id")));
+            this.customerService.updateCustomer(customer);
+        } catch (Exception e) {
+            System.out.println("com.Ejadatraining.Librarysystem.rest.CustomerController.updateCustomer():"
+                    + "Failure");
+            e.getStackTrace();
+        }
+        System.out.println("com.Ejadatraining.Librarysystem.rest.CustomerController.updateCustomer():"
+                + "Successful");
     }
 
     @GetMapping("/deleteCustomer")

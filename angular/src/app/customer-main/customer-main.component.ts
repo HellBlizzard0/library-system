@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, HostListener } from '@angular/core';
 import { LoginService } from '../backend/login.service';
 import { Customer } from '../data/user';
-import { CustomerService } from './customer.service';
+import { CustomerService } from '../backend/customer.service';
 
 @Component({
   selector: 'app-customer-main',
