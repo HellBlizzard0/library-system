@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PrimeNGConfig, SelectItem } from 'primeng/api';
-import { Book, BookService } from '../../backend/book.service';
+import { Book } from 'src/app/data/book';
+import { BookService } from '../../backend/book.service';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',

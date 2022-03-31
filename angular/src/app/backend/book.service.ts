@@ -1,20 +1,9 @@
 import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-const LINKBASE: string = 'http://localhost:8080/api/Book/';
+import { Book } from '../data/book';
 
-export interface Book {
-  id: number;
-  title: string;
-  dateOfCreation: Date;
-  lastUpdated: Date;
-  serialNumber: string;
-  authorName: string;
-  rating?: number;
-  description?: string;
-  genres?: string;
-  pageCount?: number;
-}
+const LINKBASE: string = 'http://localhost:8080/api/Book/';
 @Injectable({
   providedIn: 'root',
 })
