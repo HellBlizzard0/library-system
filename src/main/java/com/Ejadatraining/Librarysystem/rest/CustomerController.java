@@ -57,13 +57,14 @@ public class CustomerController {
                     Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"));
             customer.setId(Integer.parseInt(param.get("id")));
             this.customerService.updateCustomer(customer);
+            System.out.println("com.Ejadatraining.Librarysystem.rest.CustomerController.updateCustomer():"
+                    + "Successful");
         } catch (Exception e) {
             System.out.println("com.Ejadatraining.Librarysystem.rest.CustomerController.updateCustomer():"
                     + "Failure");
-            e.getStackTrace();
+            System.out.println(e.getMessage());
         }
-        System.out.println("com.Ejadatraining.Librarysystem.rest.CustomerController.updateCustomer():"
-                + "Successful");
+
     }
 
     @GetMapping("/deleteCustomer")
