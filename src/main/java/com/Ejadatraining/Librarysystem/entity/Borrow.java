@@ -29,14 +29,15 @@ public class Borrow implements Serializable {
     public Borrow() {
     }
 
-    public Borrow(int id, Customer customer, Book book, BorrowStatus status, LocalDateTime dateOfCreation, LocalDateTime lastUpdate) {
+    public Borrow(int id, Customer customer, Book book, BorrowStatus status, LocalDateTime dateOfCreation,
+            LocalDateTime lastUpdated) {
         super();
         this.id = id;
         this.customer = customer;
         this.book = book;
         this.status = status;
         this.dateOfCreation = dateOfCreation;
-        this.lastUpdated = lastUpdate;
+        this.lastUpdated = lastUpdated;
     }
 
     @Id

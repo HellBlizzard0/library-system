@@ -53,7 +53,7 @@ export class LoginService {
     //         this.cust = {
     //           id: data['data'].id,
     //           dateOfCreation: data['data'].dateOfCreation,
-    //           lastUpdated: data['data'].lastUpdate,
+    //           lastUpdated: data['data'].lastUpdated,
     //           enabled: data['data'].enabled,
     //           username: data['data'].username,
     //           password: data['data'].password,
@@ -70,7 +70,7 @@ export class LoginService {
     //         this.lib = {
     //           id: data['data'].id,
     //           dateOfCreation: data['data'].dateOfCreation,
-    //           lastUpdated: data['data'].lastUpdate,
+    //           lastUpdated: data['data'].lastUpdated,
     //           enabled: data['data'].enabled,
     //           username: data['data'].username,
     //           password: data['data'].password,
@@ -98,7 +98,7 @@ export class LoginService {
   //     password: this.userData.password,
   //     enabled: this.userData.enabled,
   //     dateOfCreation: this.userData.dateOfCreation,
-  //     lastUpdated: this.userData.lastUpdate,
+  //     lastUpdated: this.userData.lastUpdated,
   //     name: this.userData.name,
   //     phoneNumber: this.userData.phoneNumber,
   //   };

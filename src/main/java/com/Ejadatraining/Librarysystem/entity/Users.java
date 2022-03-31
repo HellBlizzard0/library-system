@@ -58,7 +58,7 @@ public abstract class Users implements Serializable {
     @Override
     public String toString() {
         return "User [id=" + id + ", enabled=" + enabled + ", password=" + password + ", username=" + username
-                + ", dateOfCreation=" + dateOfCreation + ", lastUpdate=" + lastUpdate + "]";
+                + ", dateOfCreation=" + dateOfCreation + ", lastUpdated=" + lastUpdated + "]";
     }
 
     public void setUsername(String username) {
@@ -74,11 +74,11 @@ public abstract class Users implements Serializable {
     }
 
     public LocalDateTime getLastUpdate() {
-        return lastUpdate;
+        return lastUpdated;
     }
 
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setLastUpdate(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
     public Users(int id, boolean enabled, String password, String username) {
@@ -108,11 +108,11 @@ public abstract class Users implements Serializable {
     @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-private LocalDateTime dateOfCreation;
+    private LocalDateTime dateOfCreation;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-    private LocalDateTime lastUpdate;
+    private LocalDateTime lastUpdated;
 
 }

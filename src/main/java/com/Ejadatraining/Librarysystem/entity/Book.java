@@ -25,8 +25,6 @@ public class Book implements Serializable {
     public Book() {
     }
 
-
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -35,8 +33,8 @@ public class Book implements Serializable {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setLastUpdate(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
     public void setSerialNumber(String serialNumber) {
@@ -51,8 +49,6 @@ public class Book implements Serializable {
         this.description = description;
     }
 
-
-
     public void setRating(String rating) {
         this.rating = rating;
     }
@@ -60,8 +56,6 @@ public class Book implements Serializable {
     public void setGenres(String genres) {
         this.genres = genres;
     }
-
-  
 
     public String getTitle() {
         return title;
@@ -72,7 +66,7 @@ public class Book implements Serializable {
     }
 
     public LocalDateTime getLastUpdate() {
-        return lastUpdate;
+        return lastUpdated;
     }
 
     public String getSerialNumber() {
@@ -103,8 +97,6 @@ public class Book implements Serializable {
         this.pageCount = pageCount;
     }
 
-
-
     public String getRating() {
         return rating;
     }
@@ -129,34 +121,32 @@ public class Book implements Serializable {
     @Column(name = "last_updated")
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-    private LocalDateTime lastUpdate;
+    private LocalDateTime lastUpdated;
 
     @Column(name = "ISBN")
     private String serialNumber;
 
     @Column(name = "author_name")
     private String authorName;
-    
-     @Column(name = "description")
-     private String description;
-    
-    
-     @Column(name = "page_count")
-     private int pageCount;
-    
-    
-     @Column(name = "rating")
-     private String rating;
-    
-    
-    @Column(name = "generes")
-     private String genres;
 
-    public Book(int id, String title, LocalDateTime dateOfCreation, LocalDateTime lastUpdate, String serialNumber, String authorName, String description, int pageCount, String rating, String genres) {
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "page_count")
+    private int pageCount;
+
+    @Column(name = "rating")
+    private String rating;
+
+    @Column(name = "generes")
+    private String genres;
+
+    public Book(int id, String title, LocalDateTime dateOfCreation, LocalDateTime lastUpdated, String serialNumber,
+            String authorName, String description, int pageCount, String rating, String genres) {
         this.id = id;
         this.title = title;
         this.dateOfCreation = dateOfCreation;
-        this.lastUpdate = lastUpdate;
+        this.lastUpdated = lastUpdated;
         this.serialNumber = serialNumber;
         this.authorName = authorName;
         this.description = description;
@@ -164,8 +154,5 @@ public class Book implements Serializable {
         this.rating = rating;
         this.genres = genres;
     }
-
-    
-    
 
 }
