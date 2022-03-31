@@ -36,7 +36,7 @@ public class Borrow implements Serializable {
         this.book = book;
         this.status = status;
         this.dateOfCreation = dateOfCreation;
-        this.lastUpdate = lastUpdate;
+        this.lastUpdated = lastUpdate;
     }
 
     @Id
@@ -63,5 +63,5 @@ public class Borrow implements Serializable {
     @Column(name = "last_updated")
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-    private LocalDateTime lastUpdate;
+    private LocalDateTime lastUpdated;
 }
