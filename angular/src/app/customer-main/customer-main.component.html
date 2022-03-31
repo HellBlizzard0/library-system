@@ -39,7 +39,12 @@
       *ngIf="getScreenWidth > maxWidth"
       >Books<span class="visually-hidden">(current)</span></a
     >
-    <a class="nav-item nav-link" *ngIf="getScreenWidth > maxWidth">Borrows</a>
+    <a
+      class="nav-item nav-link"
+      [routerLink]="['borrow']"
+      *ngIf="getScreenWidth > maxWidth"
+      >Borrows</a
+    >
     <a
       class="nav-item nav-link"
       [routerLink]="['profile']"

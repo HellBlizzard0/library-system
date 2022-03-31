@@ -17,7 +17,6 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TabViewModule } from 'primeng/tabview';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BooksComponent } from './customer-main/books/books.component';
-import { BookPanelComponent } from './customer-main/books/book-panel/book-panel.component';
 import { BookService } from './backend/book.service';
 import { TableModule } from 'primeng/table';
 import { ProfileComponent } from './customer-main/profile/profile.component';
@@ -29,6 +28,7 @@ import { DialogModule } from 'primeng/dialog';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { PasswordPipe } from './util/password.pipe';
+import { BorrowComponent } from './customer-main/borrow/borrow.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +36,9 @@ import { PasswordPipe } from './util/password.pipe';
     LoginComponent,
     CustomerMainComponent,
     BooksComponent,
-    BookPanelComponent,
     ProfileComponent,
     PasswordPipe,
+    BorrowComponent,
   ],
   imports: [
     BrowserModule,

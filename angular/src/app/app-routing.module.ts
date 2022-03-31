@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BooksComponent } from './customer-main/books/books.component';
+import { BorrowComponent } from './customer-main/borrow/borrow.component';
 import { CustomerMainComponent } from './customer-main/customer-main.component';
 import { ProfileComponent } from './customer-main/profile/profile.component';
 import { LoginComponent } from './login/login.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/customer/profile', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'borrow', component: BorrowComponent },
     ],
   },
 ];

@@ -51,7 +51,7 @@ public class Borrow implements Serializable {
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     private BorrowStatus status;
 
@@ -64,4 +64,12 @@ public class Borrow implements Serializable {
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime lastUpdated;
+
+    public Borrow(int id, Customer customer, Book book, BorrowStatus status) {
+        this.id = id;
+        this.customer = customer;
+        this.book = book;
+        this.status = status;
+    }
+
 }
