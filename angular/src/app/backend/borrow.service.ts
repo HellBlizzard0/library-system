@@ -19,7 +19,9 @@ export class BorrowService {
 
   getBorrowByCustomerId(id: number) {
     this.borrows = BORROWS;
+
     this.subject.next(this.borrows);
+
     // let headers = new HttpHeaders();
     // headers.append('Content-Type', 'application/json');
     // headers.append('id', '902');

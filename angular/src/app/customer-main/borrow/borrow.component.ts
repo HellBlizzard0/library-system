@@ -9,15 +9,15 @@ import { Borrow } from 'src/app/data/borrow';
 })
 export class BorrowComponent implements OnInit {
   borrows: Borrow[] = [];
+  status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
 
-  constructor(private borrowService: BorrowService) {
-    this.borrowService.getBorrowByCustomerId(-1);
-  }
+  constructor(private borrowService: BorrowService) {}
 
   ngOnInit(): void {
     this.borrowService.subject.subscribe((data: Borrow[]) => {
       this.borrows = data;
-      console.log(this.borrows);
     });
+
+    this.borrowService.getBorrowByCustomerId(-1);
   }
 }

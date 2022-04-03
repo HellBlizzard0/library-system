@@ -1,1 +1,22 @@
-
+<p-table [value]="borrows">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Title</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-borrow>
+    <tr>
+      <td>{{ borrow.book.title }}</td>
+      <td>{{ borrow.customer.name }}</td>
+      <td>{{ borrow.dateOfCreation }}</td>
+      <td>
+        <span [class]="'product-badge status-' + status[1]">
+          {{ borrow.status.status }}
+        </span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

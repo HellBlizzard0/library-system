@@ -18,14 +18,13 @@ export class LoginService {
   subject = new Subject<any>();
 
   login(username: string, password: string) {
-    console.log('username: ' + username);
-    console.log('password: ' + password);
-    console.log('link: ' + this.link);
+    // console.log('username: ' + username);
+    // console.log('password: ' + password);
+    // console.log('link: ' + this.link);
 
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
-    console.log(formData);
 
     this.cust = {
       id: 0,
