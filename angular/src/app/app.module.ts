@@ -29,6 +29,7 @@ import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { PasswordPipe } from './util/password.pipe';
 import { BorrowComponent } from './customer-main/borrow/borrow.component';
+import { LibrarianMainComponent } from './librarian-main/librarian-main.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BorrowComponent } from './customer-main/borrow/borrow.component';
     ProfileComponent,
     PasswordPipe,
     BorrowComponent,
+    LibrarianMainComponent,
   ],
   imports: [
     BrowserModule,
