@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Customer, Librarian, User } from '../data/user';
+import { User } from '../util/data/user';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { CustomerMainComponent } from '../customer-main/customer-main.component';
@@ -14,8 +14,7 @@ export class LoginService {
   link: string = 'http://localhost:8080/api/User/login';
   isUserLoggedIn = false;
   isCustomer = false;
-  cust!: Customer;
-  lib!: Librarian;
+  user!: User;
   subject = new Subject<any>();
 
   login(username: string, password: string) {
@@ -41,7 +40,7 @@ export class LoginService {
     // this.subject.next(this.cust);
     // this.router.navigate(['/customer']);
 
-    this.lib = {
+    this.user = {
       id: 0,
       name: 'Curtis Jackson',
       username: 'cjn',
@@ -51,7 +50,7 @@ export class LoginService {
       lastUpdated: new Date(),
     };
     this.isCustomer = false;
-    this.subject.next(this.lib);
+    this.subject.next(this.user);
     this.router.navigate(['/librarian']);
 
     // ====================

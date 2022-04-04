@@ -29,8 +29,9 @@
         [cancel]="false"
         [readonly]="true"
         [(ngModel)]="book.rating"
-        *ngIf="expression"
+        *ngIf="isCustomer()"
       ></p-rating>
+      <p *ngIf="!isCustomer()">{{ book.rating }}</p>
       <td>
         <button
           type="button"

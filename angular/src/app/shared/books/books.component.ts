@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PrimeNGConfig, SelectItem } from 'primeng/api';
-import { Book } from 'src/app/data/book';
+import { LoginService } from 'src/app/backend/login.service';
+import { Book } from 'src/app/util/data/book';
 import { BookService } from '../../backend/book.service';
 @Component({
   selector: 'app-books',
@@ -20,7 +21,8 @@ export class BooksComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
-    private primengConfig: PrimeNGConfig
+    private primengConfig: PrimeNGConfig,
+    private loginService: LoginService
   ) {
     this.bookService.fetchBooks();
   }
@@ -51,6 +53,10 @@ export class BooksComponent implements OnInit {
   }
   getBooks() {
     return this.bookService.books;
+  }
+
+  isCustomer(): boolean {
+    return this.loginService.isCustomer;
   }
 }
 

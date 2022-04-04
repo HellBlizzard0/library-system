@@ -10,7 +10,7 @@
   <ng-template pTemplate="body" let-borrow>
     <tr>
       <td>{{ borrow.book.title }}</td>
-      <td>{{ borrow.customer.name }}</td>
+      <td>{{ borrow.user.name }}</td>
       <td>{{ borrow.dateOfCreation }}</td>
       <td>
         <span [class]="'product-badge status-' + status[1]">

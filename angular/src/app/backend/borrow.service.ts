@@ -3,8 +3,8 @@ import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { Book } from '../data/book';
-import { Borrow } from '../data/borrow';
+import { Book } from '../util/data/book';
+import { Borrow } from '../util/data/borrow';
 
 const LINKBASE = 'localost:8080:/api/Borrow/';
 
@@ -68,7 +68,7 @@ const BORROWS: Borrow[] = [
   {
     id: 0,
     book: BOOKS[0],
-    customer: {
+    user: {
       id: 902,
       enabled: true,
       password: '123',

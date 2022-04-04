@@ -25,7 +25,7 @@
                 class="rounded-circle img-fluid"
                 style="width: 150px"
               />
-              <h5 class="my-3">{{ customer.name }}</h5>
+              <h5 class="my-3">{{ user.name }}</h5>
               <p class="text-muted mb-1">Full Stack Developer</p>
               <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
               <div class="d-flex justify-content-center mb-2">
@@ -52,10 +52,10 @@
                     [disabled]="!isEditMode"
                     [readonly]="!isEditMode"
                     class="text-muted mb-0 border-0"
-                    [(ngModel)]="customer.name"
+                    [(ngModel)]="user.name"
                     name="name"
                   />
-                  <!-- <p class="text-muted mb-0">{{ customer.name }}</p> -->
+                  <!-- <p class="text-muted mb-0">{{ user.name }}</p> -->
                 </div>
               </div>
               <hr />
@@ -69,10 +69,10 @@
                     [disabled]="!isEditMode"
                     [readonly]="!isEditMode"
                     class="text-muted mb-0 border-0"
-                    [(ngModel)]="customer.username"
+                    [(ngModel)]="user.username"
                     name="username"
                   />
-                  <!-- <p class="text-muted mb-0">{{ customer.username }}</p> -->
+                  <!-- <p class="text-muted mb-0">{{ user.username }}</p> -->
                 </div>
               </div>
               <hr />
@@ -86,10 +86,10 @@
                     [disabled]="!isEditMode"
                     [readonly]="!isEditMode"
                     class="text-muted mb-0 border-0"
-                    [(ngModel)]="customer.password"
+                    [(ngModel)]="user.password"
                     name="username"
                   />
-                  <!-- <p class="text-muted mb-0">{{ customer.username }}</p> -->
+                  <!-- <p class="text-muted mb-0">{{ user.username }}</p> -->
                 </div>
               </div>
               <hr />
@@ -103,10 +103,10 @@
                     [readonly]="!isEditMode"
                     [disabled]="!isEditMode"
                     class="text-muted mb-0 border-0"
-                    [(ngModel)]="customer.phoneNumber"
+                    [(ngModel)]="user.phoneNumber"
                     name="phoneNumber"
                   />
-                  <!-- <p class="text-muted mb-0">{{ customer.phoneNumber }}</p> -->
+                  <!-- <p class="text-muted mb-0">{{ user.phoneNumber }}</p> -->
                 </div>
               </div>
               <hr />
@@ -115,7 +115,7 @@
                   <p class="mb-0">Creation</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{ customer.dateOfCreation }}</p>
+                  <p class="text-muted mb-0">{{ user.dateOfCreation }}</p>
                 </div>
               </div>
               <hr />
@@ -124,7 +124,7 @@
                   <p class="mb-0">Updated</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{ customer.lastUpdated }}</p>
+                  <p class="text-muted mb-0">{{ user.lastUpdated }}</p>
                 </div>
               </div>
               <div class="container">

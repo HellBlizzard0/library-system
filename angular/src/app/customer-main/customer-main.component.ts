@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, HostListener } from '@angular/core';
 import { LoginService } from '../backend/login.service';
-import { Customer } from '../data/user';
+import { User } from '../util/data/user';
 
 @Component({
   selector: 'app-customer-main',
@@ -9,13 +9,13 @@ import { Customer } from '../data/user';
 })
 export class CustomerMainComponent implements OnInit {
   // userData: any;
-  customer!: Customer;
+  customer!: User;
 
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.getScreenWidth = window.innerWidth;
-    this.customer = this.loginService.cust;
+    this.customer = this.loginService.user;
     // this.customer = this.loginService.toCustomer(this.loginService.userData);
     this.loginService.subject.subscribe((data) => (this.customer = data));
   }

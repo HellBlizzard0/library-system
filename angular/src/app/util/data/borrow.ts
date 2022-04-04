@@ -1,11 +1,11 @@
 import { Book } from './book';
-import { Customer } from './user';
+import { User } from './user';
 
 export interface Borrow {
   id: number;
   status: BorrowStatus;
   book: Book;
-  customer: Customer;
+  user: User;
   dateOfCreation: Date;
   lastUpdated: Date;
 }

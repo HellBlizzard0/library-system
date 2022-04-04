@@ -5,9 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { UserService } from 'src/app/backend/user.service';
 import { LoginService } from 'src/app/backend/login.service';
-import { Customer, Librarian, User } from 'src/app/data/user';
-import { CustomerService } from '../../backend/customer.service';
+import { User } from 'src/app/util/data/user';
 
 @Component({
   selector: 'app-profile',
@@ -16,15 +16,15 @@ import { CustomerService } from '../../backend/customer.service';
 })
 export class ProfileComponent implements OnInit {
   isEditMode!: boolean;
-  customer!: Customer;
-  librarian!: Librarian;
+  user!: User;
+
   constructor(
     private loginService: LoginService,
-    private customerService: CustomerService
+    private userService: UserService
   ) {
     // this.loginService.userData.subscribe((data) => {
-    //   this.customer = this.loginService.toCustomer(data);
-    //   // console.log(this.customer);
+    //   this.user = this.loginService.toCustomer(data);
+    //   // console.log(this.user);
     // });
     this.isEditMode = false;
   }
@@ -32,25 +32,24 @@ export class ProfileComponent implements OnInit {
   ngOnChange() {}
 
   ngOnInit(): void {
-    this.customer = this.loginService.cust;
-    this.loginService.subject.subscribe((data) => (this.customer = data));
+    this.user = this.loginService.user;
+    this.loginService.subject.subscribe((data) => (this.user = data));
 
     // this.loginService.userData.subscribe(() => {
-    //   this.customer = this.loginService.toCustomer();
+    //   this.user = this.loginService.toCustomer();
     //   // console.log(data);
 
-    //   console.log(this.customer);
+    //   console.log(this.user);
     // });
-    // this.customer = this.loginService.toCustomer(this.loginService.userData);
+    // this.user = this.loginService.toCustomer(this.loginService.userData);
   }
   ngOnDestroy() {
     this.loginService.subject.unsubscribe();
-    this.customer = {};
-    this.librarian = {};
+    this.user = {};
   }
   onSubmit() {
-    this.loginService.subject.next(this.customer);
-    this.customerService.updateCustomer(this.customer);
+    this.loginService.subject.next(this.user);
+    this.userService.updateUser(this.user);
     this.isEditMode = !this.isEditMode;
   }
   onSwitchEditMode() {
@@ -58,11 +57,6 @@ export class ProfileComponent implements OnInit {
   }
 
   print() {
-    console.log(this.customer);
-  }
-
-  getUser(): User {
-    if (this.customer.username != null) return this.customer;
-    else return this.librarian;
+    console.log(this.user);
   }
 }

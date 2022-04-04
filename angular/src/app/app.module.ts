@@ -33,19 +33,20 @@ import { ProfileComponent } from './shared/profile/profile.component';
 import { CustomersComponent } from './librarian-main/customers/customers.component';
 
 import { ToastModule } from 'primeng/toast';
-import { CalendarModule } from 'primeng/calendar';
-import { SliderModule } from 'primeng/slider';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { ContextMenuModule } from 'primeng/contextmenu';
-import { ProgressBarModule } from 'primeng/progressbar';
-import { FileUploadModule } from 'primeng/fileupload';
-import { ToolbarModule } from 'primeng/toolbar';
-import { RadioButtonModule } from 'primeng/radiobutton';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
+// import { CalendarModule } from 'primeng/calendar';
+// import { SliderModule } from 'primeng/slider';
+// import { MultiSelectModule } from 'primeng/multiselect';
+// import { ContextMenuModule } from 'primeng/contextmenu';
+// import { ProgressBarModule } from 'primeng/progressbar';
+// import { FileUploadModule } from 'primeng/fileupload';
+// import { ToolbarModule } from 'primeng/toolbar';
+// import { RadioButtonModule } from 'primeng/radiobutton';
+// import { InputNumberModule } from 'primeng/inputnumber';
+// import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+// import { InputTextareaModule } from 'primeng/inputtextarea';
+import { UserService } from './backend/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +84,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
   ],
   providers: [
     LoginService,
+    UserService,
     HttpClient,
     BookService,
     PrimeNGConfig,

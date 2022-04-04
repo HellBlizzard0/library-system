@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Book } from '../data/book';
+import { Book } from '../util/data/book';
 
 const LINKBASE: string = 'http://localhost:8080/api/Book/';
 @Injectable({

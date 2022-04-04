@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BorrowService } from 'src/app/backend/borrow.service';
-import { Borrow } from 'src/app/data/borrow';
+import { Borrow } from 'src/app/util/data/borrow';
 
 @Component({
   selector: 'app-borrow',
