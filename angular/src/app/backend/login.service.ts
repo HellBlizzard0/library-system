@@ -13,6 +13,7 @@ export class LoginService {
   }
   link: string = 'http://localhost:8080/api/User/login';
   isUserLoggedIn = false;
+  isCustomer = false;
   cust!: Customer;
   lib!: Librarian;
   subject = new Subject<any>();
@@ -26,7 +27,21 @@ export class LoginService {
     formData.append('username', username);
     formData.append('password', password);
 
-    this.cust = {
+    // this.cust = {
+    //   id: 0,
+    //   name: 'Curtis Jackson',
+    //   username: 'cjn',
+    //   password: '111',
+    //   enabled: true,
+    //   dateOfCreation: new Date(),
+    //   lastUpdated: new Date(),
+    //   phoneNumber: '0500000000',
+    // };
+    // this.isCustomer = true;
+    // this.subject.next(this.cust);
+    // this.router.navigate(['/customer']);
+
+    this.lib = {
       id: 0,
       name: 'Curtis Jackson',
       username: 'cjn',
@@ -34,11 +49,12 @@ export class LoginService {
       enabled: true,
       dateOfCreation: new Date(),
       lastUpdated: new Date(),
-      phoneNumber: '0500000000',
     };
-    this.subject.next(this.cust);
-    this.router.navigate(['/customer']);
+    this.isCustomer = false;
+    this.subject.next(this.lib);
+    this.router.navigate(['/librarian']);
 
+    // ====================
     // this.http.post(this.link, formData).subscribe(
     //   (data: any) => {
     //     switch (data['role']) {

@@ -1,1 +1,63 @@
-<p>librarian-main works!</p>
+<style>
+  .navbar-nav {
+    margin-left: auto;
+  }
+</style>
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <button
+    pButton
+    type="button"
+    *ngIf="getScreenWidth <= maxWidth"
+    (click)="yourVisibleVaraible = true"
+    class="p-button-outlined p-button-text p-button-secondary"
+  >
+    <i class="pi pi-bars"></i></button
+  ><a class="navbar-brand"> Library System</a>
+
+  <div class="nav navbar-nav ml-auto">
+    <div *ngIf="getScreenWidth <= maxWidth">
+      <p-sidebar [(visible)]="yourVisibleVaraible" [baseZIndex]="baseZIndex">
+        <h3>Library System</h3>
+        <a class="nav-item nav-link" [routerLink]="['books']"
+          ><i
+            class="pi pi-book"
+            style="padding: 0% 5%"
+            (click)="yourVisibleVaraible = false"
+          ></i
+          >Books <span class="visually-hidden">(current)</span></a
+        >
+        <a class="nav-item nav-link"
+          ><i class="pi pi-clock" style="padding: 0% 5%"></i>Borrows</a
+        ><a class="nav-item nav-link" [routerLink]="['customers']"
+          ><i class="pi pi-user-edit" style="padding: 0% 5%"></i>customers</a
+        ><a class="nav-item nav-link" [routerLink]="['profile']"
+          ><i class="pi pi-user-edit" style="padding: 0% 5%"></i>Profile</a
+        >
+      </p-sidebar>
+    </div>
+    <a
+      class="nav-item nav-link"
+      [routerLink]="['books']"
+      *ngIf="getScreenWidth > maxWidth"
+      >Books<span class="visually-hidden">(current)</span></a
+    >
+    <a
+      class="nav-item nav-link"
+      [routerLink]="['borrow']"
+      *ngIf="getScreenWidth > maxWidth"
+      >Borrows</a
+    ><a
+      class="nav-item nav-link"
+      [routerLink]="['customers']"
+      *ngIf="getScreenWidth > maxWidth"
+      >customers<span class="visually-hidden">(current)</span></a
+    >
+    <a
+      class="nav-item nav-link"
+      [routerLink]="['profile']"
+      *ngIf="getScreenWidth > maxWidth"
+      >Profile<span class="visually-hidden">(current)</span></a
+    >
+  </div>
+</nav>
+<router-outlet></router-outlet>

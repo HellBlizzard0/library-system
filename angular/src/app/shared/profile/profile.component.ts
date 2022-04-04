@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { LoginService } from 'src/app/backend/login.service';
-import { Customer } from 'src/app/data/user';
+import { Customer, Librarian, User } from 'src/app/data/user';
 import { CustomerService } from '../../backend/customer.service';
 
 @Component({
@@ -17,6 +17,7 @@ import { CustomerService } from '../../backend/customer.service';
 export class ProfileComponent implements OnInit {
   isEditMode!: boolean;
   customer!: Customer;
+  librarian!: Librarian;
   constructor(
     private loginService: LoginService,
     private customerService: CustomerService
@@ -42,9 +43,11 @@ export class ProfileComponent implements OnInit {
     // });
     // this.customer = this.loginService.toCustomer(this.loginService.userData);
   }
-  // ngOnDestroy() {
-  //   this.loginService.data.unsubscribe();
-  // }
+  ngOnDestroy() {
+    this.loginService.subject.unsubscribe();
+    this.customer = {};
+    this.librarian = {};
+  }
   onSubmit() {
     this.loginService.subject.next(this.customer);
     this.customerService.updateCustomer(this.customer);
@@ -56,5 +59,10 @@ export class ProfileComponent implements OnInit {
 
   print() {
     console.log(this.customer);
+  }
+
+  getUser(): User {
+    if (this.customer.username != null) return this.customer;
+    else return this.librarian;
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, OnChanges, HostListener } from '@angular/core';
 import { LoginService } from '../backend/login.service';
 import { Customer } from '../data/user';
-import { CustomerService } from '../backend/customer.service';
 
 @Component({
   selector: 'app-customer-main',
@@ -9,9 +8,6 @@ import { CustomerService } from '../backend/customer.service';
   styleUrls: ['./customer-main.component.css'],
 })
 export class CustomerMainComponent implements OnInit {
-  yourVisibleVaraible: any;
-  baseZIndex = 2;
-  mobile = false;
   // userData: any;
   customer!: Customer;
 
@@ -25,6 +21,9 @@ export class CustomerMainComponent implements OnInit {
   }
 
   // Responsive control
+  yourVisibleVaraible: any;
+  baseZIndex = 2;
+  mobile = false;
   maxWidth = 768;
   public getScreenWidth: any;
   @HostListener('window:resize', ['$event'])

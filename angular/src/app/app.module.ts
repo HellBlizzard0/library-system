@@ -16,10 +16,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'primeng/sidebar';
 import { TabViewModule } from 'primeng/tabview';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BooksComponent } from './customer-main/books/books.component';
+import { BooksComponent } from './shared/books/books.component';
 import { BookService } from './backend/book.service';
 import { TableModule } from 'primeng/table';
-import { ProfileComponent } from './customer-main/profile/profile.component';
 import { PrimeNGConfig } from 'primeng/api';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelModule } from 'primeng/panel';
@@ -28,9 +27,25 @@ import { DialogModule } from 'primeng/dialog';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { PasswordPipe } from './util/password.pipe';
-import { BorrowComponent } from './customer-main/borrow/borrow.component';
 import { LibrarianMainComponent } from './librarian-main/librarian-main.component';
+import { BorrowComponent } from './shared/borrow/borrow.component';
+import { ProfileComponent } from './shared/profile/profile.component';
+import { CustomersComponent } from './librarian-main/customers/customers.component';
 
+import { ToastModule } from 'primeng/toast';
+import { CalendarModule } from 'primeng/calendar';
+import { SliderModule } from 'primeng/slider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ToolbarModule } from 'primeng/toolbar';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +56,7 @@ import { LibrarianMainComponent } from './librarian-main/librarian-main.componen
     PasswordPipe,
     BorrowComponent,
     LibrarianMainComponent,
+    CustomersComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,8 +79,16 @@ import { LibrarianMainComponent } from './librarian-main/librarian-main.componen
     RippleModule,
     RatingModule,
     ReactiveFormsModule,
+    ToastModule,
   ],
-  providers: [LoginService, HttpClient, BookService, PrimeNGConfig],
+  providers: [
+    LoginService,
+    HttpClient,
+    BookService,
+    PrimeNGConfig,
+    MessageService,
+    ConfirmationService,
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

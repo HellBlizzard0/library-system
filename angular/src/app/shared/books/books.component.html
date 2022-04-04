@@ -29,6 +29,7 @@
         [cancel]="false"
         [readonly]="true"
         [(ngModel)]="book.rating"
+        *ngIf="expression"
       ></p-rating>
       <td>
         <button

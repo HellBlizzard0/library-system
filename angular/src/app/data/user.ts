@@ -1,10 +1,10 @@
 export interface User {
-  id: number;
-  username: string;
-  password: string;
-  enabled: boolean;
-  dateOfCreation: Date;
-  lastUpdated: Date;
+  id?: number;
+  username?: string;
+  password?: string;
+  enabled?: boolean;
+  dateOfCreation?: Date;
+  lastUpdated?: Date;
 }
 
 export interface Customer extends User {
