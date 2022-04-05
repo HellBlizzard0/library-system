@@ -33,18 +33,22 @@ export class BookService {
     });
   }
 
-  removeBooks() {
-    console.log(this.removeBooks.name + ': Unimplemented');
+  removeBooks(list: number[]) {
+    list.forEach((id) => {
+      let headers = new HttpHeaders();
+      headers.append('id', id + '');
+
+      this.http.get(LINKBASE + 'deleteBook' + '?id=' + id).subscribe((data) => {
+        // console.log(data);
+        this.fetchBooks();
+      });
+    });
   }
 
   updateBook(book: Book) {
-    const formData: FormData = this.toFormData(book);
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
-
-    console.log(JSON.stringify(book));
-
     this.http
       .post(LINKBASE + 'updateBook', JSON.stringify(book), httpOptions)
       .subscribe((data) => {
@@ -52,8 +56,15 @@ export class BookService {
       });
   }
 
-  createBook() {
-    console.log(this.createBook.name + ': Unimplemented');
+  createBook(book: Book) {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    this.http
+      .post(LINKBASE + 'addBook', JSON.stringify(book), httpOptions)
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
 
   toBooksList(data: any): Book[] {

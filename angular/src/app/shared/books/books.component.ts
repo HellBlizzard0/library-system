@@ -81,6 +81,7 @@ export class BooksComponent implements OnInit {
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
+        this.bookService.removeBooks([value]);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
