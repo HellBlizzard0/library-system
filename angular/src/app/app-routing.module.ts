@@ -25,7 +25,7 @@ const routes: Routes = [
     path: 'librarian',
     component: LibrarianMainComponent,
     children: [
-      { path: '', redirectTo: '/librarian/profile', pathMatch: 'full' },
+      { path: '', redirectTo: '/librarian/books', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'profile', component: ProfileComponent },

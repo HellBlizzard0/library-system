@@ -39,7 +39,7 @@ import { ToastModule } from 'primeng/toast';
 // import { ContextMenuModule } from 'primeng/contextmenu';
 // import { ProgressBarModule } from 'primeng/progressbar';
 // import { FileUploadModule } from 'primeng/fileupload';
-// import { ToolbarModule } from 'primeng/toolbar';
+import { ToolbarModule } from 'primeng/toolbar';
 // import { RadioButtonModule } from 'primeng/radiobutton';
 // import { InputNumberModule } from 'primeng/inputnumber';
 // import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -47,6 +47,7 @@ import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 // import { InputTextareaModule } from 'primeng/inputtextarea';
 import { UserService } from './backend/user.service';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +82,8 @@ import { UserService } from './backend/user.service';
     RatingModule,
     ReactiveFormsModule,
     ToastModule,
+    ToolbarModule,
+    ConfirmDialogModule,
   ],
   providers: [
     LoginService,

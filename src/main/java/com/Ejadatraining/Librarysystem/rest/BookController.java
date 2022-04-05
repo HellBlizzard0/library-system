@@ -2,6 +2,8 @@ package com.Ejadatraining.Librarysystem.rest;
 
 import com.Ejadatraining.Librarysystem.entity.Book;
 import com.Ejadatraining.Librarysystem.service.BookService;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,6 +55,8 @@ public class BookController {
     @PostMapping("/updateBook")
     @ResponseBody
     public void updateBook(@RequestBody Book book) {
+        //System.out.println("com.Ejadatraining.Librarysystem.rest.BookController.updateBook()");
+        //Book book = new Book(Integer.parseInt(parm.get("id")), parm.get("title"), parm.get("serialNumber"), parm.get("authorName"), parm.get("description"), Integer.parseInt(parm.get("pageCount")), parm.get("rating"), parm.get("genres"));
         this.bookService.updateBook(book);
     }
 

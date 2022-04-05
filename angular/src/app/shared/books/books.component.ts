@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PrimeNGConfig, SelectItem } from 'primeng/api';
+import {
+  ConfirmationService,
+  MessageService,
+  PrimeNGConfig,
+  SelectItem,
+} from 'primeng/api';
 import { LoginService } from 'src/app/backend/login.service';
 import { Book } from 'src/app/util/data/book';
 import { BookService } from '../../backend/book.service';
@@ -10,19 +15,25 @@ import { BookService } from '../../backend/book.service';
 })
 export class BooksComponent implements OnInit {
   books: Book[] = [];
-
+  bookEdit: Book = {};
   sortOptions!: SelectItem[];
 
   sortOrder!: number;
+
+  selectedBooks: Book[] = [];
 
   sortField!: string;
 
   sortKey!: any;
 
+  isEditMode = false;
+
   constructor(
     private bookService: BookService,
     private primengConfig: PrimeNGConfig,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
   ) {
     this.bookService.fetchBooks();
   }
@@ -57,6 +68,37 @@ export class BooksComponent implements OnInit {
 
   isCustomer(): boolean {
     return this.loginService.isCustomer;
+  }
+
+  enableEdit(book: Book) {
+    this.bookEdit = book;
+    this.isEditMode = true;
+  }
+
+  deleteSelected(value: number) {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete the selected Book?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Successful',
+          detail: 'Book Deleted',
+          life: 1500,
+        });
+      },
+    });
+  }
+  confirmEdit(confirm: boolean) {
+    if (confirm) {
+      this.bookService.updateBook(this.bookEdit);
+      this.bookEdit = {};
+      this.isEditMode = false;
+    } else {
+      this.bookEdit = {};
+      this.isEditMode = false;
+    }
   }
 }
 

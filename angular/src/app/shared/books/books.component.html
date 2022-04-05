@@ -1,67 +1,168 @@
-<p-table [value]="books" dataKey="title" [paginator]="true" [rows]="10">
-  <ng-template pTemplate="header">
-    <tr>
-      <th pSortableColumn="title" width="30%">
-        Title<p-sortIcon field="title"></p-sortIcon>
-      </th>
-      <th pSortableColumn="authorName" width="18%">
-        authorName<p-sortIcon field="authorName"></p-sortIcon>
-      </th>
-      <th pSortableColumn="dateOfCreation" width="20%">
-        dateOfCreation<p-sortIcon field="dateOfCreation"></p-sortIcon>
-      </th>
-      <th pSortableColumn="pageCount" width="15%">
-        pageCount<p-sortIcon field="pageCount"></p-sortIcon>
-      </th>
-      <th pSortableColumn="Rating" width="10%">
-        Rating<p-sortIcon field="Rating"></p-sortIcon>
-      </th>
-      <th></th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-book let-expanded="expanded">
-    <tr>
-      <td>{{ book.title }}</td>
-      <td>{{ book.authorName }}</td>
-      <td>{{ book.dateOfCreation }}</td>
-      <td>{{ book.pageCount }}</td>
-      <p-rating
-        [cancel]="false"
-        [readonly]="true"
-        [(ngModel)]="book.rating"
-        *ngIf="isCustomer()"
-      ></p-rating>
-      <p *ngIf="!isCustomer()">{{ book.rating }}</p>
-      <td>
-        <button
-          type="button"
-          pButton
-          pRipple
-          [pRowToggler]="book"
-          class="p-button-text p-button-rounded p-button-plain"
-          [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
-        ></button>
-      </td>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="rowexpansion" let-book>
-    <tr>
-      <td colspan="5">
-        <div class="p-3">
-          <p-panel>
-            <p-header> {{ book.title }} </p-header>
-            <h3>By: {{ book.authorName }}</h3>
-            {{ book.description }}
-            <p-footer>
-              <p-rating
-                [readonly]="true"
-                [cancel]="false"
-                [(ngModel)]="book.rating"
-              ></p-rating>
-            </p-footer>
-          </p-panel>
-        </div>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+<p-toast></p-toast>
+
+<div class="card">
+  <p-toolbar styleClass="p-mb-4" *ngIf="!isCustomer()">
+    <ng-template pTemplate="left">
+      <button
+        pButton
+        pRipple
+        label="New"
+        icon="pi pi-plus"
+        class="p-button-success p-mr-2"
+      ></button>
+    </ng-template>
+
+    <ng-template pTemplate="right">
+      <p-fileUpload
+        mode="basic"
+        accept="image/*"
+        [maxFileSize]="1000000"
+        label="Import"
+        chooseLabel="Import"
+        class="p-mr-2 p-d-inline-block"
+      ></p-fileUpload>
+      <button
+        pButton
+        pRipple
+        label="Export"
+        icon="pi pi-upload"
+        class="p-button-help"
+      ></button>
+    </ng-template>
+  </p-toolbar>
+  <p-table [value]="books" dataKey="title" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="title" width="30%">
+          Title<p-sortIcon field="title"></p-sortIcon>
+        </th>
+        <th pSortableColumn="authorName" width="18%">
+          authorName<p-sortIcon field="authorName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="dateOfCreation" width="20%">
+          dateOfCreation<p-sortIcon field="dateOfCreation"></p-sortIcon>
+        </th>
+        <th pSortableColumn="pageCount" width="15%">
+          pageCount<p-sortIcon field="pageCount"></p-sortIcon>
+        </th>
+        <th pSortableColumn="rating" width="10%">
+          Rating<p-sortIcon field="rating"></p-sortIcon>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book let-expanded="expanded">
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.authorName }}</td>
+        <td>{{ book.dateOfCreation }}</td>
+        <td>{{ book.pageCount }}</td>
+        <p-rating
+          [cancel]="false"
+          [readonly]="true"
+          [(ngModel)]="book.rating"
+          *ngIf="isCustomer()"
+        ></p-rating>
+        <span *ngIf="!isCustomer()">{{ book.rating }}</span>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            [pRowToggler]="book"
+            class="p-button-text p-button-rounded p-button-plain"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-book>
+      <tr>
+        <td colspan="6">
+          <div class="p-3">
+            <p-panel>
+              <p-header>
+                <p *ngIf="!isEditMode">{{ book.title }}</p>
+                <input
+                  *ngIf="isEditMode"
+                  type="text"
+                  pInputText
+                  [(ngModel)]="bookEdit.title"
+                  name="title"
+                />
+              </p-header>
+              <h3 *ngIf="!isEditMode">By: {{ book.authorName }}</h3>
+              <input
+                *ngIf="isEditMode"
+                type="text"
+                pInputText
+                [(ngModel)]="bookEdit.authorName"
+                name="authorName"
+              />
+
+              <p *ngIf="!isEditMode">{{ book.description }}</p>
+              <textarea rows="4" *ngIf="isEditMode" pInputTextarea></textarea>
+              <p-footer>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p-rating
+                        [readonly]="true"
+                        [cancel]="false"
+                        [(ngModel)]="book.rating"
+                        style="padding: auto"
+                      ></p-rating>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-2">
+                      <button
+                        pButton
+                        pRipple
+                        label="Edit"
+                        class="p-button-info"
+                        icon="pi pi-pencil"
+                        (click)="enableEdit(book)"
+                        *ngIf="!isEditMode"
+                      ></button>
+                      <button
+                        pButton
+                        pRipple
+                        class="p-button-info"
+                        icon="pi pi-times"
+                        label="Cancel"
+                        (click)="confirmEdit(false)"
+                        *ngIf="isEditMode"
+                      ></button>
+                    </div>
+                    <div class="col-md-2">
+                      <button
+                        pButton
+                        pRipple
+                        label="Delete"
+                        class="p-button-danger"
+                        icon="pi pi-trash"
+                        (click)="deleteSelected(book.id)"
+                        *ngIf="!isEditMode"
+                      ></button>
+                      <button
+                        pButton
+                        pRipple
+                        label="Confirm"
+                        class="p-button-info"
+                        icon="pi pi-check"
+                        (click)="confirmEdit(true)"
+                        *ngIf="isEditMode"
+                      ></button>
+                    </div>
+                  </div>
+                </div>
+              </p-footer>
+            </p-panel>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

@@ -110,17 +110,28 @@ public class Book implements Serializable {
     @Id
     private int id;
 
+    public Book(int id, String title, String serialNumber, String authorName, String description, int pageCount, String rating, String genres) {
+        this.id = id;
+        this.title = title;
+        this.serialNumber = serialNumber;
+        this.authorName = authorName;
+        this.description = description;
+        this.pageCount = pageCount;
+        this.rating = rating;
+        this.genres = genres;
+    }
+
     @Column(name = "title")
     private String title;
 
     @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss[.SSS][.SS][.S]")
     private LocalDateTime dateOfCreation;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss[.SSS][.SS][.S]")
     private LocalDateTime lastUpdated;
 
     @Column(name = "ISBN")

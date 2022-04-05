@@ -1,4 +1,8 @@
-import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaderResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Book } from '../util/data/book';
@@ -33,8 +37,19 @@ export class BookService {
     console.log(this.removeBooks.name + ': Unimplemented');
   }
 
-  updateBook() {
-    console.log(this.updateBook.name + ': Unimplemented');
+  updateBook(book: Book) {
+    const formData: FormData = this.toFormData(book);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+
+    console.log(JSON.stringify(book));
+
+    this.http
+      .post(LINKBASE + 'updateBook', JSON.stringify(book), httpOptions)
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
 
   createBook() {
@@ -47,5 +62,26 @@ export class BookService {
       books.push(book);
     });
     return books;
+  }
+  /**
+   *
+   * @param book
+   * @returns FormData of the given object
+   */
+  toFormData(book: Book): FormData {
+    const formData = new FormData();
+
+    formData.append('id', (book.id as number) + '');
+    formData.append('title', book.title as string);
+    formData.append('dateOfCreation', (book.dateOfCreation as Date) + '');
+    formData.append('lastUpdated', (book.lastUpdated as Date) + '');
+    formData.append('authorName', book.authorName as string);
+    formData.append('rating', (book.rating as number) + '');
+    formData.append('description', book.description as string);
+    formData.append('genres', book.genres as string);
+    formData.append('pageCount', (book.pageCount as number) + '');
+    formData.append('serialNumber', (book.serialNumber as string) + '');
+
+    return formData;
   }
 }
