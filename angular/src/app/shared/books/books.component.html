@@ -9,6 +9,7 @@
         label="New"
         icon="pi pi-plus"
         class="p-button-success p-mr-2"
+        (click)="addNew()"
       ></button>
     </ng-template>
 
@@ -69,6 +70,7 @@
             type="button"
             pButton
             pRipple
+            (click)="confirmEdit(false)"
             [pRowToggler]="book"
             class="p-button-text p-button-rounded p-button-plain"
             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
@@ -92,16 +94,33 @@
                 />
               </p-header>
               <h3 *ngIf="!isEditMode">By: {{ book.authorName }}</h3>
-              <input
-                *ngIf="isEditMode"
-                type="text"
-                pInputText
-                [(ngModel)]="bookEdit.authorName"
-                name="authorName"
-              />
-
               <p *ngIf="!isEditMode">{{ book.description }}</p>
-              <textarea rows="4" *ngIf="isEditMode" pInputTextarea></textarea>
+              <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <input
+                      *ngIf="isEditMode"
+                      type="text"
+                      pInputText
+                      [(ngModel)]="bookEdit.authorName"
+                      name="authorName"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <textarea
+                      [rows]="5"
+                      [cols]="100"
+                      [(ngModel)]="book.description"
+                      *ngIf="isEditMode"
+                      pInputTextarea
+                      autoResize="autoResize"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+
               <p-footer>
                 <div class="container">
                   <div class="row">

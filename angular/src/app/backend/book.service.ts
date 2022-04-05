@@ -60,6 +60,8 @@ export class BookService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
+    // console.log(JSON.stringify(book));
+
     this.http
       .post(LINKBASE + 'addBook', JSON.stringify(book), httpOptions)
       .subscribe((data) => {

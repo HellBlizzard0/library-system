@@ -5,9 +5,11 @@ import {
   PrimeNGConfig,
   SelectItem,
 } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 import { LoginService } from 'src/app/backend/login.service';
 import { Book } from 'src/app/util/data/book';
 import { BookService } from '../../backend/book.service';
+import { AddNewComponent } from './add-new/add-new.component';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -33,7 +35,8 @@ export class BooksComponent implements OnInit {
     private primengConfig: PrimeNGConfig,
     private loginService: LoginService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private dialogService: DialogService
   ) {
     this.bookService.fetchBooks();
   }
@@ -50,6 +53,14 @@ export class BooksComponent implements OnInit {
     ];
 
     this.primengConfig.ripple = true;
+  }
+  addNew() {
+    this.dialogService.open(AddNewComponent, {
+      header: 'Add new Book',
+      width: '70%',
+      contentStyle: { 'max-height': '500px', overflow: 'auto' },
+      baseZIndex: 10000,
+    });
   }
   onSortChange(event: any) {
     let value = event.value;

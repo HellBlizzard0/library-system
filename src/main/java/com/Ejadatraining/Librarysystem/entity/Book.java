@@ -124,6 +124,11 @@ public class Book implements Serializable {
     @Column(name = "title")
     private String title;
 
+    @Override
+    public String toString() {
+        return "Book{" + "id=" + id + ", title=" + title + ", serialNumber=" + serialNumber + ", authorName=" + authorName + ", description=" + description + ", pageCount=" + pageCount + ", rating=" + rating + ", genres=" + genres + '}';
+    }
+
     @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss[.SSS][.SS][.S]")

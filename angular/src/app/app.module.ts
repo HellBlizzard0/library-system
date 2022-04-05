@@ -23,7 +23,7 @@ import { PrimeNGConfig } from 'primeng/api';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
-import { DialogModule } from 'primeng/dialog';
+import { Dialog, DialogModule } from 'primeng/dialog';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { PasswordPipe } from './util/password.pipe';
@@ -48,6 +48,9 @@ import { MessageService } from 'primeng/api';
 // import { InputTextareaModule } from 'primeng/inputtextarea';
 import { UserService } from './backend/user.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { AddNewComponent } from './shared/books/add-new/add-new.component';
+import { SliderModule } from 'primeng/slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +62,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     BorrowComponent,
     LibrarianMainComponent,
     CustomersComponent,
+    AddNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +88,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ToastModule,
     ToolbarModule,
     ConfirmDialogModule,
+    DynamicDialogModule,
+    SliderModule,
   ],
   providers: [
     LoginService,
@@ -93,6 +99,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     PrimeNGConfig,
     MessageService,
     ConfirmationService,
+    DialogService,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
