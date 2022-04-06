@@ -65,7 +65,7 @@ export class BookService {
     this.http
       .post(LINKBASE + 'addBook', JSON.stringify(book), httpOptions)
       .subscribe((data) => {
-        console.log(data);
+        this.fetchBooks();
       });
   }
 

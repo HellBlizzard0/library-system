@@ -9,6 +9,7 @@ import { Book } from 'src/app/util/data/book';
 })
 export class AddNewComponent implements OnInit {
   book: Book = {};
+  ref: any;
 
   constructor(private bookService: BookService) {}
 

@@ -9,7 +9,7 @@
         label="New"
         icon="pi pi-plus"
         class="p-button-success p-mr-2"
-        (click)="addNew()"
+        (click)="showAddNewDialog()"
       ></button>
     </ng-template>
 
@@ -62,9 +62,7 @@
           [cancel]="false"
           [readonly]="true"
           [(ngModel)]="book.rating"
-          *ngIf="isCustomer()"
         ></p-rating>
-        <span *ngIf="!isCustomer()">{{ book.rating }}</span>
         <td>
           <button
             type="button"
@@ -183,5 +181,109 @@
     </ng-template>
   </p-table>
 </div>
+<p-dialog header="Add New Book" [(visible)]="isAddNewMode" [modal]="true">
+  <form (ngSubmit)="onSubmit()" #addNew="ngForm">
+    <div class="container">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <span class="ui-float-label">
+            <label for="float-input">Book Title: </label>
 
+            <input
+              name="title"
+              id="float-input"
+              type="text"
+              pInputText
+              style="width: 100%"
+              [placeholder]="'Enter Book Title'"
+              [(ngModel)]="bookEdit.title"
+            />
+          </span>
+          <hr />
+          <div class="col-2">
+            <label for="description">Description:</label>
+          </div>
+          <div class="col-9">
+            <span>
+              <textarea
+                rows="4"
+                cols="50"
+                id="description"
+                pInputTextarea
+                [(ngModel)]="bookEdit.description"
+                name="description"
+              ></textarea>
+            </span>
+          </div>
+          <hr />
+          <span class="ui-float-label">
+            <label for="float-authorName">Author: </label>
+            <input
+              id="float-authorName"
+              type="text"
+              [(ngModel)]="bookEdit.authorName"
+              style="width: 100%"
+              pInputText
+              [placeholder]="'Enter Author Name'"
+              name="authorName"
+            />
+          </span>
+          <span class="ui-float-label">
+            <label for="float-genres">Genres: </label>
+            <input
+              id="float-genres"
+              type="text"
+              [(ngModel)]="bookEdit.genres"
+              style="width: 100%"
+              [placeholder]="'Separated By Commas'"
+              pInputText
+              name="genres"
+            />
+          </span>
+          <hr />
+
+          <label for="pageCount">Pages: </label>
+          <input
+            type="text"
+            pInputText
+            [(ngModel)]="bookEdit.pageCount"
+            name="pageCount"
+            id="pageCount"
+            style="width: 100%"
+          />
+          <p-slider
+            [min]="0"
+            [max]="1000"
+            [(ngModel)]="bookEdit.pageCount"
+            name="pageCount"
+          ></p-slider>
+          <hr />
+          <span class="ui-float-label">
+            <label for="float-serialNumber">ISBN: </label>
+            <input
+              id="float-serialNumber"
+              type="text"
+              [(ngModel)]="bookEdit.serialNumber"
+              style="width: 100%"
+              [placeholder]="'Separated By Commas'"
+              pInputText
+              name="serialNumber"
+            />
+          </span>
+          <hr />
+        </div>
+        <div class="col-1"></div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-9"></div>
+          <div class="col-2">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</p-dialog>
 <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
