@@ -49,7 +49,6 @@ import { MessageService } from 'primeng/api';
 import { UserService } from './backend/user.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
-import { AddNewComponent } from './shared/books/add-new/add-new.component';
 import { SliderModule } from 'primeng/slider';
 @NgModule({
   declarations: [
@@ -62,7 +61,6 @@ import { SliderModule } from 'primeng/slider';
     BorrowComponent,
     LibrarianMainComponent,
     CustomersComponent,
-    AddNewComponent,
   ],
   imports: [
     BrowserModule,
