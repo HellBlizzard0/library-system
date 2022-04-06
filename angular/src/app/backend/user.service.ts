@@ -10,7 +10,6 @@ const LINKBASE = 'http://localhost:8080/api/User/';
   providedIn: 'root',
 })
 export class UserService {
-  user = new Subject<User>();
   constructor(private http: HttpClient, private router: Router) {}
   updateUser(user: User) {
     const formData = new FormData();
@@ -20,8 +19,12 @@ export class UserService {
     formData.append('password', user.password + '');
     formData.append('enabled', user.enabled + '');
     formData.append('phoneNumber', user.phoneNumber + '');
-    this.http.post(LINKBASE + 'updateUser', user).subscribe((data) => {
-      console.log(data);
-    });
+    console.log(JSON.stringify(user));
+
+    this.http
+      .post(LINKBASE + 'updateUser', JSON.stringify(user))
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
 }

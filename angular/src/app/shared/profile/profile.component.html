@@ -51,7 +51,7 @@
                     type="text"
                     [disabled]="!isEditMode"
                     [readonly]="!isEditMode"
-                    class="text-muted mb-0 border-0"
+                    [class]="'text-muted mb-3 ' + border"
                     [(ngModel)]="user.name"
                     name="name"
                   />
@@ -68,7 +68,7 @@
                     type="text"
                     [disabled]="!isEditMode"
                     [readonly]="!isEditMode"
-                    class="text-muted mb-0 border-0"
+                    [class]="'text-muted mb-3 ' + border"
                     [(ngModel)]="user.username"
                     name="username"
                   />
@@ -85,7 +85,7 @@
                     type="text"
                     [disabled]="!isEditMode"
                     [readonly]="!isEditMode"
-                    class="text-muted mb-0 border-0"
+                    [class]="'text-muted mb-3 ' + border"
                     [(ngModel)]="user.password"
                     name="username"
                   />
@@ -102,7 +102,7 @@
                     type="text"
                     [readonly]="!isEditMode"
                     [disabled]="!isEditMode"
-                    class="text-muted mb-0 border-0"
+                    [class]="'text-muted mb-3 ' + border"
                     [(ngModel)]="user.phoneNumber"
                     name="phoneNumber"
                   />
@@ -127,38 +127,47 @@
                   <p class="text-muted mb-0">{{ user.lastUpdated }}</p>
                 </div>
               </div>
+              <hr />
               <div class="container">
                 <div class="row">
                   <div class="col-8"></div>
-                  <div>
-                    <div class="col-2">
-                      <a
-                        *ngIf="this.isEditMode"
-                        (click)="onSubmit()"
-                        class="btn btn-primary"
-                        ><i>Submit</i></a
-                      >
-                    </div>
-                    <div class="col-2">
-                      <a
-                        *ngIf="!this.isEditMode"
-                        class="btn btn-primary"
-                        (click)="onSwitchEditMode()"
-                        ><i>Edit</i></a
-                      >
-                      <a
-                        *ngIf="this.isEditMode"
-                        class="btn btn-primary"
-                        (click)="onSwitchEditMode()"
-                        ><i>Cancel</i></a
-                      >
-                    </div>
+                  <div class="col-2">
+                    <button
+                      pButton
+                      pRipple
+                      label="Cancel"
+                      class="p-button-warning"
+                      icon="pi pi-times"
+                      (click)="onSwitchEditMode()"
+                      *ngIf="this.isEditMode"
+                    ></button>
+                  </div>
+
+                  <div class="col-2">
+                    <button
+                      pButton
+                      pRipple
+                      label="Edit"
+                      class="p-button-info"
+                      icon="pi pi-pencil"
+                      (click)="onSwitchEditMode()"
+                      *ngIf="!this.isEditMode"
+                    ></button>
+                    <button
+                      pButton
+                      pRipple
+                      label="Submit"
+                      class="p-button-primary"
+                      icon="pi pi-check-circle"
+                      (click)="onSubmit()"
+                      *ngIf="this.isEditMode"
+                    ></button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-6">
               <div class="card mb-4 mb-md-0">
                 <div class="card-body">
@@ -230,7 +239,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

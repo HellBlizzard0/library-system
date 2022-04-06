@@ -15,12 +15,13 @@ export class LoginService {
   isUserLoggedIn = false;
   isCustomer = false;
   user!: User;
-  userSubject = new Subject<any>();
+  userSubject = new Subject<User>();
 
   login(username: string, password: string) {
-    // console.log('username: ' + username);
-    // console.log('password: ' + password);
-    // console.log('link: ' + this.link);
+    this.userSubject.next({});
+    console.log('username: ' + username);
+    console.log('password: ' + password);
+    console.log('link: ' + this.link);
 
     const formData = new FormData();
     formData.append('username', username);
@@ -61,38 +62,23 @@ export class LoginService {
             console.log('Error: Wrong Username/Password');
             break;
           case 'CUSTOMER':
-            // console.log(data);
             console.log('CUSTOMER');
-            this.isUserLoggedIn = true;
-            this.user = {
-              id: data['data'].id,
-              dateOfCreation: data['data'].dateOfCreation,
-              lastUpdated: data['data'].lastUpdated,
-              enabled: data['data'].enabled,
-              username: data['data'].username,
-              password: data['data'].password,
-              name: data['data'].name,
-              phoneNumber: data['data'].phoneNumber,
-            };
-            this.isCustomer = true;
+
+            this.user = this.toUser(data);
             this.userSubject.next(this.user);
+
+            this.isUserLoggedIn = true;
+            this.isCustomer = true;
             this.router.navigate(['/customer']);
             break;
           case 'LIBRARIAN':
-            // console.log(data);
             console.log('LIBRARIAN');
-            this.isUserLoggedIn = true;
-            this.user = {
-              id: data['data'].id,
-              dateOfCreation: data['data'].dateOfCreation,
-              lastUpdated: data['data'].lastUpdated,
-              enabled: data['data'].enabled,
-              username: data['data'].username,
-              password: data['data'].password,
-              name: data['data'].name,
-            };
-            this.isCustomer = false;
+
+            this.user = this.toUser(data);
             this.userSubject.next(this.user);
+
+            this.isCustomer = false;
+            this.isUserLoggedIn = true;
             this.router.navigateByUrl('/librarian');
             break;
         }
@@ -105,5 +91,18 @@ export class LoginService {
 
   getUser(): User {
     return this.user;
+  }
+
+  toUser(data: any): User {
+    return {
+      id: data['data'].id,
+      dateOfCreation: data['data'].dateOfCreation,
+      lastUpdated: data['data'].lastUpdated,
+      enabled: data['data'].enabled,
+      username: data['data'].username,
+      password: data['data'].password,
+      name: data['data'].name,
+      phoneNumber: data['data'].phoneNumber,
+    };
   }
 }

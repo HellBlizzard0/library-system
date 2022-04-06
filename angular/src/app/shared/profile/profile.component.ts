@@ -17,6 +17,7 @@ import { User } from 'src/app/util/data/user';
 export class ProfileComponent implements OnInit {
   isEditMode!: boolean;
   user!: User;
+  border = 'border-0';
 
   constructor(
     private loginService: LoginService,
@@ -28,11 +29,13 @@ export class ProfileComponent implements OnInit {
   ngOnChange() {}
 
   ngOnInit(): void {
-    this.user = this.loginService.getUser();
-    this.loginService.userSubject.subscribe((data) => (this.user = data));
+    // this.loginService.userSubject.subscribe((data: User) => {
+    //   this.user = data;
+    // });
+    this.user = this.loginService.user;
   }
   ngOnDestroy() {
-    this.loginService.userSubject.unsubscribe();
+    // this.loginService.userSubject.unsubscribe();
     this.user = {};
   }
   onSubmit() {
@@ -42,9 +45,12 @@ export class ProfileComponent implements OnInit {
   }
   onSwitchEditMode() {
     this.isEditMode = !this.isEditMode;
+    if (this.isEditMode) this.border = 'border-1';
+    else this.border = 'border-0';
   }
 
   print() {
-    console.log(this.user);
+    // console.log(this.loginService.user);
+    // console.log(this.user);
   }
 }
