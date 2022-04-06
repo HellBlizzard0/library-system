@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { LoginService } from '../backend/login.service';
 import { User } from '../util/data/user';
 
@@ -16,8 +16,7 @@ export class CustomerMainComponent implements OnInit {
   ngOnInit(): void {
     this.getScreenWidth = window.innerWidth;
     this.customer = this.loginService.user;
-    // this.customer = this.loginService.toCustomer(this.loginService.userData);
-    this.loginService.subject.subscribe((data) => (this.customer = data));
+    this.loginService.userSubject.subscribe((data) => (this.customer = data));
   }
 
   // Responsive control

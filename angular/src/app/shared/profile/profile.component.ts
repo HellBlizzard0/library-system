@@ -22,33 +22,21 @@ export class ProfileComponent implements OnInit {
     private loginService: LoginService,
     private userService: UserService
   ) {
-    // this.loginService.userData.subscribe((data) => {
-    //   this.user = this.loginService.toCustomer(data);
-    //   // console.log(this.user);
-    // });
     this.isEditMode = false;
   }
 
   ngOnChange() {}
 
   ngOnInit(): void {
-    this.user = this.loginService.user;
-    this.loginService.subject.subscribe((data) => (this.user = data));
-
-    // this.loginService.userData.subscribe(() => {
-    //   this.user = this.loginService.toCustomer();
-    //   // console.log(data);
-
-    //   console.log(this.user);
-    // });
-    // this.user = this.loginService.toCustomer(this.loginService.userData);
+    this.user = this.loginService.getUser();
+    this.loginService.userSubject.subscribe((data) => (this.user = data));
   }
   ngOnDestroy() {
-    this.loginService.subject.unsubscribe();
+    this.loginService.userSubject.unsubscribe();
     this.user = {};
   }
   onSubmit() {
-    this.loginService.subject.next(this.user);
+    this.loginService.userSubject.next(this.user);
     this.userService.updateUser(this.user);
     this.isEditMode = !this.isEditMode;
   }

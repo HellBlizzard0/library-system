@@ -139,7 +139,7 @@
                         class="p-button-info"
                         icon="pi pi-pencil"
                         (click)="enableEdit(book)"
-                        *ngIf="!isEditMode"
+                        *ngIf="!isEditMode && !isCustomer()"
                       ></button>
                       <button
                         pButton
@@ -148,7 +148,7 @@
                         icon="pi pi-times"
                         label="Cancel"
                         (click)="confirmEdit(false)"
-                        *ngIf="isEditMode"
+                        *ngIf="isEditMode && !isCustomer()"
                       ></button>
                     </div>
                     <div class="col-md-2">
@@ -159,7 +159,7 @@
                         class="p-button-danger"
                         icon="pi pi-trash"
                         (click)="deleteSelected(book.id)"
-                        *ngIf="!isEditMode"
+                        *ngIf="!isEditMode && !isCustomer()"
                       ></button>
                       <button
                         pButton
@@ -168,7 +168,7 @@
                         class="p-button-info"
                         icon="pi pi-check"
                         (click)="confirmEdit(true)"
-                        *ngIf="isEditMode"
+                        *ngIf="isEditMode && !isCustomer()"
                       ></button>
                     </div>
                   </div>
