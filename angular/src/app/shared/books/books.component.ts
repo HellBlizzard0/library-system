@@ -6,8 +6,10 @@ import {
   SelectItem,
 } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { BorrowService } from 'src/app/backend/borrow.service';
 import { LoginService } from 'src/app/backend/login.service';
 import { Book } from 'src/app/util/data/book';
+import { Borrow } from 'src/app/util/data/borrow';
 import { BookService } from '../../backend/book.service';
 @Component({
   selector: 'app-books',
@@ -32,6 +34,7 @@ export class BooksComponent implements OnInit {
     private loginService: LoginService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
+    private borrowService: BorrowService,
     private dialogService: DialogService
   ) {
     this.bookService.fetchBooks();
@@ -115,5 +118,16 @@ export class BooksComponent implements OnInit {
       life: 2000,
     });
     this.isAddNewMode = false;
+  }
+
+  requestBook(book: Book) {
+    const borrow: Borrow = {
+      id: 0,
+      book: book,
+      dateOfCreation: new Date(),
+      lastUpdated: new Date(),
+      user: this.loginService.getUser(),
+    };
+    this.borrowService.requestBorrow(borrow);
   }
 }

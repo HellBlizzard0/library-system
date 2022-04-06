@@ -170,6 +170,15 @@
                         (click)="confirmEdit(true)"
                         *ngIf="isEditMode && !isCustomer()"
                       ></button>
+                      <button
+                        pButton
+                        pRipple
+                        label="Request"
+                        class="p-button-info"
+                        icon="pi pi-calendar-minus"
+                        (click)="requestBook(book)"
+                        *ngIf="!isEditMode && isCustomer()"
+                      ></button>
                     </div>
                   </div>
                 </div>

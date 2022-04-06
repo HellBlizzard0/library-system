@@ -14,6 +14,9 @@ const LINKBASE = 'localost:8080:/api/Borrow/';
 export class BorrowService {
   borrows!: Borrow[];
   subject = new Subject<Borrow[]>();
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -33,6 +36,15 @@ export class BorrowService {
   }
 
   toBorrowList(data: any) {}
+
+  requestBorrow(borrow: Borrow) {
+    console.log(JSON.stringify(borrow));
+    this.http
+      .post(LINKBASE + 'requestBook', JSON.stringify(borrow), this.httpOptions)
+      .subscribe((data: any) => {
+        console.log(data);
+      });
+  }
 }
 
 const BOOKS: Book[] = [

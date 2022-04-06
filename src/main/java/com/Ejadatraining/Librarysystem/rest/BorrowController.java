@@ -1,6 +1,7 @@
 package com.Ejadatraining.Librarysystem.rest;
 
 import com.Ejadatraining.Librarysystem.entity.Borrow;
+import com.Ejadatraining.Librarysystem.entity.BorrowStatus;
 import com.Ejadatraining.Librarysystem.service.BorrowService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,18 @@ public class BorrowController {
     public void deleteBorrow(@RequestParam(name = "id") Integer id) {
         this.borrowService.deleteBorrow(id);
     }
+
+    @PostMapping("/requestBook")
+    @ResponseBody
+    public boolean requestBorrow(@RequestBody Borrow borrow) {
+        borrow.setStatus(new BorrowStatus(BorrowStatus.REQUESTED));
+        try {
+            this.borrowService.addBorrow(borrow);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
 }

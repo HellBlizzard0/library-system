@@ -19,8 +19,6 @@ import lombok.Setter;
  * @author aalsaqqa
  */
 @Entity
-@Getter
-@Setter
 @Table(name = "borrowstatus")
 public class BorrowStatus implements Serializable {
 
@@ -32,12 +30,58 @@ public class BorrowStatus implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
     @Column(name = "status")
     private String status;
+
+    public BorrowStatus(int id) {
+        this.id = id;
+        switch (id) {
+            case BORROWED:
+                this.status = "borrowed";
+                break;
+            case RETURNED:
+                this.status = "returned";
+                break;
+            case OVERDUE:
+                this.status = "overdue";
+                break;
+            case EXTENDED:
+                this.status = "extended";
+                break;
+            case REQUESTED:
+                this.status = "requested";
+                break;
+            default:
+                this.status = "ERROR";
+        }
+    }
 
     public BorrowStatus(int id, String status) {
         this.id = id;
         this.status = status;
     }
+
+    public static final int BORROWED = 1;
+    public static final int RETURNED = 2;
+    public static final int OVERDUE = 3;
+    public static final int EXTENDED = 4;
+    public static final int REQUESTED = 5;
+
 
 }

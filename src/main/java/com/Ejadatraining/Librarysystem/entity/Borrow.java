@@ -21,12 +21,58 @@ import org.hibernate.annotations.UpdateTimestamp;
  * @author aalsaqqa
  */
 @Entity
-@Getter
-@Setter
 @Table(name = "borrow")
 public class Borrow implements Serializable {
 
     public Borrow() {
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setStatus(BorrowStatus status) {
+        this.status = status;
+    }
+
+    public void setDateOfCreation(LocalDateTime dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
+    }
+
+    public void setLastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public BorrowStatus getStatus() {
+        return status;
+    }
+
+    public LocalDateTime getDateOfCreation() {
+        return dateOfCreation;
+    }
+
+    public LocalDateTime getLastUpdated() {
+        return lastUpdated;
     }
 
     public Borrow(int id, Customer customer, Book book, BorrowStatus status, LocalDateTime dateOfCreation,
