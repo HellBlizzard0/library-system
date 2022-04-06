@@ -9,7 +9,6 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { LoginService } from 'src/app/backend/login.service';
 import { Book } from 'src/app/util/data/book';
 import { BookService } from '../../backend/book.service';
-import { AddNewComponent } from './add-new/add-new.component';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
