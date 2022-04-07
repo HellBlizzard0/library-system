@@ -1,9 +1,9 @@
-<style>
+<!-- <style>
   .navbar-nav {
     margin-left: auto;
   }
-</style>
-<nav class="navbar navbar-expand navbar-light bg-light">
+</style> -->
+<nav class="navbar navbar-expand navbar-light bg-light" [dir]="dir">
   <button
     pButton
     type="button"
@@ -12,24 +12,46 @@
     class="p-button-outlined p-button-text p-button-secondary"
   >
     <i class="pi pi-bars"></i></button
-  ><a class="navbar-brand"> Library System</a>
+  ><a class="navbar-brand"> {{ "title" | translate }}</a>
 
-  <div class="nav navbar-nav ml-auto">
+  <div class="nav navbar-nav ml-auto" [dir]="dir">
     <div *ngIf="getScreenWidth <= maxWidth">
-      <p-sidebar [(visible)]="yourVisibleVaraible" [baseZIndex]="baseZIndex">
-        <h3>Library System</h3>
+      <p-sidebar
+        [(visible)]="yourVisibleVaraible"
+        [position]="isEnglish() ? 'left' : 'right'"
+        [baseZIndex]="baseZIndex"
+      >
+        <h3>{{ "title" | translate }}</h3>
         <a class="nav-item nav-link" [routerLink]="['books']"
           ><i
             class="pi pi-book"
             style="padding: 0% 5%"
             (click)="yourVisibleVaraible = false"
           ></i
-          >Books <span class="visually-hidden">(current)</span></a
+          >{{ "books" | translate }}
+          <span class="visually-hidden">(current)</span></a
         >
         <a class="nav-item nav-link"
-          ><i class="pi pi-clock" style="padding: 0% 5%"></i>Borrows</a
-        ><a class="nav-item nav-link" [routerLink]="['profile']"
-          ><i class="pi pi-user-edit" style="padding: 0% 5%"></i>Profile</a
+          ><i class="pi pi-clock" style="padding: 0% 5%"></i
+          >{{ "borrows" | translate }}</a
+        >
+        <a class="nav-item nav-link" [routerLink]="['profile']"
+          ><i class="pi pi-user-edit" style="padding: 0% 5%"></i
+          >{{ "profile" | translate }}</a
+        >
+        <a
+          class="nav-item nav-link"
+          *ngIf="isEnglish()"
+          (click)="changeLocale('ar')"
+          ><i class="pi pi-filter" style="padding: 0% 5%"></i
+          >{{ "button_ar" | translate }}</a
+        >
+        <a
+          class="nav-item nav-link"
+          *ngIf="!isEnglish()"
+          (click)="changeLocale('en')"
+          ><i class="pi pi-filter" style="padding: 0% 5%"></i
+          >{{ "button_en" | translate }}</a
         >
       </p-sidebar>
     </div>
@@ -37,20 +59,37 @@
       class="nav-item nav-link"
       [routerLink]="['books']"
       *ngIf="getScreenWidth > maxWidth"
-      >Books<span class="visually-hidden">(current)</span></a
+      >{{ "books" | translate
+      }}<span class="visually-hidden">(current)</span></a
     >
     <a
       class="nav-item nav-link"
       [routerLink]="['borrow']"
       *ngIf="getScreenWidth > maxWidth"
-      >Borrows</a
+      >{{ "borrows" | translate }}</a
     >
     <a
       class="nav-item nav-link"
       [routerLink]="['profile']"
       *ngIf="getScreenWidth > maxWidth"
-      >Profile<span class="visually-hidden">(current)</span></a
+      >{{ "profile" | translate
+      }}<span class="visually-hidden">(current)</span></a
+    >
+    <a
+      class="nav-item nav-link"
+      *ngIf="getScreenWidth > maxWidth && isEnglish()"
+      (click)="changeLocale('ar')"
+      >{{ "button_ar" | translate
+      }}<span class="visually-hidden">(current)</span></a
+    >
+    <a
+      class="nav-item nav-link"
+      *ngIf="getScreenWidth > maxWidth && !isEnglish()"
+      (click)="changeLocale('en')"
+      >{{ "button_en" | translate
+      }}<span class="visually-hidden">(current)</span></a
     >
   </div>
 </nav>
+
 <router-outlet></router-outlet>

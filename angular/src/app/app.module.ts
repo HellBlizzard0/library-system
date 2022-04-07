@@ -50,6 +50,14 @@ import { UserService } from './backend/user.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { SliderModule } from 'primeng/slider';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { I18nServiceService } from './i18n-service/i18n-service.service';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +96,14 @@ import { SliderModule } from 'primeng/slider';
     ConfirmDialogModule,
     DynamicDialogModule,
     SliderModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      isolate: true,
+    }),
   ],
   providers: [
     LoginService,
@@ -98,6 +114,8 @@ import { SliderModule } from 'primeng/slider';
     MessageService,
     ConfirmationService,
     DialogService,
+    TranslateService,
+    I18nServiceService,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,0 +1,13 @@
+{
+  "title": "Library System",
+  "button_en": "English",
+  "button_ar": "عربي",
+  "books": "Books",
+  "borrows": "Borrows",
+  "book_title": "Title",
+  "author": "Author Name",
+  "doc": "Creation Date",
+  "pageCount": "Pages",
+  "rating": "Rating",
+  "profile": "Profile"
+}

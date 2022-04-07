@@ -1,0 +1,13 @@
+{
+  "title": "النظام المكتبي",
+  "button_en": "English",
+  "button_ar": "عربي",
+  "books": "الكتب",
+  "borrows": "الاستعارة",
+  "book_title": "العنوان",
+  "author": "الكاتب",
+  "doc": "تاريخ الاصدار",
+  "pageCount": "عدد الصفحات",
+  "rating": "التقييم",
+  "profile": "الملف الشخصي"
+}
