@@ -24,6 +24,15 @@ import org.hibernate.validator.constraints.NotBlank;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Users implements Serializable {
 
+    public Users(int id, boolean enabled, String password, String username, LocalDateTime dateOfCreation, LocalDateTime lastUpdated) {
+        this.id = id;
+        this.enabled = enabled;
+        this.password = password;
+        this.username = username;
+        this.dateOfCreation = dateOfCreation;
+        this.lastUpdated = lastUpdated;
+    }
+
     public Users() {
     }
 
@@ -114,5 +123,42 @@ public abstract class Users implements Serializable {
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime lastUpdated;
+
+    @Column(name = "role")
+    private String role;
+
+    public Users(int id, boolean enabled, String password, String username, LocalDateTime dateOfCreation, LocalDateTime lastUpdated, String role) {
+        this.id = id;
+        this.enabled = enabled;
+        this.password = password;
+        this.username = username;
+        this.dateOfCreation = dateOfCreation;
+        this.lastUpdated = lastUpdated;
+        this.role = role;
+    }
+
+    public void setDateOfCreation(LocalDateTime dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
+    }
+
+    public void setLastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public LocalDateTime getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public LocalDateTime getDateOfCreation() {
+        return dateOfCreation;
+    }
 
 }

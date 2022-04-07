@@ -64,7 +64,7 @@ export class LoginService {
           case 'CUSTOMER':
             console.log('CUSTOMER');
 
-            this.user = this.toUser(data);
+            this.user = this.toUser(data, 'ROLE_CUSTOMER');
             this.userSubject.next(this.user);
 
             this.isUserLoggedIn = true;
@@ -74,7 +74,7 @@ export class LoginService {
           case 'LIBRARIAN':
             console.log('LIBRARIAN');
 
-            this.user = this.toUser(data);
+            this.user = this.toUser(data, 'ROLE_LIBRARIAN');
             this.userSubject.next(this.user);
 
             this.isCustomer = false;
@@ -84,7 +84,7 @@ export class LoginService {
         }
       },
       (error) => {
-        console.log('Error: ' + error);
+        console.log(error);
       }
     );
   }
@@ -93,7 +93,7 @@ export class LoginService {
     return this.user;
   }
 
-  toUser(data: any): User {
+  toUser(data: any, role: string): User {
     return {
       id: data['data'].id,
       dateOfCreation: data['data'].dateOfCreation,
@@ -103,6 +103,7 @@ export class LoginService {
       password: data['data'].password,
       name: data['data'].name,
       phoneNumber: data['data'].phoneNumber,
+      role: role,
     };
   }
 }

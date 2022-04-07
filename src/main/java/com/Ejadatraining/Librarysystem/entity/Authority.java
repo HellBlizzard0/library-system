@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Authority implements Serializable {
 
     @Id
-    @Column(name = "username")
+    @Column(name = "id")
     private String username;
 
     public void setUsername(String username) {

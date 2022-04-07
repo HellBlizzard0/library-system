@@ -16,6 +16,7 @@ import com.Ejadatraining.Librarysystem.service.CustomerService;
 import com.Ejadatraining.Librarysystem.service.LibrarianService;
 import com.Ejadatraining.Librarysystem.service.UserService;
 import java.util.HashMap;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -66,8 +67,8 @@ public class UserController {
             return null;
         }
         HashMap<String, Object> res = new HashMap<String, Object>();
-        Authority a = this.authorityService.getAuthority(u.getUsername());
-        switch (a.getAuthority()) {
+//        Authority a = this.authorityService.getAuthority(u.getUsername());
+        switch (u.getRole()) {
             case "ROLE_CUSTOMER":
                 res.put("role", "CUSTOMER");
                 res.put("data", this.customerService.getCustomerByIdOrName(u.getId(), u.getUsername()));
@@ -84,7 +85,7 @@ public class UserController {
 
     @RequestMapping("/updateUser")
     @ResponseBody
-    public void updateUser(@RequestParam(name = "user") Users user) {
+    public void updateUser(@RequestBody Users user) {
         this.userService.updateUser(user);
     }
     @RequestMapping("/deleteUser")

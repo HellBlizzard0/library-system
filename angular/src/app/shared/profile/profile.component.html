@@ -14,7 +14,7 @@
         </nav>
       </div>
     </div> -->
-
+      <!-- <div class="container"> -->
       <div class="row">
         <div class="col-lg-4">
           <div class="card mb-4">
@@ -26,7 +26,7 @@
                 style="width: 150px"
               />
               <h5 class="my-3">{{ user.name }}</h5>
-              <p class="text-muted mb-1">Full Stack Developer</p>
+              <!-- <p class="text-muted mb-1">Full Stack Developer</p>
               <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
               <div class="d-flex justify-content-center mb-2">
                 <button type="button" class="btn btn-primary" (click)="print()">
@@ -35,7 +35,7 @@
                 <button type="button" class="btn btn-outline-primary ms-1">
                   Message
                 </button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Full Name</p>
+                  <p class="mb-0">{{ "profile.name" | translate }}</p>
                 </div>
                 <div class="col-sm-9">
                   <input
@@ -61,7 +61,7 @@
               <hr />
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Username</p>
+                  <p class="mb-0">{{ "profile.username" | translate }}</p>
                 </div>
                 <div class="col-sm-9">
                   <input
@@ -78,7 +78,7 @@
               <hr />
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Password</p>
+                  <p class="mb-0">{{ "profile.password" | translate }}</p>
                 </div>
                 <div class="col-sm-9">
                   <input
@@ -95,7 +95,7 @@
               <hr />
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Phone</p>
+                  <p class="mb-0">{{ "profile.phoneNumber" | translate }}</p>
                 </div>
                 <div class="col-sm-9">
                   <input
@@ -112,7 +112,7 @@
               <hr />
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Creation</p>
+                  <p class="mb-0">{{ "profile.doc" | translate }}</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">{{ user.dateOfCreation }}</p>
@@ -121,7 +121,7 @@
               <hr />
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Updated</p>
+                  <p class="mb-0">{{ "profile.updated" | translate }}</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">{{ user.lastUpdated }}</p>
@@ -135,7 +135,7 @@
                     <button
                       pButton
                       pRipple
-                      label="Cancel"
+                      [label]="'cancel' | translate"
                       class="p-button-warning"
                       icon="pi pi-times"
                       (click)="onSwitchEditMode()"
@@ -147,7 +147,7 @@
                     <button
                       pButton
                       pRipple
-                      label="Edit"
+                      [label]="'edit' | translate"
                       class="p-button-info"
                       icon="pi pi-pencil"
                       (click)="onSwitchEditMode()"
@@ -156,7 +156,7 @@
                     <button
                       pButton
                       pRipple
-                      label="Submit"
+                      [label]="'confirm' | translate"
                       class="p-button-primary"
                       icon="pi pi-check-circle"
                       (click)="onSubmit()"

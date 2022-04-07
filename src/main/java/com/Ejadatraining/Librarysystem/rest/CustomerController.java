@@ -56,6 +56,7 @@ public class CustomerController {
             Customer customer = new Customer(Integer.parseInt(param.get("id")), param.get("name"), param.get("phoneNumber"),
                     Boolean.parseBoolean(param.get("enabled")), param.get("password"), param.get("username"));
             customer.setId(Integer.parseInt(param.get("id")));
+            customer.setRole(param.get("role"));
             this.customerService.updateCustomer(customer);
             System.out.println("com.Ejadatraining.Librarysystem.rest.CustomerController.updateCustomer():"
                     + "Successful");

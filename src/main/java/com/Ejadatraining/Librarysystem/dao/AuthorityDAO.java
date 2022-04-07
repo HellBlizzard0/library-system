@@ -16,6 +16,6 @@ public interface AuthorityDAO extends JpaRepository<Authority, String> {
 
     @Query(value = "select * from "
             + "Authority a "
-            + "where (a.username = ?1)", nativeQuery = true)
+            + "where (a.id = ?1)", nativeQuery = true)
     public Authority findByUsername(String username);
 }

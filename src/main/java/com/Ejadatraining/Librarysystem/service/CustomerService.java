@@ -49,7 +49,7 @@ public class CustomerService {
         // Get Customer pre-update.
         Customer c = this.customerDAO.findById(customer.getId()).get();
         // Get Authority pre-update.
-        Authority a = new Authority(c.getUsername(), "ROLE_CUSTOMER");
+        //Authority a = new Authority(c.getUsername(), "ROLE_CUSTOMER");
 
         // Update Customer/User entry, hopefully.
         this.customerDAO.save(customer);
@@ -57,6 +57,6 @@ public class CustomerService {
         // Remove previous Authority entry.
         this.authorityDAO.delete(this.authorityDAO.getById(customer.getUsername()));
         // Save new authority entry.
-        this.authorityDAO.save(a);
+        //this.authorityDAO.save(a);
     }
 }

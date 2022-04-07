@@ -4,10 +4,21 @@
   "button_ar": "عربي",
   "books": "الكتب",
   "borrows": "الاستعارة",
-  "book_title": "العنوان",
-  "author": "الكاتب",
-  "doc": "تاريخ الاصدار",
-  "pageCount": "عدد الصفحات",
-  "rating": "التقييم",
-  "profile": "الملف الشخصي"
+  "book.title": "العنوان",
+  "book.author": "الكاتب",
+  "book.doc": "تاريخ الاصدار",
+  "book.pageCount": "عدد الصفحات",
+  "book.rating": "التقييم",
+  "book.requestBorrow": "طلب استعارة",
+  "profile": "الملف الشخصي",
+  "profile.name": "الاسم الكامل",
+  "profile.username": "اسم المستخدم",
+  "profile.password": "كلمة السر",
+  "profile.phoneNumber": "الجوال",
+  "profile.doc": "تاريخ الانشاء",
+  "profile.updated": "تاريخ اخر تغيير",
+
+  "edit": "تعديل",
+  "cancel": "الغاء",
+  "confirm": "تأكيد"
 }

@@ -7,4 +7,5 @@ export interface User {
   lastUpdated?: Date;
   name?: string;
   phoneNumber?: string;
+  role?: string;
 }

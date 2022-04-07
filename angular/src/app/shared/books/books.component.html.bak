@@ -6,7 +6,7 @@
       <button
         pButton
         pRipple
-        label="New"
+        [label]="New"
         icon="pi pi-plus"
         class="p-button-success p-mr-2"
         (click)="showAddNewDialog()"
@@ -31,33 +31,23 @@
       ></button>
     </ng-template>
   </p-toolbar>
-  <p-table
-    [value]="books"
-    dataKey="title"
-    [paginator]="true"
-    [rows]="10"
-    [dir]="dir"
-  >
+  <p-table [value]="books" dataKey="title" [paginator]="true" [rows]="10">
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="title" width="30%">
-          {{ "book.title" | translate }}<p-sortIcon field="title"></p-sortIcon>
+          Title<p-sortIcon field="title"></p-sortIcon>
         </th>
         <th pSortableColumn="authorName" width="18%">
-          {{ "book.author" | translate
-          }}<p-sortIcon field="authorName"></p-sortIcon>
+          authorName<p-sortIcon field="authorName"></p-sortIcon>
         </th>
         <th pSortableColumn="dateOfCreation" width="20%">
-          {{ "book.doc" | translate
-          }}<p-sortIcon field="dateOfCreation"></p-sortIcon>
+          dateOfCreation<p-sortIcon field="dateOfCreation"></p-sortIcon>
         </th>
         <th pSortableColumn="pageCount" width="15%">
-          {{ "book.pageCount" | translate
-          }}<p-sortIcon field="pageCount"></p-sortIcon>
+          pageCount<p-sortIcon field="pageCount"></p-sortIcon>
         </th>
         <th pSortableColumn="rating" width="10%">
-          {{ "book.rating" | translate
-          }}<p-sortIcon field="rating"></p-sortIcon>
+          Rating<p-sortIcon field="rating"></p-sortIcon>
         </th>
         <th></th>
       </tr>
