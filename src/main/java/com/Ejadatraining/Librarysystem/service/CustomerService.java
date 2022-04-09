@@ -17,7 +17,6 @@ public class CustomerService {
     private CustomerDAO customerDAO;
     private AuthorityDAO authorityDAO;
 
-
     @Autowired
     public CustomerService(CustomerDAO customerDAO, AuthorityDAO authorityDAO) {
         this.customerDAO = customerDAO;
@@ -46,17 +45,7 @@ public class CustomerService {
 
     @Transactional
     public void updateCustomer(Customer customer) {
-        // Get Customer pre-update.
-        Customer c = this.customerDAO.findById(customer.getId()).get();
-        // Get Authority pre-update.
-        //Authority a = new Authority(c.getUsername(), "ROLE_CUSTOMER");
-
-        // Update Customer/User entry, hopefully.
         this.customerDAO.save(customer);
-
-        // Remove previous Authority entry.
         this.authorityDAO.delete(this.authorityDAO.getById(customer.getUsername()));
-        // Save new authority entry.
-        //this.authorityDAO.save(a);
     }
 }

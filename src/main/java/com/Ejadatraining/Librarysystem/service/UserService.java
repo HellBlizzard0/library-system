@@ -2,7 +2,6 @@ package com.Ejadatraining.Librarysystem.service;
 
 import com.Ejadatraining.Librarysystem.dao.UserDAO;
 import com.Ejadatraining.Librarysystem.entity.Users;
-import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

@@ -53,20 +53,20 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .permitAll();
-//                .anyRequest()
-//                .authenticated();
-//                .antMatchers("/customer/**").hasRole("CUSTOMER")
-//                .antMatchers("/librarian/**").hasRole("LIBRARIAN")
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/authenticateTheUser")
-//                .defaultSuccessUrl("/homepage", true)
-//                .permitAll()
-//                .and().logout().logoutUrl("/logout").permitAll();
+        // .anyRequest()
+        // .authenticated();
+        // .antMatchers("/customer/**").hasRole("CUSTOMER")
+        // .antMatchers("/librarian/**").hasRole("LIBRARIAN")
+        // .and()
+        // .formLogin()
+        // .loginPage("/login")
+        // .loginProcessingUrl("/authenticateTheUser")
+        // .defaultSuccessUrl("/homepage", true)
+        // .permitAll()
+        // .and().logout().logoutUrl("/logout").permitAll();
 
         // This is to enable calls from Postman
-        //http.csrf().disable();
+        // http.csrf().disable();
 
     }
 
@@ -77,7 +77,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH"));
         configuration.setAllowCredentials(true);
-        //the below three lines will add the relevant CORS response headers
+        // the below three lines will add the relevant CORS response headers
         configuration.addAllowedOriginPattern("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");

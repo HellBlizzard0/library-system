@@ -1,6 +1,5 @@
 package com.Ejadatraining.Librarysystem.dao;
 
-import com.Ejadatraining.Librarysystem.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.Ejadatraining.Librarysystem.entity.Librarian;

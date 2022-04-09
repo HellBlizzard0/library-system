@@ -14,8 +14,6 @@ import javax.persistence.InheritanceType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 /**
  *
  * @author aalsaqqa
@@ -107,11 +105,9 @@ public abstract class Users implements Serializable {
     @Column(name = "enabled")
     private boolean enabled;
 
-    @NotBlank(message = "New password is mandatory")
     @Column(name = "password")
     private String password;
 
-    @NotBlank(message = "New username is mandatory")
     @Column(name = "username")
     private String username;
 

@@ -11,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
@@ -91,6 +89,5 @@ public class BorrowStatus implements Serializable {
     public static final int OVERDUE = 3;
     public static final int EXTENDED = 4;
     public static final int REQUESTED = 5;
-
 
 }

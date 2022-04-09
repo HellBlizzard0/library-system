@@ -2,8 +2,6 @@ package com.Ejadatraining.Librarysystem.rest;
 
 import com.Ejadatraining.Librarysystem.entity.Book;
 import com.Ejadatraining.Librarysystem.service.BookService;
-import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

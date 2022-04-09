@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class UserController {
 
     private UserService userService;
-    private AuthorityService authorityService;
     private CustomerService customerService;
     private LibrarianService librarianService;
 
@@ -37,37 +36,41 @@ public class UserController {
             LibrarianService librarianService,
             CustomerService customerService) {
         this.userService = userService;
-        this.authorityService = authorityService;
         this.customerService = customerService;
         this.librarianService = librarianService;
     }
+
     @RequestMapping("/getAllUsers")
     public List<Users> getAllUsers() {
         return this.userService.findAll();
     }
+
     @PostMapping("/getUserByIdOrUsername")
     @ResponseBody
-    public Users getUserByIdOrUsername(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "username", required = false) String username) {
+    public Users getUserByIdOrUsername(@RequestParam(name = "id", required = false) Integer id,
+            @RequestParam(name = "username", required = false) String username) {
         return this.userService.getUserByIdOrUsername(id, username);
     }
+
     @PostMapping("/createUser")
     @ResponseBody
     public void createUser(@RequestParam(name = "user") Users user) {
-		System.err.println(user);
+        System.err.println(user);
         this.userService.createUser(user);
     }
 
     @PostMapping("/login")
     @ResponseBody
     public HashMap<String, Object> login(@RequestParam HashMap<String, String> parm) {
-//        Users users = null;
-//        System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login(): " + parm);
-    Users u = this.userService.login(parm.get("username"), parm.get("password"));
+        // Users users = null;
+        // System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login():
+        // " + parm);
+        Users u = this.userService.login(parm.get("username"), parm.get("password"));
         if (u == null) {
             return null;
         }
         HashMap<String, Object> res = new HashMap<String, Object>();
-//        Authority a = this.authorityService.getAuthority(u.getUsername());
+        // Authority a = this.authorityService.getAuthority(u.getUsername());
         switch (u.getRole()) {
             case "ROLE_CUSTOMER":
                 res.put("role", "CUSTOMER");
@@ -88,6 +91,7 @@ public class UserController {
     public void updateUser(@RequestBody Users user) {
         this.userService.updateUser(user);
     }
+
     @RequestMapping("/deleteUser")
     @ResponseBody
     public void deleteUser(@RequestParam(name = "id") int id) {
