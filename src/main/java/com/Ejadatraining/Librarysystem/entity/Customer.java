@@ -42,6 +42,10 @@ public class Customer extends Users {
         super();
     }
 
+    public Customer(int id) {
+        super(id);
+    }
+
     @Override
     public String toString() {
         return "Customer [name=" + name + ", phoneNumber=" + phoneNumber + "]";

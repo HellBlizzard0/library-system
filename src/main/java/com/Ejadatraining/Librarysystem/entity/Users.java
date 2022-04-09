@@ -2,7 +2,7 @@ package com.Ejadatraining.Librarysystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,13 +24,14 @@ import org.hibernate.validator.constraints.NotBlank;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Users implements Serializable {
 
-    public Users(int id, boolean enabled, String password, String username, LocalDateTime dateOfCreation, LocalDateTime lastUpdated) {
+    public Users(int id, boolean enabled, String password, String username, LocalDate dateOfCreation,
+            LocalDate lastUpdate) {
         this.id = id;
         this.enabled = enabled;
         this.password = password;
         this.username = username;
         this.dateOfCreation = dateOfCreation;
-        this.lastUpdated = lastUpdated;
+        this.lastUpdate = lastUpdate;
     }
 
     public Users() {
@@ -67,27 +68,27 @@ public abstract class Users implements Serializable {
     @Override
     public String toString() {
         return "User [id=" + id + ", enabled=" + enabled + ", password=" + password + ", username=" + username
-                + ", dateOfCreation=" + dateOfCreation + ", lastUpdated=" + lastUpdated + "]";
+                + ", dateOfCreation=" + dateOfCreation + ", lastUpdate=" + lastUpdate + "]";
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public LocalDateTime getTimestampOfCreation() {
+    public LocalDate getTimestampOfCreation() {
         return dateOfCreation;
     }
 
-    public void setTimestampOfCreation(LocalDateTime dateOfCreation) {
+    public void setTimestampOfCreation(LocalDate dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdated;
+    public LocalDate getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setLastUpdate(LocalDateTime lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setLastUpdate(LocalDate lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public Users(int id, boolean enabled, String password, String username) {
@@ -116,48 +117,53 @@ public abstract class Users implements Serializable {
 
     @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-    private LocalDateTime dateOfCreation;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate dateOfCreation;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-    private LocalDateTime lastUpdated;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate lastUpdate;
+
+    public Users(int id) {
+        this.id = id;
+    }
 
     @Column(name = "role")
     private String role;
 
-    public Users(int id, boolean enabled, String password, String username, LocalDateTime dateOfCreation, LocalDateTime lastUpdated, String role) {
+    public Users(int id, boolean enabled, String password, String username, LocalDate dateOfCreation,
+            LocalDate lastUpdate, String role) {
         this.id = id;
         this.enabled = enabled;
         this.password = password;
         this.username = username;
         this.dateOfCreation = dateOfCreation;
-        this.lastUpdated = lastUpdated;
+        this.lastUpdate = lastUpdate;
         this.role = role;
     }
 
-    public void setDateOfCreation(LocalDateTime dateOfCreation) {
+    public void setDateOfCreation(LocalDate dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public void setLastUpdated(LocalDateTime lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setLastUpdated(LocalDate lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public void setRole(String role) {
         this.role = role;
     }
 
-    public LocalDateTime getLastUpdated() {
-        return lastUpdated;
+    public LocalDate getLastUpdated() {
+        return lastUpdate;
     }
 
     public String getRole() {
         return role;
     }
 
-    public LocalDateTime getDateOfCreation() {
+    public LocalDate getDateOfCreation() {
         return dateOfCreation;
     }
 

@@ -1,5 +1,6 @@
 import { Direction } from '@angular/cdk/bidi';
-import { Component, Input, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, OnInit, LOCALE_ID, Inject } from '@angular/core';
 import {
   ConfirmationService,
   MessageService,
@@ -10,6 +11,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { BorrowService } from 'src/app/backend/borrow.service';
 import { LoginService } from 'src/app/backend/login.service';
 import { I18nServiceService } from 'src/app/i18n-service/i18n-service.service';
+import { formatDateCustom } from 'src/app/util/CustomDateFormat';
 import { Book } from 'src/app/util/data/book';
 import { Borrow } from 'src/app/util/data/borrow';
 import { BookService } from '../../backend/book.service';
@@ -34,6 +36,7 @@ export class BooksComponent implements OnInit {
   dir: Direction = 'ltr';
 
   constructor(
+    @Inject(LOCALE_ID) public locale: string,
     private bookService: BookService,
     private primengConfig: PrimeNGConfig,
     private loginService: LoginService,
@@ -130,11 +133,12 @@ export class BooksComponent implements OnInit {
   }
 
   requestBook(book: Book) {
+    const date = new Date();
     const borrow: Borrow = {
       id: 0,
       book: book,
-      dateOfCreation: new Date(),
-      lastUpdated: new Date(),
+      dateOfCreation: formatDate(new Date(), 'yyyy-MM-dd', this.locale),
+      lastUpdate: formatDate(new Date(), 'yyyy-MM-dd', this.locale),
       user: this.loginService.getUser(),
     };
     this.borrowService.requestBorrow(borrow);

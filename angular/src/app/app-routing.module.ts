@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'customer',
     component: CustomerMainComponent,
     children: [
-      { path: '', redirectTo: '/customer/profile', pathMatch: 'full' },
+      { path: '', redirectTo: '/customer/books', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'borrow', component: BorrowComponent },

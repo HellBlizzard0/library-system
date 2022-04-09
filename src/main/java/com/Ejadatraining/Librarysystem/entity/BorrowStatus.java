@@ -22,6 +22,15 @@ import lombok.Setter;
 @Table(name = "borrowstatus")
 public class BorrowStatus implements Serializable {
 
+    public static boolean isBorrowed(BorrowStatus status) {
+        switch (status.id) {
+            case RETURNED:
+                return false;
+            default:
+                return true;
+        }
+    }
+
     public BorrowStatus() {
     }
 

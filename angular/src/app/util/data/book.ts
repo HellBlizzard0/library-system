@@ -2,8 +2,8 @@ export interface Book {
   id?: number;
   title?: string;
   dateOfCreation?: Date;
-  lastUpdated?: Date;
-  serialNumber?: string;
+  lastUpdate?: Date | string;
+  serialNumber?: string | string;
   authorName?: string;
   rating?: number;
   description?: string;

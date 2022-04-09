@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Ejadatraining.Librarysystem.dao.BorrowDAO;
 import com.Ejadatraining.Librarysystem.entity.Borrow;
+import com.Ejadatraining.Librarysystem.entity.BorrowStatus;
 
 /**
  *
@@ -35,7 +36,13 @@ public class BorrowService {
         this.borrowDAO.deleteById(id);
     }
     @Transactional
-    public void addBorrow(Borrow borrow) {
+    public void addBorrow(Borrow borrow) throws Exception {
+
+        for (Borrow b : this.borrowDAO.checkBorrow(borrow.getBook().getId())) {
+            if (BorrowStatus.isBorrowed(b.getStatus())) {
+                throw new Exception("Book Already Borrowed");
+            }
+        }
         this.borrowDAO.save(borrow);
     }
     @Transactional

@@ -3,6 +3,7 @@ package com.Ejadatraining.Librarysystem.rest;
 import com.Ejadatraining.Librarysystem.entity.Borrow;
 import com.Ejadatraining.Librarysystem.entity.BorrowStatus;
 import com.Ejadatraining.Librarysystem.service.BorrowService;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,10 +42,12 @@ public class BorrowController {
     ) {
         return this.borrowService.getBorrowByIdOrUserIdOrBookId(id, userId, bookId);
     }
+
+    @Deprecated(since = "2022/9/4", forRemoval = true)
     @PostMapping("/addBorrow")
     @ResponseBody
     public void addBorrow(@RequestBody Borrow borrow) {
-        this.borrowService.addBorrow(borrow);
+        //this.borrowService.addBorrow(borrow);
     }
     @PostMapping("/updateBorrow")
     @ResponseBody
@@ -57,14 +60,16 @@ public class BorrowController {
         this.borrowService.deleteBorrow(id);
     }
 
+
     @PostMapping("/requestBook")
     @ResponseBody
-    public boolean requestBorrow(@RequestBody Borrow borrow) {
-        borrow.setStatus(new BorrowStatus(BorrowStatus.REQUESTED));
+    public boolean requestBorrow(@RequestBody HashMap<String, String> p) {
+        Borrow borrow = Borrow.newRequets(p);
         try {
             this.borrowService.addBorrow(borrow);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }

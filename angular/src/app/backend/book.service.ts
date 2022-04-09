@@ -19,7 +19,7 @@ export class BookService {
       id: 0,
       title: 'Book Awesome Title 123',
       dateOfCreation: new Date(),
-      lastUpdated: new Date(),
+      lastUpdate: new Date(),
       serialNumber: 'string',
       authorName: 'string',
     },
@@ -87,7 +87,7 @@ export class BookService {
     formData.append('id', (book.id as number) + '');
     formData.append('title', book.title as string);
     formData.append('dateOfCreation', (book.dateOfCreation as Date) + '');
-    formData.append('lastUpdated', (book.lastUpdated as Date) + '');
+    formData.append('lastUpdate', (book.lastUpdate as Date) + '');
     formData.append('authorName', book.authorName as string);
     formData.append('rating', (book.rating as number) + '');
     formData.append('description', book.description as string);

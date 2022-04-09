@@ -75,7 +75,7 @@ public class UserController {
                 break;
             case "ROLE_LIBRARIAN":
                 res.put("role", "LIBRARIAN");
-                res.put("Librarian", this.librarianService.getLibrarianByIdOrName(u.getId(), null));
+                res.put("data", this.librarianService.getLibrarianByIdOrName(u.getId(), null));
                 break;
             default:
                 throw new AssertionError();

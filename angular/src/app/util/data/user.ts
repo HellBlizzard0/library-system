@@ -3,8 +3,8 @@ export interface User {
   username?: string;
   password?: string;
   enabled?: boolean;
-  dateOfCreation?: Date;
-  lastUpdated?: Date;
+  dateOfCreation?: Date | string;
+  lastUpdate?: Date | string;
   name?: string;
   phoneNumber?: string;
   role?: string;

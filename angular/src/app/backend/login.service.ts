@@ -27,33 +27,6 @@ export class LoginService {
     formData.append('username', username);
     formData.append('password', password);
 
-    // this.cust = {
-    //   id: 0,
-    //   name: 'Curtis Jackson',
-    //   username: 'cjn',
-    //   password: '111',
-    //   enabled: true,
-    //   dateOfCreation: new Date(),
-    //   lastUpdated: new Date(),
-    //   phoneNumber: '0500000000',
-    // };
-    // this.isCustomer = true;
-    // this.subject.next(this.cust);
-    // this.router.navigate(['/customer']);
-
-    // this.user = {
-    //   id: 0,
-    //   name: 'Curtis Jackson',
-    //   username: 'cjn',
-    //   password: '111',
-    //   enabled: true,
-    //   dateOfCreation: new Date(),
-    //   lastUpdated: new Date(),
-    // };
-    // this.isCustomer = false;
-    // this.subject.next(this.user);
-    // this.router.navigate(['/librarian']);
-
     // ====================
     this.http.post(this.link, formData).subscribe(
       (data: any) => {
@@ -79,7 +52,7 @@ export class LoginService {
 
             this.isCustomer = false;
             this.isUserLoggedIn = true;
-            this.router.navigateByUrl('/librarian');
+            this.router.navigateByUrl('/customer');
             break;
         }
       },
@@ -94,16 +67,36 @@ export class LoginService {
   }
 
   toUser(data: any, role: string): User {
-    return {
-      id: data['data'].id,
-      dateOfCreation: data['data'].dateOfCreation,
-      lastUpdated: data['data'].lastUpdated,
-      enabled: data['data'].enabled,
-      username: data['data'].username,
-      password: data['data'].password,
-      name: data['data'].name,
-      phoneNumber: data['data'].phoneNumber,
-      role: role,
-    };
+    console.log(data);
+
+    switch (role) {
+      case 'ROLE_CUSTOMER':
+        return {
+          id: data['data'].id,
+          dateOfCreation: data['data'].dateOfCreation,
+          lastUpdate: data['data'].lastUpdate,
+          enabled: data['data'].enabled,
+          username: data['data'].username,
+          password: data['data'].password,
+          name: data['data'].name,
+          phoneNumber: data['data'].phoneNumber,
+          role: role,
+        };
+      case 'ROLE_LIBRARIAN':
+        return {
+          id: data['data'].id,
+          dateOfCreation: data['data'].dateOfCreation,
+          lastUpdate: data['data'].lastUpdate,
+          enabled: data['data'].enabled,
+          username: data['data'].username,
+          password: data['data'].password,
+          name: data['data'].name,
+          // phoneNumber: data['data'].phoneNumber,
+          role: role,
+        };
+      default:
+        return {};
+        break;
+    }
   }
 }

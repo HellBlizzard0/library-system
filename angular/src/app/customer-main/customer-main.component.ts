@@ -14,7 +14,7 @@ import { User } from '../util/data/user';
 export class CustomerMainComponent implements OnInit {
   // userData: any;
   customer!: User;
-  dir!: Direction;
+  dir: Direction = 'ltr';
 
   constructor(
     private loginService: LoginService,

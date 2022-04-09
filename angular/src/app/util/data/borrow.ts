@@ -6,8 +6,8 @@ export interface Borrow {
   status?: BorrowStatus;
   book: Book;
   user: User;
-  dateOfCreation: Date;
-  lastUpdated: Date;
+  dateOfCreation: Date | string;
+  lastUpdate: Date | string;
 }
 
 export interface BorrowStatus {

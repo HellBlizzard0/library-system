@@ -2,7 +2,7 @@ package com.Ejadatraining.Librarysystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +22,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "book")
 public class Book implements Serializable {
 
+    public Book(int id) {
+        this.id = id;
+    }
+
     public Book() {
     }
 
@@ -29,12 +33,12 @@ public class Book implements Serializable {
         this.title = title;
     }
 
-    public void setDateOfCreation(LocalDateTime dateOfCreation) {
+    public void setDateOfCreation(LocalDate dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public void setLastUpdate(LocalDateTime lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setLastUpdate(LocalDate lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public void setSerialNumber(String serialNumber) {
@@ -61,12 +65,12 @@ public class Book implements Serializable {
         return title;
     }
 
-    public LocalDateTime getDateOfCreation() {
+    public LocalDate getDateOfCreation() {
         return dateOfCreation;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdated;
+    public LocalDate getLastUpdate() {
+        return lastUpdate;
     }
 
     public String getSerialNumber() {
@@ -110,7 +114,8 @@ public class Book implements Serializable {
     @Id
     private int id;
 
-    public Book(int id, String title, String serialNumber, String authorName, String description, int pageCount, String rating, String genres) {
+    public Book(int id, String title, String serialNumber, String authorName, String description, int pageCount,
+            String rating, String genres) {
         this.id = id;
         this.title = title;
         this.serialNumber = serialNumber;
@@ -126,18 +131,20 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", serialNumber=" + serialNumber + ", authorName=" + authorName + ", description=" + description + ", pageCount=" + pageCount + ", rating=" + rating + ", genres=" + genres + '}';
+        return "Book{" + "id=" + id + ", title=" + title + ", serialNumber=" + serialNumber + ", authorName="
+                + authorName + ", description=" + description + ", pageCount=" + pageCount + ", rating=" + rating
+                + ", genres=" + genres + '}';
     }
 
     @Column(name = "date_of_creation", updatable = false)
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss[.SSS][.SS][.S]")
-    private LocalDateTime dateOfCreation;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate dateOfCreation;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss[.SSS][.SS][.S]")
-    private LocalDateTime lastUpdated;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate lastUpdate;
 
     @Column(name = "ISBN")
     private String serialNumber;
@@ -154,15 +161,15 @@ public class Book implements Serializable {
     @Column(name = "rating")
     private String rating;
 
-    @Column(name = "generes")
+    @Column(name = "genres")
     private String genres;
 
-    public Book(int id, String title, LocalDateTime dateOfCreation, LocalDateTime lastUpdated, String serialNumber,
+    public Book(int id, String title, LocalDate dateOfCreation, LocalDate lastUpdate, String serialNumber,
             String authorName, String description, int pageCount, String rating, String genres) {
         this.id = id;
         this.title = title;
         this.dateOfCreation = dateOfCreation;
-        this.lastUpdated = lastUpdated;
+        this.lastUpdate = lastUpdate;
         this.serialNumber = serialNumber;
         this.authorName = authorName;
         this.description = description;

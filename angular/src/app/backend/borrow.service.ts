@@ -1,12 +1,15 @@
+import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
+import { formatDateCustom } from '../util/CustomDateFormat';
 import { Book } from '../util/data/book';
 import { Borrow } from '../util/data/borrow';
 
-const LINKBASE = 'localost:8080:/api/Borrow/';
+const LINKBASE = 'http://localhost:8080/api/Borrow/';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +17,13 @@ const LINKBASE = 'localost:8080:/api/Borrow/';
 export class BorrowService {
   borrows!: Borrow[];
   subject = new Subject<Borrow[]>();
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
+  headers = new HttpHeaders().append('Content-Type', 'application/json');
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   getBorrowByCustomerId(id: number) {
     this.borrows = BORROWS;
@@ -38,12 +43,39 @@ export class BorrowService {
   toBorrowList(data: any) {}
 
   requestBorrow(borrow: Borrow) {
-    console.log(JSON.stringify(borrow));
+    const formData = new FormData();
+    formData.append('customerId', borrow.user.id + '');
+    formData.append('password', borrow.book.id + '');
     this.http
-      .post(LINKBASE + 'requestBook', JSON.stringify(borrow), this.httpOptions)
-      .subscribe((data: any) => {
-        console.log(data);
-      });
+      .post(
+        LINKBASE + 'requestBook',
+        JSON.stringify({
+          customerId: borrow.user.id,
+          bookId: borrow.book.id,
+        }),
+        { headers: this.headers }
+      )
+      .subscribe(
+        (data) => {
+          if (data.toString() == true + '')
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Successful',
+              detail: 'Book Requested for Borrow',
+              life: 1500,
+            });
+          else
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Failure',
+              detail: 'Book Requested Already',
+              life: 1500,
+            });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 }
 
@@ -52,7 +84,7 @@ const BOOKS: Book[] = [
     id: 2,
     title: 'The Art of Super Mario Odyssey',
     dateOfCreation: new Date(),
-    lastUpdated: new Date(),
+    lastUpdate: new Date(),
     serialNumber: '9.78151E+12',
     authorName: 'Nintendo',
     description:
@@ -65,7 +97,7 @@ const BOOKS: Book[] = [
     id: 4,
     title: 'The Painted Man (The Demon Cycle, Book 1)',
     dateOfCreation: new Date(),
-    lastUpdated: new Date(),
+    lastUpdate: new Date(),
     serialNumber: '9.78001E+12',
     authorName: 'Peter V. Brett',
     description:
@@ -86,12 +118,12 @@ const BORROWS: Borrow[] = [
       password: '123',
       username: 'bgd',
       dateOfCreation: new Date(),
-      lastUpdated: new Date(),
+      lastUpdate: new Date(),
       name: 'Ahmad',
       phoneNumber: '0522222222',
     },
     dateOfCreation: new Date(),
-    lastUpdated: new Date(),
+    lastUpdate: new Date(),
     status: {
       id: 1,
       status: 'borrowed',
