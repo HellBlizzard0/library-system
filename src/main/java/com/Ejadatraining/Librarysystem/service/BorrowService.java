@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Ejadatraining.Librarysystem.dao.BorrowDAO;
 import com.Ejadatraining.Librarysystem.entity.Borrow;
 import com.Ejadatraining.Librarysystem.entity.BorrowStatus;
+import java.util.Optional;
 
 /**
  *
@@ -49,4 +50,22 @@ public class BorrowService {
     public void updateBorrow(Borrow borrow) {
         this.borrowDAO.save(borrow);
     }
+
+    public List<Borrow> findById(int id) {
+        return this.borrowDAO.findByUserId(id);
+    }
+
+    @Transactional
+    public void acceptRequest(int id) {
+        Borrow borrow = this.borrowDAO.findById(id).get();
+        borrow.setStatus(new BorrowStatus(1, "borrowed"));
+        this.updateBorrow(borrow);
+    }
+
+    @Transactional
+    public void rejectRequest(int id) {
+        Borrow borrow = this.borrowDAO.findById(id).get();
+        this.borrowDAO.delete(borrow);
+    }
+
 }

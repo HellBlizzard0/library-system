@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../util/data/user';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { CustomerMainComponent } from '../customer-main/customer-main.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -52,7 +51,7 @@ export class LoginService {
 
             this.isCustomer = false;
             this.isUserLoggedIn = true;
-            this.router.navigateByUrl('/customer');
+            this.router.navigateByUrl('/librarian');
             break;
         }
       },
@@ -67,8 +66,6 @@ export class LoginService {
   }
 
   toUser(data: any, role: string): User {
-    console.log(data);
-
     switch (role) {
       case 'ROLE_CUSTOMER':
         return {

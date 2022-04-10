@@ -1,10 +1,11 @@
-<p-table [value]="borrows">
+<p-table [value]="borrows" [dir]="dir">
   <ng-template pTemplate="header">
     <tr>
-      <th>Title</th>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Status</th>
+      <th>{{ "book.title" | translate }}</th>
+      <th>{{ "borrow.customer" | translate }}</th>
+      <th>{{ "borrow.doc" | translate }}</th>
+      <th>{{ "borrow.status" | translate }}</th>
+      <th></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-borrow>
@@ -16,6 +17,42 @@
         <span [class]="'product-badge status-' + status[1]">
           {{ borrow.status.status }}
         </span>
+      </td>
+      <td>
+        <div *ngIf="displayAcceptReject(borrow)" class="row">
+          <div class="col-3">
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-check"
+              class="p-button-outlined p-button-rounded"
+              (click)="acceptRequest(borrow)"
+            ></button>
+          </div>
+          <div class="col-3">
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-times"
+              class="p-button-outlined p-button-rounded p-button-rounded p-button-danger"
+              (click)="rejectRequest(borrow)"
+            ></button>
+          </div>
+        </div>
+
+        <div *ngIf="displayCancelRequest(borrow)" class="row">
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-times"
+            class="p-button-outlined p-button-rounded p-button-rounded p-button-danger"
+            [label]="'cancel' | translate"
+            (click)="cancelRequest(borrow)"
+          ></button>
+        </div>
       </td>
     </tr>
   </ng-template>

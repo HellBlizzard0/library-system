@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'librarian',
-    component: LibrarianMainComponent,
+    component: CustomerMainComponent,
     children: [
       { path: '', redirectTo: '/librarian/books', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },

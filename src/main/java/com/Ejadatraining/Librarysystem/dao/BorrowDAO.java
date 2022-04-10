@@ -22,4 +22,9 @@ public interface BorrowDAO extends JpaRepository<Borrow, Integer> {
             + "Borrow b "
             + "where (b.book_id = ?)", nativeQuery = true)
     public List<Borrow> checkBorrow(int book_id);
+
+    @Query(value = "select * from "
+            + "Borrow b "
+            + "where (b.customer_id = ?1)", nativeQuery = true)
+    public List<Borrow> findByUserId(int userId);
 }

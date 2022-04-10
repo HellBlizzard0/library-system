@@ -11,7 +11,6 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { BorrowService } from 'src/app/backend/borrow.service';
 import { LoginService } from 'src/app/backend/login.service';
 import { I18nServiceService } from 'src/app/i18n-service/i18n-service.service';
-import { formatDateCustom } from 'src/app/util/CustomDateFormat';
 import { Book } from 'src/app/util/data/book';
 import { Borrow } from 'src/app/util/data/borrow';
 import { BookService } from '../../backend/book.service';

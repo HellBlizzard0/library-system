@@ -43,6 +43,10 @@ public class BorrowController {
         return this.borrowService.getBorrowByIdOrUserIdOrBookId(id, userId, bookId);
     }
 
+    @GetMapping("/getBorrowByUserId")
+    public List<Borrow> getBorrowByUserId(@RequestParam(name = "id") int id) {
+        return this.borrowService.findById(id);
+    }
     @Deprecated(since = "2022/9/4", forRemoval = true)
     @PostMapping("/addBorrow")
     @ResponseBody
@@ -74,5 +78,27 @@ public class BorrowController {
         }
     }
 
+    @PostMapping("/acceptRequest")
+    @ResponseBody
+    public boolean acceptRequest(@RequestBody HashMap<String, String> p) {
+        try {
+            this.borrowService.acceptRequest(Integer.parseInt(p.get("id")));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
+    @PostMapping("/rejectRequest")
+    @ResponseBody
+    public boolean rejectRequest(@RequestBody HashMap<String, String> p) {
+        try {
+            this.borrowService.rejectRequest(Integer.parseInt(p.get("id")));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

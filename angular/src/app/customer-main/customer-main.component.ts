@@ -47,7 +47,7 @@ export class CustomerMainComponent implements OnInit {
   // }
 
   changeLocale(locale: string) {
-    console.log('changeLocale(' + locale + ')');
+    // console.log('changeLocale(' + locale + ')');
 
     this.i18nService.changeLocale(locale);
   }

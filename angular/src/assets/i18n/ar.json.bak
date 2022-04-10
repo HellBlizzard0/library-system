@@ -2,18 +2,14 @@
   "title": "النظام المكتبي",
   "button_en": "English",
   "button_ar": "عربي",
-
   "books": "الكتب",
   "borrows": "الاستعارة",
-  "customers": "العملاء",
-
   "book.title": "العنوان",
   "book.author": "الكاتب",
   "book.doc": "تاريخ الاصدار",
   "book.pageCount": "عدد الصفحات",
   "book.rating": "التقييم",
   "book.requestBorrow": "طلب استعارة",
-
   "profile": "الملف الشخصي",
   "profile.name": "الاسم الكامل",
   "profile.username": "اسم المستخدم",
@@ -24,9 +20,5 @@
 
   "edit": "تعديل",
   "cancel": "الغاء",
-  "confirm": "تأكيد",
-
-  "borrow.customer": "اسم العميل",
-  "borrow.doc": "تاريخ الطلب",
-  "borrow.status": "الحالة"
+  "confirm": "تأكيد"
 }

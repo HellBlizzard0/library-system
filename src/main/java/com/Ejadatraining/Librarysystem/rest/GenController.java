@@ -37,16 +37,16 @@ public class GenController {
         List<Customer> customerList = customerService.findAll();
         List<Book> bookList = bookService.findAll();
 
-        for (Customer customer : customerList) {
-            if (customer.getId() == 902) {
-                for (Book book : bookList) {
-                    borrowService.addBorrow(new Borrow(                                0,
-                                customer,
-                                book,
-                                new BorrowStatus(1, "borrowed")));
-
-                }
-            }
-        }
+//        for (Customer customer : customerList) {
+//            if (customer.getId() == 902) {
+//                for (Book book : bookList) {
+//                    borrowService.addBorrow(new Borrow(                                0,
+//                                customer,
+//                                book,
+//                                new BorrowStatus(1, "borrowed")));
+//
+//                }
+//            }
+//        }
     }
 }

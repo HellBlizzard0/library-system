@@ -35,6 +35,10 @@
           ><i class="pi pi-clock" style="padding: 0% 5%"></i
           >{{ "borrows" | translate }}</a
         >
+        <a class="nav-item nav-link" [routerLink]="['customers']"
+          ><i class="pi pi-clock" style="padding: 0% 5%"></i
+          >{{ "customers" | translate }}</a
+        >
         <a class="nav-item nav-link" [routerLink]="['profile']"
           ><i class="pi pi-user-edit" style="padding: 0% 5%"></i
           >{{ "profile" | translate }}</a
@@ -67,6 +71,12 @@
       [routerLink]="['borrow']"
       *ngIf="getScreenWidth > maxWidth"
       >{{ "borrows" | translate }}</a
+    >
+    <a
+      class="nav-item nav-link"
+      [routerLink]="['customers']"
+      *ngIf="getScreenWidth > maxWidth"
+      >{{ "customers" | translate }}</a
     >
     <a
       class="nav-item nav-link"

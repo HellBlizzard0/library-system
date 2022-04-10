@@ -4,6 +4,7 @@
   "button_ar": "عربي",
   "books": "Books",
   "borrows": "Borrows",
+  "customers": "Customers",
   "book.title": "Title",
   "book.author": "Author Name",
   "book.doc": "Creation Date",
@@ -20,5 +21,9 @@
 
   "edit": "Edit",
   "cancel": "Cancel",
-  "confirm": "Submit"
+  "confirm": "Submit",
+
+  "borrow.customer": "Customer Name",
+  "borrow.doc": "Request Date",
+  "borrow.status": "Status"
 }
