@@ -64,16 +64,19 @@
     </ng-template>
     <ng-template pTemplate="body" let-book let-expanded="expanded">
       <tr>
-        <td>{{ book.title }}</td>
-        <td>{{ book.authorName }}</td>
-        <td>{{ book.dateOfCreation }}</td>
-        <td>{{ book.pageCount }}</td>
-        <p-rating
-          [cancel]="false"
-          [readonly]="true"
-          [(ngModel)]="book.rating"
-        ></p-rating>
-        <td>
+        <td [dir]="dir">{{ book.title }}</td>
+        <td [dir]="dir">{{ book.authorName }}</td>
+        <td [dir]="dir">{{ book.dateOfCreation }}</td>
+        <td [dir]="dir">{{ book.pageCount }}</td>
+        <td [dir]="dir">
+          <p-rating
+            [dir]="dir"
+            [cancel]="false"
+            [readonly]="true"
+            [(ngModel)]="book.rating"
+          ></p-rating>
+        </td>
+        <td [dir]="dir">
           <button
             type="button"
             pButton
@@ -153,7 +156,7 @@
                       <button
                         pButton
                         pRipple
-                        label="Edit"
+                        [label]="'edit' | translate"
                         class="p-button-info"
                         icon="pi pi-pencil"
                         (click)="enableEdit(book)"
@@ -164,7 +167,7 @@
                         pRipple
                         class="p-button-info"
                         icon="pi pi-times"
-                        label="Cancel"
+                        [label]="'cancel' | translate"
                         (click)="confirmEdit(false)"
                         *ngIf="isEditMode && !isCustomer()"
                       ></button>
@@ -173,7 +176,7 @@
                       <button
                         pButton
                         pRipple
-                        label="Delete"
+                        [label]="'delete' | translate"
                         class="p-button-danger"
                         icon="pi pi-trash"
                         (click)="deleteSelected(book.id)"
@@ -182,7 +185,7 @@
                       <button
                         pButton
                         pRipple
-                        label="Confirm"
+                        [label]="'confirm' | translate"
                         class="p-button-info"
                         icon="pi pi-check"
                         (click)="confirmEdit(true)"
@@ -191,7 +194,7 @@
                       <button
                         pButton
                         pRipple
-                        label="Request"
+                        [label]="'book.requestBorrow' | translate"
                         class="p-button-info"
                         icon="pi pi-calendar-minus"
                         (click)="requestBook(book)"
@@ -207,6 +210,36 @@
       </tr>
     </ng-template>
   </p-table>
+  <p-toolbar styleClass="p-mb-4" *ngIf="!isCustomer()">
+    <ng-template pTemplate="left">
+      <button
+        pButton
+        pRipple
+        [label]="'book.new' | translate"
+        icon="pi pi-plus"
+        class="p-button-success p-mr-2"
+        (click)="showAddNewDialog()"
+      ></button>
+    </ng-template>
+
+    <!-- <ng-template pTemplate="right">
+      <p-fileUpload
+        mode="basic"
+        accept="image/*"
+        [maxFileSize]="1000000"
+        label="Import"
+        chooseLabel="Import"
+        class="p-mr-2 p-d-inline-block"
+      ></p-fileUpload>
+       <button
+        pButton
+        pRipple
+        label="Export"
+        icon="pi pi-upload"
+        class="p-button-help"
+      ></button> 
+    </ng-template> -->
+  </p-toolbar>
 </div>
 <p-dialog
   [header]="'book.addNewHeader' | translate"

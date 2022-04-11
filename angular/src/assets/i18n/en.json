@@ -36,6 +36,7 @@
   "edit": "Edit",
   "cancel": "Cancel",
   "confirm": "Submit",
+  "delete": "Delete",
 
   "borrow.customer": "Customer Name",
   "borrow.doc": "Request Date",
