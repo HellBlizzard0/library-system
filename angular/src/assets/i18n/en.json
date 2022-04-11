@@ -11,6 +11,20 @@
   "book.pageCount": "Pages",
   "book.rating": "Rating",
   "book.requestBorrow": "Request",
+  "book.new": "New",
+
+  "book.addNewHeader": "Add New Book",
+  "book.inputBookTitleLabel": "Book Title: ",
+  "book.inputBookTitlePlaceHolder": "Enter Book Title",
+  "book.inputBookDescLabel": "Description :",
+  "book.inputBookAuthorLabel": "Author: ",
+  "book.inputBookAuthorPlaceHolder": "Enter Author Name",
+  "book.inputBookGenresLabel": "Genres: ",
+  "book.inputBookGenresPlaceHolder": "Separated By Commas",
+  "book.inputBookPagesLabel": "Pages: ",
+  "book.inputBookISBNLabel": "ISBN: ",
+  "book.inputBookISBNPlaceHolder": "Input Complete ISBN",
+
   "profile": "Profile",
   "profile.name": "Full Name",
   "profile.username": "Username",
@@ -25,5 +39,7 @@
 
   "borrow.customer": "Customer Name",
   "borrow.doc": "Request Date",
-  "borrow.status": "Status"
+  "borrow.status": "Status",
+
+  "id": "ID"
 }

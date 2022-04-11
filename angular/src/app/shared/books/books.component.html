@@ -1,12 +1,12 @@
 <p-toast></p-toast>
 
-<div class="card">
+<div class="card" [dir]="dir">
   <p-toolbar styleClass="p-mb-4" *ngIf="!isCustomer()">
     <ng-template pTemplate="left">
       <button
         pButton
         pRipple
-        label="New"
+        [label]="'book.new' | translate"
         icon="pi pi-plus"
         class="p-button-success p-mr-2"
         (click)="showAddNewDialog()"
@@ -22,13 +22,13 @@
         chooseLabel="Import"
         class="p-mr-2 p-d-inline-block"
       ></p-fileUpload>
-      <button
+      <!-- <button
         pButton
         pRipple
         label="Export"
         icon="pi pi-upload"
         class="p-button-help"
-      ></button>
+      ></button> -->
     </ng-template>
   </p-toolbar>
   <p-table
@@ -81,7 +81,15 @@
             (click)="confirmEdit(false)"
             [pRowToggler]="book"
             class="p-button-text p-button-rounded p-button-plain"
-            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            [icon]="
+              dir == 'ltr'
+                ? expanded
+                  ? 'pi pi-chevron-down'
+                  : 'pi pi-chevron-right'
+                : expanded
+                ? 'pi pi-chevron-down'
+                : 'pi pi-chevron-left'
+            "
           ></button>
         </td>
       </tr>
@@ -200,14 +208,21 @@
     </ng-template>
   </p-table>
 </div>
-<p-dialog header="Add New Book" [(visible)]="isAddNewMode" [modal]="true">
+<p-dialog
+  [header]="'book.addNewHeader' | translate"
+  [(visible)]="isAddNewMode"
+  [modal]="true"
+  [dir]="dir"
+>
   <form (ngSubmit)="onSubmit()" #addNew="ngForm">
-    <div class="container">
+    <div class="container" [dir]="dir">
       <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
           <span class="ui-float-label">
-            <label for="float-input">Book Title: </label>
+            <label for="float-input">
+              {{ "book.inputBookTitleLabel" | translate }}</label
+            >
 
             <input
               name="title"
@@ -215,13 +230,15 @@
               type="text"
               pInputText
               style="width: 100%"
-              [placeholder]="'Enter Book Title'"
+              [placeholder]="'book.inputBookTitlePlaceHolder' | translate"
               [(ngModel)]="bookEdit.title"
             />
           </span>
           <hr />
           <div class="col-2">
-            <label for="description">Description:</label>
+            <label for="description">{{
+              "book.inputBookDescLabel" | translate
+            }}</label>
           </div>
           <div class="col-9">
             <span>
@@ -237,32 +254,38 @@
           </div>
           <hr />
           <span class="ui-float-label">
-            <label for="float-authorName">Author: </label>
+            <label for="float-authorName">{{
+              "book.inputBookAuthorLabel" | translate
+            }}</label>
             <input
               id="float-authorName"
               type="text"
               [(ngModel)]="bookEdit.authorName"
               style="width: 100%"
               pInputText
-              [placeholder]="'Enter Author Name'"
+              [placeholder]="'book.inputBookAuthorLabel' | translate"
               name="authorName"
             />
           </span>
           <span class="ui-float-label">
-            <label for="float-genres">Genres: </label>
+            <label for="float-genres">{{
+              "book.inputBookGenresLabel" | translate
+            }}</label>
             <input
               id="float-genres"
               type="text"
               [(ngModel)]="bookEdit.genres"
               style="width: 100%"
-              [placeholder]="'Separated By Commas'"
+              [placeholder]="'book.inputBookGenresPlaceHolder' | translate"
               pInputText
               name="genres"
             />
           </span>
           <hr />
 
-          <label for="pageCount">Pages: </label>
+          <label for="pageCount">{{
+            "book.inputBookPagesLabel" | translate
+          }}</label>
           <input
             type="text"
             pInputText
@@ -279,13 +302,15 @@
           ></p-slider>
           <hr />
           <span class="ui-float-label">
-            <label for="float-serialNumber">ISBN: </label>
+            <label for="float-serialNumber">{{
+              "book.inputBookISBNLabel" | translate
+            }}</label>
             <input
               id="float-serialNumber"
               type="text"
               [(ngModel)]="bookEdit.serialNumber"
               style="width: 100%"
-              [placeholder]="'Separated By Commas'"
+              [placeholder]="'book.inputBookISBNPlaceHolder' | translate"
               pInputText
               name="serialNumber"
             />
@@ -298,7 +323,9 @@
         <div class="row">
           <div class="col-9"></div>
           <div class="col-2">
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-primary" type="submit">
+              {{ "confirm" | translate }}
+            </button>
           </div>
         </div>
       </div>

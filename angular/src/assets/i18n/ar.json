@@ -13,6 +13,19 @@
   "book.pageCount": "عدد الصفحات",
   "book.rating": "التقييم",
   "book.requestBorrow": "طلب استعارة",
+  "book.new": "إضافة",
+
+  "book.addNewHeader": "إضافة كتاب جديد",
+  "book.inputBookTitleLabel": "عنوان الكتاب",
+  "book.inputBookTitlePlaceHolder": "ادخل عنوان الكتاب",
+  "book.inputBookDescLabel": "الوصف:",
+  "book.inputBookAuthorLabel": "المؤلف: ",
+  "book.inputBookAuthorPlaceHolder": "أدخل اسم المؤلف",
+  "book.inputBookGenresLabel": "الانواع: ",
+  "book.inputBookGenresPlaceHolder": "ادخل انواع الكتاب مع فاصلة بين كل نوع",
+  "book.inputBookPagesLabel": "عدد الصفحات: ",
+  "book.inputBookISBNLabel": "الرقم التسلسلي: ",
+  "book.inputBookISBNPlaceHolder": "أدخل الرقم التسلسلي كاملاً",
 
   "profile": "الملف الشخصي",
   "profile.name": "الاسم الكامل",
@@ -28,5 +41,7 @@
 
   "borrow.customer": "اسم العميل",
   "borrow.doc": "تاريخ الطلب",
-  "borrow.status": "الحالة"
+  "borrow.status": "الحالة",
+
+  "id": "المعرف"
 }
