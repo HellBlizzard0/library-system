@@ -29,6 +29,7 @@ export class CustomerMainComponent implements OnInit {
     this.i18nService.dir.subscribe((newDir) => {
       this.dir = newDir;
     });
+    this.i18nService.changeLocale('en');
   }
 
   // Responsive control
@@ -48,12 +49,14 @@ export class CustomerMainComponent implements OnInit {
 
   changeLocale(locale: string) {
     // console.log('changeLocale(' + locale + ')');
-
     this.i18nService.changeLocale(locale);
   }
 
   isEnglish() {
-    console.log(this.translate.currentLang == 'en');
     return this.translate.currentLang == 'en';
+  }
+
+  isLibrarian() {
+    return !this.loginService.isCustomer;
   }
 }

@@ -101,4 +101,10 @@ public class BorrowController {
             return false;
         }
     }
+
+    @GetMapping("/isAvailable")
+    @ResponseBody
+    public boolean isAvailable(@RequestParam int bookId) {
+        return this.borrowService.isAvailable(bookId);
+    }
 }

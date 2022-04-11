@@ -25,6 +25,11 @@
   "book.inputBookISBNLabel": "ISBN: ",
   "book.inputBookISBNPlaceHolder": "Input Complete ISBN",
 
+  "book.deleteDialog": "Are you sure you want to delete the selected Book?",
+  "book.": "",
+
+  "book.notAvailable": "Not Available",
+
   "profile": "Profile",
   "profile.name": "Full Name",
   "profile.username": "Username",
@@ -37,6 +42,13 @@
   "cancel": "Cancel",
   "confirm": "Submit",
   "delete": "Delete",
+  "successful": "Successful",
+  "unavailable": "Unavailable",
+  "success.bookDeleted": "Book Deleted",
+  "success.bookAdded": "Book Added",
+  "success.bookRequested": "Book Requested",
+  "success.bookUnavailable": "The Book is Currently Unavailable for Borrow",
+  "success.": "",
 
   "borrow.customer": "Customer Name",
   "borrow.doc": "Request Date",

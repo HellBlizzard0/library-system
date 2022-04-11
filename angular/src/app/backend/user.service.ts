@@ -10,6 +10,9 @@ const LINKBASE_L = 'http://localhost:8080/api/Librarian/';
   providedIn: 'root',
 })
 export class UserService {
+  users: User[] = [];
+  userSubject = new Subject<User[]>();
+
   constructor(private http: HttpClient, private router: Router) {}
   updateUser(user: User, isCustomer: boolean) {
     // const formData = new FormData();
@@ -36,5 +39,16 @@ export class UserService {
         .subscribe((data) => {
           console.log(data);
         });
+  }
+
+  getAllCustomers() {
+    this.http.get(LINKBASE_C + 'getAllCustomers').subscribe((data: any) => {
+      data.forEach((element: User) => {
+        this.users.push(element);
+      });
+      console.log(data);
+
+      this.userSubject.next(this.users);
+    });
   }
 }

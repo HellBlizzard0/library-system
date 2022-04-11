@@ -102,8 +102,10 @@
         <td colspan="6">
           <div class="p-3">
             <p-panel>
-              <p-header>
-                <p *ngIf="!isEditMode">{{ book.title }}</p>
+              <p-header [dir]="dir">
+                <p *ngIf="!isEditMode">
+                  {{ "book.inputBookTitleLabel" | translate }}{{ book.title }}
+                </p>
                 <input
                   *ngIf="isEditMode"
                   type="text"
@@ -112,7 +114,11 @@
                   name="title"
                 />
               </p-header>
-              <h3 *ngIf="!isEditMode">By: {{ book.authorName }}</h3>
+              <h3 *ngIf="!isEditMode">
+                {{ "book.inputBookAuthorLabel" | translate
+                }}{{ book.authorName }}
+              </h3>
+              <p>{{ "book.inputBookDescLabel" | translate }}</p>
               <p *ngIf="!isEditMode">{{ book.description }}</p>
               <div class="container">
                 <div class="row">
@@ -151,7 +157,7 @@
                         style="padding: auto"
                       ></p-rating>
                     </div>
-                    <div class="col-md-4"></div>
+                    <div class="col-md-3"></div>
                     <div class="col-md-2">
                       <button
                         pButton
@@ -172,7 +178,7 @@
                         *ngIf="isEditMode && !isCustomer()"
                       ></button>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                       <button
                         pButton
                         pRipple
@@ -198,7 +204,16 @@
                         class="p-button-info"
                         icon="pi pi-calendar-minus"
                         (click)="requestBook(book)"
-                        *ngIf="!isEditMode && isCustomer()"
+                        *ngIf="!isEditMode && isCustomer() && book.available"
+                      ></button>
+                      <button
+                        pButton
+                        pRipple
+                        [label]="'book.notAvailable' | translate"
+                        class="p-button-secondary p-button-outlined"
+                        (click)="bookUnavailable()"
+                        *ngIf="!book.available && isCustomer()"
+                        disabled="true"
                       ></button>
                     </div>
                   </div>
@@ -237,7 +252,7 @@
         label="Export"
         icon="pi pi-upload"
         class="p-button-help"
-      ></button> 
+      ></button>
     </ng-template> -->
   </p-toolbar>
 </div>
@@ -365,4 +380,4 @@
     </div>
   </form>
 </p-dialog>
-<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+<p-confirmDialog [dir]="dir" [style]="{ width: '450px' }"></p-confirmDialog>

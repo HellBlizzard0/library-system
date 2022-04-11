@@ -6,6 +6,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Book } from '../util/data/book';
+import { BorrowService } from './borrow.service';
 
 const LINKBASE: string = 'http://localhost:8080/api/Book/';
 @Injectable({
@@ -25,10 +26,10 @@ export class BookService {
     },
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private borrowService: BorrowService) {}
 
   fetchBooks() {
-    this.http.get(LINKBASE + 'getAllBooks').subscribe((data) => {
+    this.http.get(LINKBASE + 'getAllBooksWithAvailablity').subscribe((data) => {
       this.booksList.next(this.toBooksList(data));
     });
   }
@@ -71,8 +72,21 @@ export class BookService {
 
   toBooksList(data: any): Book[] {
     let books: Book[] = [];
-    data.forEach((book: Book) => {
-      books.push(book);
+    data.forEach((element: any) => {
+      // book.available = this.borrowService.isAvailable(book);
+      books.push({
+        id: element.book.id,
+        title: element.book.title,
+        dateOfCreation: element.book.dateOfCreation,
+        lastUpdate: element.book.lastUpdate,
+        serialNumber: element.book.serialNumber,
+        authorName: element.book.authorName,
+        description: element.book.description,
+        pageCount: element.book.pageCount,
+        rating: element.book.rating,
+        genres: element.book.genres,
+        available: element.available,
+      });
     });
     return books;
   }

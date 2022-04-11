@@ -28,4 +28,12 @@ export class I18nServiceService {
         break;
     }
   }
+
+  get(label: string): string {
+    let res: string = 'N/A';
+    this.translate.get(label).subscribe((data: string) => {
+      res = data;
+    });
+    return res;
+  }
 }

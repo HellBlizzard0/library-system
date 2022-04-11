@@ -68,4 +68,14 @@ public class BorrowService {
         this.borrowDAO.delete(borrow);
     }
 
+    public boolean isAvailable(int bookId) {
+        for (Borrow b : this.borrowDAO.checkBorrow(bookId)) {
+            if (BorrowStatus.isBorrowed(b.getStatus())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }

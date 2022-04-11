@@ -16,7 +16,7 @@
   "book.new": "إضافة",
 
   "book.addNewHeader": "إضافة كتاب جديد",
-  "book.inputBookTitleLabel": "عنوان الكتاب",
+  "book.inputBookTitleLabel": "عنوان الكتاب: ",
   "book.inputBookTitlePlaceHolder": "ادخل عنوان الكتاب",
   "book.inputBookDescLabel": "الوصف:",
   "book.inputBookAuthorLabel": "المؤلف: ",
@@ -26,6 +26,10 @@
   "book.inputBookPagesLabel": "عدد الصفحات: ",
   "book.inputBookISBNLabel": "الرقم التسلسلي: ",
   "book.inputBookISBNPlaceHolder": "أدخل الرقم التسلسلي كاملاً",
+
+  "book.deleteDialog": "هل انت متأكد من حذف الكتاب المختار؟",
+
+  "book.notAvailable": "غير متوفر",
 
   "profile": "الملف الشخصي",
   "profile.name": "الاسم الكامل",
@@ -39,6 +43,12 @@
   "cancel": "الغاء",
   "confirm": "تأكيد",
   "delete": "حذف",
+  "successful": "ناجح",
+  "unavailable": "فشل",
+  "success.bookDeleted": "تم حذف الكتاب",
+  "success.bookAdded": "تم اذافة الكتاب",
+  "success.bookRequested": "تم طلب الكتاب",
+  "success.bookUnavailable": "عذراًو الكتاب غير متوفر حالياً",
 
   "borrow.customer": "اسم العميل",
   "borrow.doc": "تاريخ الطلب",

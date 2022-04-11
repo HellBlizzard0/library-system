@@ -1,4 +1,5 @@
 export interface Book {
+  available?: any;
   id?: number;
   title?: string;
   dateOfCreation?: Date;

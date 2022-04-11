@@ -1,7 +1,11 @@
 package com.Ejadatraining.Librarysystem.rest;
 
 import com.Ejadatraining.Librarysystem.entity.Book;
+import com.Ejadatraining.Librarysystem.entity.BookAvailable;
 import com.Ejadatraining.Librarysystem.service.BookService;
+import com.Ejadatraining.Librarysystem.service.BorrowService;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,16 +25,28 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookController {
 
     private BookService bookService;
+    private BorrowService borrowService;
 
     @Autowired
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, BorrowService borrowService) {
         this.bookService = bookService;
+        this.borrowService = borrowService;
     }
 
     @GetMapping("/getAllBooks")
     public List<Book> getAllBooks() {
         List<Book> b = this.bookService.findAll();
         return b;
+    }
+
+    @GetMapping("/getAllBooksWithAvailablity")
+    public List<BookAvailable> getAllBooksWithAvailablity() {
+        List<Book> book = this.bookService.findAll();
+        ArrayList<BookAvailable> res = new ArrayList<>();
+        for (Book b : book) {
+            res.add(new BookAvailable(b, this.borrowService.isAvailable(b.getId())));
+        }
+        return res;
     }
 
     @GetMapping("/getBookByNameOrIdOrAuthorname")

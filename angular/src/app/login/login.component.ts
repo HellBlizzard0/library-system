@@ -7,7 +7,7 @@ import { LoginService } from '../backend/login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  username: string = 'bgd';
+  username: string = 'lib2';
   password: string = '123';
   isLoginMode: boolean = true;
   constructor(private loginService: LoginService) {}

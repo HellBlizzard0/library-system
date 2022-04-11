@@ -119,4 +119,15 @@ export class BorrowService {
         console.log(data);
       });
   }
+
+  isAvailable(book: Book) {
+    this.http.get(LINKBASE + 'isAvailable' + '?bookId=' + book.id).subscribe(
+      (data) => {
+        return data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

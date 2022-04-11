@@ -1,6 +1,7 @@
 import { Direction } from '@angular/cdk/bidi';
 import { formatDate } from '@angular/common';
 import { Component, OnInit, LOCALE_ID, Inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import {
   ConfirmationService,
   MessageService,
@@ -43,7 +44,8 @@ export class BooksComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private borrowService: BorrowService,
     private dialogService: DialogService,
-    private i18nServiceService: I18nServiceService
+    private i18nServiceService: I18nServiceService,
+    private translate: TranslateService
   ) {
     this.bookService.fetchBooks();
   }
@@ -95,15 +97,15 @@ export class BooksComponent implements OnInit {
 
   deleteSelected(value: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected Book?',
-      header: 'Confirm',
+      message: this.i18nServiceService.get('book.deleteDialog'),
+      header: this.i18nServiceService.get('delete'),
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.bookService.removeBooks([value]);
         this.messageService.add({
           severity: 'success',
-          summary: 'Successful',
-          detail: 'Book Deleted',
+          summary: this.i18nServiceService.get('successful'),
+          detail: this.i18nServiceService.get('success.bookDeleted'),
           life: 1500,
         });
       },
@@ -120,19 +122,27 @@ export class BooksComponent implements OnInit {
     }
   }
 
+  bookUnavailable() {
+    this.messageService.add({
+      severity: 'warning',
+      summary: this.i18nServiceService.get('unavailable'),
+      detail: this.i18nServiceService.get('success.bookUnavailable'),
+      life: 2000,
+    });
+  }
+
   onSubmit() {
     this.bookService.createBook(this.bookEdit);
     this.messageService.add({
       severity: 'success',
-      summary: 'Successful',
-      detail: 'Book Added',
+      summary: this.i18nServiceService.get('successful'),
+      detail: this.i18nServiceService.get('success.bookAdded'),
       life: 2000,
     });
     this.isAddNewMode = false;
   }
 
   requestBook(book: Book) {
-    const date = new Date();
     const borrow: Borrow = {
       id: 0,
       book: book,
@@ -141,5 +151,12 @@ export class BooksComponent implements OnInit {
       user: this.loginService.getUser(),
     };
     this.borrowService.requestBorrow(borrow);
+
+    this.messageService.add({
+      severity: 'success',
+      summary: this.i18nServiceService.get('successful'),
+      detail: this.i18nServiceService.get('success.bookRequested'),
+      life: 2000,
+    });
   }
 }
