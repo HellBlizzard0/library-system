@@ -63,5 +63,10 @@
   "borrow.status.overdue": "Overdue",
   "borrow.status.extended": "Extended",
 
-  "borrow.return": "Return"
+  "borrow.return": "Return",
+
+  "login.name": "Name",
+  "login.username": "Username",
+  "login.password": "Password",
+  "login.phoneNumber": "Phone Number"
 }

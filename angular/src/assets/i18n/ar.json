@@ -64,5 +64,10 @@
   "borrow.status.overdue": "متأخر",
   "borrow.status.extended": "الاستعارة",
 
-  "borrow.return": "أرجاع"
+  "borrow.return": "أرجاع",
+
+  "login.name": "الاسم",
+  "login.username": "اسم المستخدم",
+  "login.password": "كلمة المرور",
+  "login.phoneNumber": "رقم الجوال"
 }

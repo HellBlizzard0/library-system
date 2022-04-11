@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../backend/login.service';
+import { User } from '../util/data/user';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,8 @@ import { LoginService } from '../backend/login.service';
 export class LoginComponent implements OnInit {
   username: string = 'lib2';
   password: string = '123';
+  newUser: User = {};
+  isLoggedIn: boolean = true;
   isLoginMode: boolean = true;
   constructor(private loginService: LoginService) {}
   ngOnInit(): void {}
@@ -23,6 +26,17 @@ export class LoginComponent implements OnInit {
     // });
   }
   switchMode() {
-    this.isLoginMode = !this.isLoginMode;
+    this.isLoggedIn = !this.isLoggedIn;
+  }
+
+  switchToLogIn() {
+    this.newUser = {};
+    this.isLoginMode = true;
+  }
+
+  switchToSignUp() {
+    this.username = '';
+    this.password = '';
+    this.isLoginMode = false;
   }
 }

@@ -1,37 +1,76 @@
-<p-card>
-  <ng-template pTemplate="header">
-    <h2 style="padding: left 20%">Log in</h2>
-  </ng-template>
-  <div class="grid p-fluid">
-    <div class="col-12 md:col-4">
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-        <input type="text" pInputText [(ngModel)]="username" />
-      </div>
-    </div>
-    <div class="col-12 md:col-4">
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-        <input type="password" pInputText [(ngModel)]="password" />
-      </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 [class]="isLoginMode ? 'active' : ''" (click)="switchToLogIn()">
+      Sign In
+    </h2>
+    <h2
+      [class]="'inactive underlineHover ' + (!isLoginMode ? 'active' : '')"
+      (click)="switchToSignUp()"
+    >
+      Sign Up
+    </h2>
+
+    <!-- Login Form -->
+    <form *ngIf="isLoginMode">
+      <input
+        type="text"
+        id="login"
+        class=""
+        name="login"
+        [(ngModel)]="username"
+        [placeholder]="'login.username' | translate"
+      />
+      <input
+        type="password"
+        id="password"
+        class=""
+        name="login"
+        [(ngModel)]="password"
+        [placeholder]="'login.password' | translate"
+      />
+      <input type="submit" (click)="onSubmit()" value="Log In" />
+    </form>
+    <form *ngIf="!isLoginMode">
+      <input
+        type="text"
+        id="login"
+        class=""
+        name="login"
+        [placeholder]="'login.name' | translate"
+        [(ngModel)]="newUser.name"
+      />
+      <input
+        type="text"
+        id="login"
+        class=""
+        name="login"
+        [placeholder]="'login.username' | translate"
+        [(ngModel)]="newUser.username"
+      />
+      <input
+        type="password"
+        id="login"
+        class=""
+        name="login"
+        [placeholder]="'login.password' | translate"
+        [(ngModel)]="newUser.password"
+      />
+      <input
+        type="text"
+        id="login"
+        class=""
+        name="login"
+        [placeholder]="'login.phoneNumber' | translate"
+        [(ngModel)]="newUser.phoneNumber"
+      />
+
+      <input type="submit" class="" value="Log In" />
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter" *ngIf="isLoginMode">
+      <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
   </div>
-  <ng-template pTemplate="footer">
-    <button
-      pButton
-      class="btn btn-primary"
-      type="button"
-      [label]="isLoginMode ? 'Login' : 'Sign up'"
-      (click)="onSubmit()"
-    ></button>
-
-    <button
-      pButton
-      (click)="switchMode()"
-      type="button"
-      class="p-button-rounded p-button-info p-button-outlined"
-    >
-      <img alt="logo" src="assets/images/refresh.png" style="width: 1.2rem" />
-    </button>
-  </ng-template>
-</p-card>
+</div>
