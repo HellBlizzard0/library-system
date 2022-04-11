@@ -43,6 +43,8 @@
   "cancel": "الغاء",
   "confirm": "تأكيد",
   "delete": "حذف",
+  "options": "الخيارات",
+
   "successful": "ناجح",
   "unavailable": "فشل",
   "success.bookDeleted": "تم حذف الكتاب",
@@ -54,5 +56,13 @@
   "borrow.doc": "تاريخ الطلب",
   "borrow.status": "الحالة",
 
-  "id": "المعرف"
+  "id": "المعرف",
+
+  "borrow.status.requested": "تم الطلب",
+  "borrow.status.borrowed": "الاستعارة",
+  "borrow.status.retured": "تم الارجاع",
+  "borrow.status.overdue": "متأخر",
+  "borrow.status.extended": "الاستعارة",
+
+  "borrow.return": "أرجاع"
 }

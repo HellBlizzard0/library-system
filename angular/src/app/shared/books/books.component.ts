@@ -146,6 +146,7 @@ export class BooksComponent implements OnInit {
     const borrow: Borrow = {
       id: 0,
       book: book,
+      status: {},
       dateOfCreation: formatDate(new Date(), 'yyyy-MM-dd', this.locale),
       lastUpdate: formatDate(new Date(), 'yyyy-MM-dd', this.locale),
       user: this.loginService.getUser(),

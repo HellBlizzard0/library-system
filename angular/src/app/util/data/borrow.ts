@@ -3,7 +3,7 @@ import { User } from './user';
 
 export interface Borrow {
   id: number;
-  status?: BorrowStatus;
+  status: BorrowStatus;
   book: Book;
   user: User;
   dateOfCreation: Date | string;
@@ -11,6 +11,6 @@ export interface Borrow {
 }
 
 export interface BorrowStatus {
-  id: number;
-  status: string;
+  id?: number;
+  status?: string;
 }

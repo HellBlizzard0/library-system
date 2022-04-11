@@ -27,6 +27,6 @@ export class CustomersComponent implements OnInit {
       console.log(data);
     });
     this.userService.getAllCustomers();
-    this.customers = this.userService.users;
+    // this.customers = this.userService.users;
   }
 }

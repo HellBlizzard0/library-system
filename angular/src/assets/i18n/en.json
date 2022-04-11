@@ -42,17 +42,26 @@
   "cancel": "Cancel",
   "confirm": "Submit",
   "delete": "Delete",
+  "options": "Options",
+
   "successful": "Successful",
   "unavailable": "Unavailable",
   "success.bookDeleted": "Book Deleted",
   "success.bookAdded": "Book Added",
   "success.bookRequested": "Book Requested",
   "success.bookUnavailable": "The Book is Currently Unavailable for Borrow",
-  "success.": "",
 
   "borrow.customer": "Customer Name",
   "borrow.doc": "Request Date",
   "borrow.status": "Status",
 
-  "id": "ID"
+  "id": "ID",
+
+  "borrow.status.requested": "Requested",
+  "borrow.status.borrowed": "Borrowed",
+  "borrow.status.returned": "Returned",
+  "borrow.status.overdue": "Overdue",
+  "borrow.status.extended": "Extended",
+
+  "borrow.return": "Return"
 }

@@ -64,4 +64,25 @@ export class BorrowComponent implements OnInit {
     this.borrowService.rejectRequest(borrow);
     this.fetchData();
   }
+
+  displayReturn(borrow: Borrow): boolean {
+    // console.log(borrow.status);
+
+    if (
+      borrow.status.id == 1 ||
+      borrow.status.id == 3 ||
+      borrow.status.id == 4
+    ) {
+      return true;
+    } else return false;
+  }
+
+  isCustomer() {
+    return this.loginService.isCustomer;
+  }
+
+  returnRequest(borrow: Borrow) {
+    borrow.status = { id: 2, status: 'returned' };
+    this.borrowService.updateBorrow(borrow);
+  }
 }

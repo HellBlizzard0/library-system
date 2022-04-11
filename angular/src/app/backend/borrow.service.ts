@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { Book } from '../util/data/book';
-import { Borrow } from '../util/data/borrow';
+import { Borrow, BorrowStatus } from '../util/data/borrow';
 
 const LINKBASE = 'http://localhost:8080/api/Borrow/';
 
@@ -129,5 +129,15 @@ export class BorrowService {
         console.log(err);
       }
     );
+  }
+
+  updateBorrow(borrow: Borrow) {
+    this.http
+      .post(LINKBASE + 'updateBorrow', JSON.stringify(borrow), {
+        headers: this.headers,
+      })
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
 }

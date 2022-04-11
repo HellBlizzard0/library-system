@@ -5,7 +5,7 @@
       <th>{{ "borrow.customer" | translate }}</th>
       <th>{{ "borrow.doc" | translate }}</th>
       <th>{{ "borrow.status" | translate }}</th>
-      <th></th>
+      <th>{{ "options" | translate }}</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-borrow>
@@ -15,7 +15,7 @@
       <td>{{ borrow.dateOfCreation }}</td>
       <td>
         <span [class]="'product-badge status-' + status[1]">
-          {{ borrow.status.status }}
+          {{ "borrow.status." + borrow.status.status | translate }}
         </span>
       </td>
       <td>
@@ -51,6 +51,17 @@
             class="p-button-outlined p-button-rounded p-button-rounded p-button-danger"
             [label]="'cancel' | translate"
             (click)="cancelRequest(borrow)"
+          ></button>
+        </div>
+        <div *ngIf="displayReturn(borrow) && !isCustomer()" class="row">
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-check"
+            class="p-button-outlined p-button-rounded p-button-rounded p-button-success"
+            [label]="'borrow.return' | translate"
+            (click)="returnRequest(borrow)"
           ></button>
         </div>
       </td>
