@@ -124,10 +124,10 @@ export class BooksComponent implements OnInit {
 
   bookUnavailable() {
     this.messageService.add({
-      severity: 'warning',
+      severity: 'warn',
       summary: this.i18nServiceService.get('unavailable'),
       detail: this.i18nServiceService.get('success.bookUnavailable'),
-      life: 2000,
+      life: 1500,
     });
   }
 
@@ -137,7 +137,7 @@ export class BooksComponent implements OnInit {
       severity: 'success',
       summary: this.i18nServiceService.get('successful'),
       detail: this.i18nServiceService.get('success.bookAdded'),
-      life: 2000,
+      life: 1500,
     });
     this.isAddNewMode = false;
   }
@@ -156,7 +156,7 @@ export class BooksComponent implements OnInit {
       severity: 'success',
       summary: this.i18nServiceService.get('successful'),
       detail: this.i18nServiceService.get('success.bookRequested'),
-      life: 2000,
+      life: 1500,
     });
   }
 }

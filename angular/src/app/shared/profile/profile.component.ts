@@ -62,4 +62,8 @@ export class ProfileComponent implements OnInit {
     // console.log(this.loginService.user);
     // console.log(this.user);
   }
+
+  isCustomer(): boolean {
+    return this.loginService.isCustomer;
+  }
 }

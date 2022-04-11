@@ -25,7 +25,7 @@
                 class="rounded-circle img-fluid"
                 style="width: 150px"
               />
-              <h5 class="my-3">{{ user.name == "" ? user.name : "Blank" }}</h5>
+              <h5 class="my-3">{{ user.name != "" ? user.name : "Blank" }}</h5>
               <!-- <p class="text-muted mb-1">Full Stack Developer</p>
               <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
               <div class="d-flex justify-content-center mb-2">
@@ -92,8 +92,8 @@
                   <!-- <p class="text-muted mb-0">{{ user.username }}</p> -->
                 </div>
               </div>
-              <hr />
-              <div class="row" *ngIf="user.phoneNumber?.length != 0">
+              <hr *ngIf="isCustomer()" />
+              <div class="row" *ngIf="isCustomer()">
                 <div class="col-sm-3">
                   <p class="mb-0">{{ "profile.phoneNumber" | translate }}</p>
                 </div>
