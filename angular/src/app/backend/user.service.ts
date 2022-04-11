@@ -42,11 +42,12 @@ export class UserService {
   }
 
   getAllCustomers() {
+    this.users = [];
     this.http.get(LINKBASE_C + 'getAllCustomers').subscribe((data: any) => {
       data.forEach((element: User) => {
         this.users.push(element);
       });
-      console.log(data);
+      // console.log(data);
 
       this.userSubject.next(this.users);
     });
