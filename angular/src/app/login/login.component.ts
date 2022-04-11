@@ -39,4 +39,8 @@ export class LoginComponent implements OnInit {
     this.password = '';
     this.isLoginMode = false;
   }
+
+  signup() {
+    this.loginService.signup(this.newUser);
+  }
 }

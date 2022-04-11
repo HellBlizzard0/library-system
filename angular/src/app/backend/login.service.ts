@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../util/data/user';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -25,44 +25,73 @@ export class LoginService {
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
 
     // ====================
-    this.http.post(this.link, formData).subscribe(
-      (data: any) => {
-        switch (data['role']) {
-          case null:
-            console.log('Error: Wrong Username/Password');
-            break;
-          case 'CUSTOMER':
-            console.log('CUSTOMER');
+    this.http
+      .post(
+        this.link,
+        JSON.stringify({
+          username: username,
+          password: password,
+        }),
+        httpOptions
+      )
+      .subscribe(
+        (data: any) => {
+          switch (data['role']) {
+            case null:
+              console.log('Error: Wrong Username/Password');
+              break;
+            case 'CUSTOMER':
+              console.log('CUSTOMER');
 
-            this.user = this.toUser(data, 'ROLE_CUSTOMER');
-            this.userSubject.next(this.user);
+              this.user = this.toUser(data, 'ROLE_CUSTOMER');
+              this.userSubject.next(this.user);
 
-            this.isUserLoggedIn = true;
-            this.isCustomer = true;
-            this.router.navigate(['/customer']);
-            break;
-          case 'LIBRARIAN':
-            console.log('LIBRARIAN');
+              this.isUserLoggedIn = true;
+              this.isCustomer = true;
+              this.router.navigate(['/customer']);
+              break;
+            case 'LIBRARIAN':
+              console.log('LIBRARIAN');
 
-            this.user = this.toUser(data, 'ROLE_LIBRARIAN');
-            this.userSubject.next(this.user);
+              this.user = this.toUser(data, 'ROLE_LIBRARIAN');
+              this.userSubject.next(this.user);
 
-            this.isCustomer = false;
-            this.isUserLoggedIn = true;
-            this.router.navigateByUrl('/librarian');
-            break;
+              this.isCustomer = false;
+              this.isUserLoggedIn = true;
+              this.router.navigateByUrl('/librarian');
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      );
   }
 
   getUser(): User {
     return this.user;
+  }
+
+  signup(user: User) {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+
+    this.http
+      .post(
+        'http://localhost:8080/api/User/signup',
+        JSON.stringify(user),
+        httpOptions
+      )
+      .subscribe((data) => {
+        if ((data as boolean) == true)
+          this.login(user.username as string, user.password as string);
+      });
   }
 
   toUser(data: any, role: string): User {

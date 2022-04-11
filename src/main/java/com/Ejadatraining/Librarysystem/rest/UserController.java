@@ -1,6 +1,7 @@
 package com.Ejadatraining.Librarysystem.rest;
 
 import com.Ejadatraining.Librarysystem.entity.Authority;
+import com.Ejadatraining.Librarysystem.entity.Customer;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,14 +55,14 @@ public class UserController {
 
     @PostMapping("/createUser")
     @ResponseBody
-    public void createUser(@RequestParam(name = "user") Users user) {
+    public void createUser(@RequestBody Users user) {
         System.err.println(user);
         this.userService.createUser(user);
     }
 
     @PostMapping("/login")
     @ResponseBody
-    public HashMap<String, Object> login(@RequestParam HashMap<String, String> parm) {
+    public HashMap<String, Object> login(@RequestBody HashMap<String, String> parm) {
         // Users users = null;
         // System.out.println("com.Ejadatraining.Librarysystem.rest.UserController.login():
         // " + parm);
@@ -96,5 +97,18 @@ public class UserController {
     @ResponseBody
     public void deleteUser(@RequestParam(name = "id") int id) {
         this.userService.deleteUser(id);
+    }
+
+    @PostMapping("/signup")
+    @ResponseBody
+    public boolean signup(@RequestBody HashMap<String, String> p) {
+        try {
+            Customer c = new Customer(0, p.get("name"), p.get("phoneNumber"), true, p.get("password"), p.get("username"));
+            c.setRole("ROLE_CUSTOMER");
+            this.customerService.createCustomer(c);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
