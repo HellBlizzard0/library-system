@@ -1,14 +1,14 @@
-<div class="wrapper fadeInDown">
+<div class="wrapper fadeInDown" [dir]="dir">
   <div id="formContent">
     <!-- Tabs Titles -->
     <h2 [class]="isLoginMode ? 'active' : ''" (click)="switchToLogIn()">
-      Sign In
+      {{ "signin" | translate }}
     </h2>
     <h2
       [class]="'inactive underlineHover ' + (!isLoginMode ? 'active' : '')"
       (click)="switchToSignUp()"
     >
-      Sign Up
+      {{ "signup" | translate }}
     </h2>
 
     <!-- Login Form -->
@@ -29,7 +29,7 @@
         [(ngModel)]="password"
         [placeholder]="'login.password' | translate"
       />
-      <input type="submit" (click)="onSubmit()" value="Log In" />
+      <input type="submit" (click)="onSubmit()" [value]="'login' | translate" />
     </form>
     <form *ngIf="!isLoginMode">
       <input
@@ -65,12 +65,28 @@
         [(ngModel)]="newUser.phoneNumber"
       />
 
-      <input type="submit" class="" (click)="signup()" value="Log In" />
+      <input
+        type="submit"
+        class=""
+        (click)="signup()"
+        [value]="'signup' | translate"
+      />
     </form>
 
     <!-- Remind Passowrd -->
-    <div id="formFooter" *ngIf="isLoginMode">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+    <div id="formFooter">
+      <a
+        class="underlineHover"
+        (click)="changeLang('ar')"
+        *ngIf="isEnglish()"
+        >{{ "button_ar" | translate }}</a
+      >
+      <a
+        class="underlineHover"
+        (click)="changeLang('en')"
+        *ngIf="!isEnglish()"
+        >{{ "button_en" | translate }}</a
+      >
     </div>
   </div>
 </div>

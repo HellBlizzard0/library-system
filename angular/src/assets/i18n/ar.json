@@ -69,5 +69,9 @@
   "login.name": "الاسم",
   "login.username": "اسم المستخدم",
   "login.password": "كلمة المرور",
-  "login.phoneNumber": "رقم الجوال"
+  "login.phoneNumber": "رقم الجوال",
+
+  "signin": "تسجيل الدخول",
+  "signup": "تسجيل جديد",
+  "login": "الدخول"
 }

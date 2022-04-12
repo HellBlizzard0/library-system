@@ -68,5 +68,9 @@
   "login.name": "Name",
   "login.username": "Username",
   "login.password": "Password",
-  "login.phoneNumber": "Phone Number"
+  "login.phoneNumber": "Phone Number",
+
+  "signin": "Sign In",
+  "signup": "Sign Up",
+  "login": "Log In"
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/util/services/login.service';
 import { User } from 'src/app/util/data/user';
+import { I18nServiceService } from '../util/services/i18n-service.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Direction } from '@angular/cdk/bidi';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +16,18 @@ export class LoginComponent implements OnInit {
   newUser: User = {};
   isLoggedIn: boolean = true;
   isLoginMode: boolean = true;
-  constructor(private loginService: LoginService) {}
-  ngOnInit(): void {}
+  dir!: Direction;
+  constructor(
+    private loginService: LoginService,
+    private translate: TranslateService,
+    private i18n: I18nServiceService
+  ) {}
+  ngOnInit(): void {
+    this.i18n.dir.subscribe((newDir: Direction) => {
+      this.dir = newDir;
+    });
+    this.i18n.changeLocale('en');
+  }
   onSubmit() {
     // Reserved for Spring Boot Integration
     this.loginService.login(this.username, this.password);
@@ -42,5 +55,13 @@ export class LoginComponent implements OnInit {
 
   signup() {
     this.loginService.signup(this.newUser);
+  }
+
+  isEnglish(): boolean {
+    return this.translate.currentLang == 'en';
+  }
+
+  changeLang(lang: string) {
+    this.i18n.changeLocale(lang);
   }
 }
