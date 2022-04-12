@@ -1,7 +1,7 @@
 import { Direction } from '@angular/cdk/bidi';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/backend/user.service';
-import { I18nServiceService } from 'src/app/i18n-service/i18n-service.service';
+import { UserService } from 'src/app/util/services/user.service';
+import { I18nServiceService } from 'src/app/util/services/i18n-service.service';
 import { User } from 'src/app/util/data/user';
 
 @Component({

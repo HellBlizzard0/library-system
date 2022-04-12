@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BooksComponent } from './shared/books/books.component';
-import { CustomerMainComponent } from './customer-main/customer-main.component';
+import { BooksComponent } from './main/books/books.component';
+import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './shared/profile/profile.component';
-import { BorrowComponent } from './shared/borrow/borrow.component';
-import { LibrarianMainComponent } from './librarian-main/librarian-main.component';
-import { CustomersComponent } from './librarian-main/customers/customers.component';
+import { ProfileComponent } from './main/profile/profile.component';
+import { BorrowComponent } from './main/borrow/borrow.component';
+import { CustomersComponent } from './main/customers/customers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'customer',
-    component: CustomerMainComponent,
+    component: MainComponent,
     children: [
       { path: '', redirectTo: '/customer/books', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },
@@ -23,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'librarian',
-    component: CustomerMainComponent,
+    component: MainComponent,
     children: [
       { path: '', redirectTo: '/librarian/books', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },

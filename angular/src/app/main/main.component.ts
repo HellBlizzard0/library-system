@@ -2,16 +2,16 @@ import { Direction } from '@angular/cdk/bidi';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { left } from '@popperjs/core';
-import { LoginService } from '../backend/login.service';
-import { I18nServiceService } from '../i18n-service/i18n-service.service';
+import { LoginService } from '../util/services/login.service';
+import { I18nServiceService } from '../util/services/i18n-service.service';
 import { User } from '../util/data/user';
 
 @Component({
-  selector: 'app-customer-main',
-  templateUrl: './customer-main.component.html',
-  styleUrls: ['./customer-main.component.css'],
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css'],
 })
-export class CustomerMainComponent implements OnInit {
+export class MainComponent implements OnInit {
   // userData: any;
   customer!: User;
   dir: Direction = 'ltr';

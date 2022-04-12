@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
-import { Book } from '../util/data/book';
-import { Borrow, BorrowStatus } from '../util/data/borrow';
+import { Book } from '../data/book';
+import { Borrow, BorrowStatus } from '../data/borrow';
 
 const LINKBASE = 'http://localhost:8080/api/Borrow/';
 

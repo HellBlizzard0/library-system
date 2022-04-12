@@ -1,8 +1,8 @@
 import { Direction } from '@angular/cdk/bidi';
 import { Component, OnInit } from '@angular/core';
-import { BorrowService } from 'src/app/backend/borrow.service';
-import { LoginService } from 'src/app/backend/login.service';
-import { I18nServiceService } from 'src/app/i18n-service/i18n-service.service';
+import { BorrowService } from 'src/app/util/services/borrow.service';
+import { LoginService } from 'src/app/util/services/login.service';
+import { I18nServiceService } from 'src/app/util/services/i18n-service.service';
 import { Borrow } from 'src/app/util/data/borrow';
 
 @Component({

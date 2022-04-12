@@ -5,11 +5,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { UserService } from 'src/app/backend/user.service';
-import { LoginService } from 'src/app/backend/login.service';
+import { UserService } from 'src/app/util/services/user.service';
+import { LoginService } from 'src/app/util/services/login.service';
 import { User } from 'src/app/util/data/user';
 import { Direction } from '@angular/cdk/bidi';
-import { I18nServiceService } from 'src/app/i18n-service/i18n-service.service';
+import { I18nServiceService } from 'src/app/util/services/i18n-service.service';
 
 @Component({
   selector: 'app-profile',

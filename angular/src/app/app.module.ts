@@ -9,51 +9,39 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { LoginComponent } from './login/login.component';
-import { LoginService } from './backend/login.service';
+import { LoginService } from './util/services/login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CustomerMainComponent } from './customer-main/customer-main.component';
+import { MainComponent } from './main/main.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'primeng/sidebar';
 import { TabViewModule } from 'primeng/tabview';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BooksComponent } from './shared/books/books.component';
-import { BookService } from './backend/book.service';
+import { BooksComponent } from './main/books/books.component';
+import { BookService } from './util/services/book.service';
 import { TableModule } from 'primeng/table';
 import { PrimeNGConfig } from 'primeng/api';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
-import { Dialog, DialogModule } from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
-import { PasswordPipe } from './util/password.pipe';
-import { LibrarianMainComponent } from './librarian-main/librarian-main.component';
-import { BorrowComponent } from './shared/borrow/borrow.component';
-import { ProfileComponent } from './shared/profile/profile.component';
-import { CustomersComponent } from './librarian-main/customers/customers.component';
 
 import { ToastModule } from 'primeng/toast';
-// import { CalendarModule } from 'primeng/calendar';
-// import { SliderModule } from 'primeng/slider';
-// import { MultiSelectModule } from 'primeng/multiselect';
-// import { ContextMenuModule } from 'primeng/contextmenu';
-// import { ProgressBarModule } from 'primeng/progressbar';
-// import { FileUploadModule } from 'primeng/fileupload';
 import { ToolbarModule } from 'primeng/toolbar';
-// import { RadioButtonModule } from 'primeng/radiobutton';
-// import { InputNumberModule } from 'primeng/inputnumber';
-// import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-// import { InputTextareaModule } from 'primeng/inputtextarea';
-import { UserService } from './backend/user.service';
+import { UserService } from './util/services/user.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { SliderModule } from 'primeng/slider';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { I18nServiceService } from './i18n-service/i18n-service.service';
+import { I18nServiceService } from './util/services/i18n-service.service';
+import { ProfileComponent } from './main/profile/profile.component';
+import { BorrowComponent } from './main/borrow/borrow.component';
+import { CustomersComponent } from './main/customers/customers.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -62,12 +50,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     LoginComponent,
-    CustomerMainComponent,
+    MainComponent,
     BooksComponent,
     ProfileComponent,
-    PasswordPipe,
     BorrowComponent,
-    LibrarianMainComponent,
     CustomersComponent,
   ],
   imports: [

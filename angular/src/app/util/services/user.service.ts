@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { User } from '../util/data/user';
+import { User } from '../data/user';
 
 const LINKBASE_C = 'http://localhost:8080/api/Customer/';
 const LINKBASE_L = 'http://localhost:8080/api/Librarian/';

@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Book } from '../util/data/book';
+import { Book } from '../data/book';
 import { BorrowService } from './borrow.service';
 
 const LINKBASE: string = 'http://localhost:8080/api/Book/';

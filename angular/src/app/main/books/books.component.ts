@@ -9,12 +9,12 @@ import {
   SelectItem,
 } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
-import { BorrowService } from 'src/app/backend/borrow.service';
-import { LoginService } from 'src/app/backend/login.service';
-import { I18nServiceService } from 'src/app/i18n-service/i18n-service.service';
+import { BorrowService } from 'src/app/util/services/borrow.service';
+import { LoginService } from 'src/app/util/services/login.service';
+import { I18nServiceService } from 'src/app/util/services/i18n-service.service';
 import { Book } from 'src/app/util/data/book';
 import { Borrow } from 'src/app/util/data/borrow';
-import { BookService } from '../../backend/book.service';
+import { BookService } from '../../util/services/book.service';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
