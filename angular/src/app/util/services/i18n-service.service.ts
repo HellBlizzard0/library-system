@@ -36,4 +36,8 @@ export class I18nServiceService {
     });
     return res;
   }
+
+  isEnglish() {
+    return this.translate.currentLang == 'en';
+  }
 }

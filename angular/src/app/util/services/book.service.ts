@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Book } from '../data/book';
 import { BorrowService } from './borrow.service';
+import { I18nServiceService } from './i18n-service.service';
+import { saveAs } from 'file-saver';
 
 const LINKBASE: string = 'http://localhost:8080/api/Book/';
 @Injectable({
@@ -26,7 +28,11 @@ export class BookService {
     },
   ];
 
-  constructor(private http: HttpClient, private borrowService: BorrowService) {}
+  constructor(
+    private http: HttpClient,
+    private borrowService: BorrowService,
+    private i18nServiceService: I18nServiceService
+  ) {}
 
   fetchBooks() {
     this.http.get(LINKBASE + 'getAllBooksWithAvailablity').subscribe((data) => {
@@ -110,5 +116,49 @@ export class BookService {
     formData.append('serialNumber', (book.serialNumber as string) + '');
 
     return formData;
+  }
+
+  printReport(books: Book[]) {
+    // const httpOptions = ;
+    console.log(
+      JSON.stringify({
+        bookList: books,
+      })
+    );
+
+    this.http
+      .post(
+        'http://localhost:8080/api/Report/print/' +
+          (this.i18nServiceService.isEnglish() ? 'en' : 'ar'),
+        JSON.stringify({
+          bookList: books,
+        }),
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+          }),
+          responseType: 'blob',
+        }
+      )
+      .subscribe(
+        (blob: Blob) => {
+          // saveAs(blob, 'report.pdf');
+          let url = window.URL.createObjectURL(blob);
+          let a = document.createElement('a');
+          document.body.appendChild(a);
+          a.setAttribute('style', 'display: none');
+          a.href = url;
+          a.download =
+            'Books Report (' +
+            (this.i18nServiceService.isEnglish() ? 'en' : 'ar') +
+            ').pdf';
+          a.click();
+          window.URL.revokeObjectURL(url);
+          a.remove();
+        },
+        (e) => {
+          console.log(e);
+        }
+      );
   }
 }

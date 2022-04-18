@@ -22,13 +22,14 @@
         chooseLabel="Import"
         class="p-mr-2 p-d-inline-block"
       ></p-fileUpload>
-      <!-- <button
+      <button
         pButton
         pRipple
-        label="Export"
+        [label]="'report.print' | translate"
         icon="pi pi-upload"
         class="p-button-help"
-      ></button> -->
+        (click)="printReport()"
+      ></button>
     </ng-template>
   </p-toolbar>
   <p-table
@@ -37,25 +38,29 @@
     [paginator]="true"
     [rows]="10"
     [dir]="dir"
+    [(selection)]="selectedBooks"
   >
     <ng-template pTemplate="header">
-      <tr>
-        <th pSortableColumn="title" width="30%">
+      <tr [dir]="dir">
+        <th width="5%" *ngIf="!isCustomer()">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="title" width="30%" [dir]="dir">
           {{ "book.title" | translate }}<p-sortIcon field="title"></p-sortIcon>
         </th>
-        <th pSortableColumn="authorName" width="18%">
+        <th pSortableColumn="authorName" width="18%" [dir]="dir">
           {{ "book.author" | translate
           }}<p-sortIcon field="authorName"></p-sortIcon>
         </th>
-        <th pSortableColumn="dateOfCreation" width="20%">
+        <th pSortableColumn="dateOfCreation" width="15%" [dir]="dir">
           {{ "book.doc" | translate
           }}<p-sortIcon field="dateOfCreation"></p-sortIcon>
         </th>
-        <th pSortableColumn="pageCount" width="15%">
+        <th pSortableColumn="pageCount" width="15%" [dir]="dir">
           {{ "book.pageCount" | translate
           }}<p-sortIcon field="pageCount"></p-sortIcon>
         </th>
-        <th pSortableColumn="rating" width="10%">
+        <th pSortableColumn="rating" width="10%" [dir]="dir">
           {{ "book.rating" | translate
           }}<p-sortIcon field="rating"></p-sortIcon>
         </th>
@@ -64,6 +69,9 @@
     </ng-template>
     <ng-template pTemplate="body" let-book let-expanded="expanded">
       <tr>
+        <td *ngIf="!isCustomer()">
+          <p-tableCheckbox [value]="book"></p-tableCheckbox>
+        </td>
         <td [dir]="dir">{{ book.title }}</td>
         <td [dir]="dir">{{ book.authorName }}</td>
         <td [dir]="dir">{{ book.dateOfCreation }}</td>
@@ -235,8 +243,7 @@
         (click)="showAddNewDialog()"
       ></button>
     </ng-template>
-
-    <!-- <ng-template pTemplate="right">
+    <ng-template pTemplate="right">
       <p-fileUpload
         mode="basic"
         accept="image/*"
@@ -245,14 +252,15 @@
         chooseLabel="Import"
         class="p-mr-2 p-d-inline-block"
       ></p-fileUpload>
-       <button
+      <button
         pButton
         pRipple
-        label="Export"
+        [label]="'report.print' | translate"
         icon="pi pi-upload"
         class="p-button-help"
+        (click)="printReport()"
       ></button>
-    </ng-template> -->
+    </ng-template>
   </p-toolbar>
 </div>
 <p-dialog

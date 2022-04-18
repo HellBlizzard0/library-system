@@ -11,8 +11,8 @@ import { Direction } from '@angular/cdk/bidi';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  username: string = 'lib2';
-  password: string = '123';
+  username: string = '';
+  password: string = '';
   newUser: User = {};
   isLoggedIn: boolean = true;
   isLoginMode: boolean = true;

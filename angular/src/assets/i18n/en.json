@@ -72,5 +72,7 @@
 
   "signin": "Sign In",
   "signup": "Sign Up",
-  "login": "Log In"
+  "login": "Log In",
+
+  "report.print": "Print"
 }

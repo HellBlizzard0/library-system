@@ -160,4 +160,10 @@ export class BooksComponent implements OnInit {
       life: 1500,
     });
   }
+
+  printReport() {
+    console.log();
+
+    this.bookService.printReport(this.selectedBooks);
+  }
 }
