@@ -120,11 +120,11 @@ export class BookService {
 
   printReport(books: Book[]) {
     // const httpOptions = ;
-    console.log(
-      JSON.stringify({
-        bookList: books,
-      })
-    );
+    // console.log(
+    //   JSON.stringify({
+    //     bookList: books,
+    //   })
+    // );
 
     this.http
       .post(

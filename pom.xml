@@ -126,6 +126,22 @@
             <artifactId>jasperreports</artifactId>
             <version>6.16.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports-fonts -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>6.19.1</version>
+        </dependency>
+
+        <!--Not Sure if this Works-->
+        <dependency>
+            <groupId>local.jasperFont</groupId>
+            <artifactId>local.jasperFont</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/resources/Arial.jar</systemPath>
+        </dependency>
+
     </dependencies>
     <repositories>
         <!-- JasperSoft, they modified a standard library for their own special needs -->

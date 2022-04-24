@@ -15,6 +15,7 @@ export class LoginService {
   isCustomer = false;
   user!: User;
   userSubject = new Subject<User>();
+  newUser!: User;
 
   login(username: string, password: string) {
     this.userSubject.next({});

@@ -49,17 +49,19 @@ public class ReportService< T> {
                                     ResourceUtils.getFile(isEnglish ? "classpath:BooksReportEN.jrxml" : "classpath:BooksReportAR.jrxml")
                                             .getAbsolutePath()) // path of the jasper report
                             ,
-                             bookParams // dynamic parameters
+                             bookParams // dynamic parameters 
                             ,
                              new JREmptyDataSource()
                     );
+
 
             HttpHeaders headers = new HttpHeaders();
             //set the PDF format
             headers.setContentType(MediaType.APPLICATION_PDF);
             headers.setContentDispositionFormData("filename", "Books-details.pdf");
             //create the report in PDF format
-            return new ResponseEntity<byte[]>(JasperExportManager.exportReportToPdf(bookReport), headers, HttpStatus.OK);
+            byte[] result = JasperExportManager.exportReportToPdf(bookReport);
+            return new ResponseEntity<byte[]>(result, headers, HttpStatus.OK);
 
         } catch (Exception e) {
             e.printStackTrace();
