@@ -25,7 +25,7 @@
 					<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[النظام المكتبي	]]></text>
+				<text><![CDATA[النظام المكتبي]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="455" y="34" width="100" height="16" uuid="08059c2f-7a54-438d-8055-32bd738a37d6"/>
@@ -52,9 +52,7 @@
 								<textElement textAlignment="Center">
 									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
-								<text><![CDATA[
-									المعرف
-								]]></text>
+								<text><![CDATA[المعرف]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
@@ -74,9 +72,7 @@
 								<textElement textAlignment="Center">
 									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
-								<text><![CDATA[
-									العنوان
-								]]></text>
+								<text><![CDATA[العنوان]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
@@ -96,9 +92,7 @@
 								<textElement textAlignment="Center">
 									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
-								<text><![CDATA[
-									الكاتب
-								]]></text>
+								<text><![CDATA[الكاتب]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
@@ -118,9 +112,7 @@
 								<textElement textAlignment="Center">
 									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
-								<text><![CDATA[
-									التقييم
-								]]></text>
+								<text><![CDATA[التقييم]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
@@ -140,9 +132,7 @@
 								<textElement textAlignment="Center">
 									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
-								<text><![CDATA[
-									الرقم التسلسلي
-								]]></text>
+								<text><![CDATA[الرقم التسلسلي]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
@@ -162,9 +152,7 @@
 								<textElement textAlignment="Center">
 									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
-								<text><![CDATA[
-									تاريخ الانشاء
-								]]></text>
+								<text><![CDATA[تاريخ الانشاء]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
@@ -184,9 +172,7 @@
 								<textElement textAlignment="Center">
 									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
-								<text><![CDATA[
-									عدد الصفحات
-								]]></text>
+								<text><![CDATA[عدد الصفحات]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
