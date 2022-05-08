@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0-646c68931cebf1a58bc65c4359d1f0ca223c5e94  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ebd58ae-daee-490f-9fc0-25fb44606e3f">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ebd58ae-daee-490f-9fc0-25fb44606e3f">
 	<property name="ireport.zoom" value="1.4641000000000013"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -22,13 +22,13 @@
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="34" uuid="9dc4bfb8-a726-4723-8746-149055bbf318"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" pdfFontName="&lt;INHERITED&gt;" pdfEncoding="&lt;INHERITED&gt;"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[النظام المكتبي]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="34" width="100" height="16" uuid="08059c2f-7a54-438d-8055-32bd738a37d6"/>
+				<reportElement x="455" y="34" width="100" height="18" uuid="08059c2f-7a54-438d-8055-32bd738a37d6"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -40,7 +40,7 @@
 	<detail>
 		<band height="140" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table" style="table" x="0" y="0" width="555" height="140" uuid="bb7c1672-d508-45fa-95ee-5f01d3d73d9a"/>
+				<reportElement key="table" x="0" y="0" width="555" height="140" uuid="bb7c1672-d508-45fa-95ee-5f01d3d73d9a"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Table Dataset 1" uuid="c490de9e-d795-4d9d-a24b-8b698d69b528">
 						<dataSourceExpression><![CDATA[$P{booksData}]]></dataSourceExpression>
@@ -194,7 +194,7 @@
 			<textField>
 				<reportElement x="0" y="0" width="555" height="20" uuid="43fafc73-7e2c-4417-9304-287bfea3859e"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" pdfFontName="&lt;INHERITED&gt;" pdfEncoding="&lt;INHERITED&gt;"/>
 				</textElement>
 				<textFieldExpression><![CDATA["رقم الصفحة: "+$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
