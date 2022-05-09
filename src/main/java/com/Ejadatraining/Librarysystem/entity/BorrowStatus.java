@@ -24,6 +24,8 @@ public class BorrowStatus implements Serializable {
         switch (status.id) {
             case RETURNED:
                 return false;
+            case REQUESTED:
+                return false;
             default:
                 return true;
         }

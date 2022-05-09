@@ -12,6 +12,9 @@
   "book.rating": "Rating",
   "book.requestBorrow": "Request",
   "book.new": "New",
+  "book.status": "Status",
+  "book.status.available": "Available",
+  "book.status.unavailable": "Unavaiable",
 
   "book.addNewHeader": "Add New Book",
   "book.inputBookTitleLabel": "Book Title: ",

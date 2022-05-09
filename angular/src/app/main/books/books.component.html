@@ -52,17 +52,20 @@
           {{ "book.author" | translate
           }}<p-sortIcon field="authorName"></p-sortIcon>
         </th>
-        <th pSortableColumn="dateOfCreation" width="15%" [dir]="dir">
+        <th pSortableColumn="dateOfCreation" width="12%" [dir]="dir">
           {{ "book.doc" | translate
           }}<p-sortIcon field="dateOfCreation"></p-sortIcon>
         </th>
-        <th pSortableColumn="pageCount" width="15%" [dir]="dir">
+        <th pSortableColumn="pageCount" width="8%" [dir]="dir">
           {{ "book.pageCount" | translate
           }}<p-sortIcon field="pageCount"></p-sortIcon>
         </th>
         <th pSortableColumn="rating" width="10%" [dir]="dir">
           {{ "book.rating" | translate
           }}<p-sortIcon field="rating"></p-sortIcon>
+        </th>
+        <th width="10%" [dir]="dir">
+          {{ "book.status" | translate }}
         </th>
         <th></th>
       </tr>
@@ -83,6 +86,20 @@
             [readonly]="true"
             [(ngModel)]="book.rating"
           ></p-rating>
+        </td>
+        <td [dir]="dir">
+          <span
+            [class]="
+              'badge rounded-pill ' +
+              (book.available ? 'bg-primary' : 'bg-secondary')
+            "
+            >{{
+              (book.available
+                ? "book.status.available"
+                : "book.status.unavailable"
+              ) | translate
+            }}</span
+          >
         </td>
         <td [dir]="dir">
           <button
