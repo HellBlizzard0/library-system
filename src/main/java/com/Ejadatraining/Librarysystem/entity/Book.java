@@ -3,6 +3,7 @@ package com.Ejadatraining.Librarysystem.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -63,12 +64,12 @@ public class Book implements Serializable {
         return title;
     }
 
-    public LocalDate getDateOfCreation() {
-        return dateOfCreation;
+    public String getDateOfCreation() {
+        return dateOfCreation.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
-    public LocalDate getLastUpdate() {
-        return lastUpdate;
+    public String getLastUpdate() {
+        return lastUpdate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
     public String getSerialNumber() {
