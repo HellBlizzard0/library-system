@@ -42,7 +42,7 @@
         <div class="col-lg-8">
           <div class="card mb-4">
             <div class="card-body">
-              <div class="row" *ngIf="user.name?.length != 0">
+              <div *ngIf="isCustomer()" class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">{{ "profile.name" | translate }}</p>
                 </div>
@@ -58,7 +58,7 @@
                   <!-- <p class="text-muted mb-0">{{ user.name }}</p> -->
                 </div>
               </div>
-              <hr />
+              <hr *ngIf="isCustomer()" />
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">{{ "profile.username" | translate }}</p>
