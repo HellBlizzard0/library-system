@@ -1,37 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0-646c68931cebf1a58bc65c4359d1f0ca223c5e94  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ebd58ae-daee-490f-9fc0-25fb44606e3f">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BooksReportAR" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fdc164f7-55e4-4e59-b4c5-349a9b6c0af8">
 	<property name="ireport.zoom" value="1.4641000000000013"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<subDataset name="Table Dataset 1" uuid="ed814a03-b685-484a-9cc6-a0241b039215">
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Heading 1" fontSize="16" isBold="true"/>
+	<subDataset name="Table Dataset 1" uuid="d9e028be-43a6-455a-8b31-1a0b42108636">
 		<field name="id" class="java.lang.Integer"/>
 		<field name="title" class="java.lang.String"/>
 		<field name="authorName" class="java.lang.String"/>
 		<field name="rating" class="java.lang.String"/>
 		<field name="serialNumber" class="java.lang.String"/>
-		<field name="dateOfCreation" class="java.time.LocalDate"/>
+		<field name="dateOfCreation" class="java.lang.String"/>
 		<field name="pageCount" class="java.lang.Integer"/>
 	</subDataset>
 	<parameter name="booksData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     book.`id` AS book_id,
+     book.`title` AS book_title,
+     book.`date_of_creation` AS book_date_of_creation,
+     book.`last_updated` AS book_last_updated,
+     book.`author_name` AS book_author_name,
+     book.`description` AS book_description,
+     book.`page_count` AS book_page_count,
+     book.`rating` AS book_rating,
+     book.`ISBN` AS book_ISBN,
+     book.`genres` AS book_genres
+FROM
+     `book` book]]>
+	</queryString>
+	<field name="book_id" class="java.lang.Integer"/>
+	<field name="book_title" class="java.lang.String"/>
+	<field name="book_date_of_creation" class="java.lang.String"/>
+	<field name="book_last_updated" class="java.lang.String"/>
+	<field name="book_author_name" class="java.lang.String"/>
+	<field name="book_description" class="java.lang.String"/>
+	<field name="book_page_count" class="java.lang.Integer"/>
+	<field name="book_rating" class="java.lang.Float"/>
+	<field name="book_ISBN" class="java.lang.String"/>
+	<field name="book_genres" class="java.lang.String"/>
+	<variable name="book_date_of_creation_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{book_date_of_creation}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="52" splitType="Stretch">
+		<band height="52">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="34" uuid="9dc4bfb8-a726-4723-8746-149055bbf318"/>
+				<reportElement uuid="4a94a70a-f923-487f-823a-5f6053819b34" style="Heading 1" mode="Opaque" x="0" y="0" width="555" height="32"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="&lt;INHERITED&gt;" pdfEncoding="&lt;INHERITED&gt;"/>
-					<paragraph lineSpacing="Single"/>
+					<font fontName="Arial" size="20" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[النظام المكتبي]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="34" width="100" height="18" uuid="08059c2f-7a54-438d-8055-32bd738a37d6"/>
+				<reportElement uuid="99aa410a-4803-45c2-912c-87a43d1b82fc" style="Heading 1" mode="Opaque" x="403" y="32" width="152" height="20"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-					<paragraph lineSpacing="Single"/>
+					<font fontName="Arial" size="12" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[تقرير الكتب]]></text>
 			</staticText>
@@ -40,147 +86,139 @@
 	<detail>
 		<band height="140" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table" x="0" y="0" width="555" height="140" uuid="bb7c1672-d508-45fa-95ee-5f01d3d73d9a"/>
+				<reportElement uuid="b9bc2f23-026b-4e38-9ff0-14231d94164b" key="table" style="table" isPrintRepeatedValues="false" x="0" y="0" width="555" height="140"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 1" uuid="c490de9e-d795-4d9d-a24b-8b698d69b528">
+					<datasetRun subDataset="Table Dataset 1" uuid="42973532-96c0-4207-9957-0d6628b30e7b">
 						<dataSourceExpression><![CDATA[$P{booksData}]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="64" uuid="f31ead07-53a7-43aa-84bb-a754e04cc587">
+					<jr:column width="64" uuid="e5d84e8c-3087-44e1-aef5-027db42edd61">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="64" height="30" uuid="b2e6549c-9bff-4481-a5d8-e8e37cb0facc"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								<reportElement uuid="b8ed8057-c805-47ef-af94-05646408aeb0" x="0" y="0" width="64" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 								</textElement>
 								<text><![CDATA[المعرف]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="64" height="20" uuid="3fed8d1b-6f57-42a1-b0bc-7f3d640ce316"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-								</textElement>
+								<reportElement uuid="ea438728-6caa-48f8-98bb-7500563d43f9" x="0" y="0" width="64" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="786f1a3b-e42d-4329-8fb8-135967603159">
+					<jr:column width="90" uuid="1b05d7b9-92a2-449f-bfec-502d42d5751f">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="1a785511-8592-4cf0-9607-ef0cee9a68c3"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								<reportElement uuid="12001941-0e9a-4761-a40f-233001c4701a" mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#000000" backcolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
 								</textElement>
 								<text><![CDATA[العنوان]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="a7e2dde7-9eec-4329-b25b-b4136da9997e"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-								</textElement>
+								<reportElement uuid="80e4e947-6877-47c9-87e2-5122a4d92815" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="31600cdd-85b0-4836-81da-6555ac8f7589">
+					<jr:column width="90" uuid="b2b21a17-d7a2-4623-b440-3a4b5865347b">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="d8be6801-8b94-4ca0-a6a7-5d7b16bd7caf"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								<reportElement uuid="c93731c8-842b-4345-aa01-fc6dd664848e" mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#000000" backcolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
 								</textElement>
 								<text><![CDATA[الكاتب]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="78855076-83f9-45a5-8201-eaebaa159eae"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-								</textElement>
+								<reportElement uuid="05558c49-84e2-408a-b86e-e19f94d80235" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{authorName}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="63" uuid="9d562ca2-536a-444c-8318-c600b74ad03f">
+					<jr:column width="63" uuid="2303e3d9-af11-4e09-aa2c-d055980f2636">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="63" height="30" uuid="dd76509f-f332-4790-859d-c8bbfd3a8e3f"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								<reportElement uuid="290ad4ee-d4f0-42b6-9709-487208ab157e" mode="Transparent" x="0" y="0" width="63" height="30" forecolor="#000000" backcolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
 								</textElement>
 								<text><![CDATA[التقييم]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="63" height="20" uuid="85c7de8b-d69a-4656-89ce-b149444539e4"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-								</textElement>
+								<reportElement uuid="46eb2387-eb6c-4cc3-a952-230001195bc6" x="0" y="0" width="63" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{rating}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="fbe5adfc-85bf-4191-91e6-743a7775d219">
+					<jr:column width="90" uuid="e1f7af78-5980-4c9b-a842-110952a20ff4">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="45692d9e-682e-4197-8048-50c7c120bd2e"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								<reportElement uuid="434301df-7d59-46ef-bcff-8fe1785113f9" mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#000000" backcolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
 								</textElement>
 								<text><![CDATA[الرقم التسلسلي]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="11949565-cf07-4c6f-9388-68888b60e4eb"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-								</textElement>
+								<reportElement uuid="c88e70a7-e58a-4bbe-b6cd-7db156690530" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{serialNumber}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="ea529101-f6b0-48ee-beef-ce6d24e28277">
+					<jr:column width="90" uuid="05f6fa91-bea2-4eba-8ada-6e54a544b2b3">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="df86224f-b7d2-4563-a240-9a2ff1eb68ef"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								<reportElement uuid="42b8efa5-24dc-477d-b1ef-e36264ab07a2" mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#000000" backcolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
 								</textElement>
-								<text><![CDATA[تاريخ الانشاء]]></text>
+								<text><![CDATA[التاريخ]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="255f7daf-9f24-44c7-9c3b-1f3c5129a803"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-								</textElement>
+								<reportElement uuid="e0101928-a4db-4f3c-a5e9-e5673c89493a" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{dateOfCreation}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="68" uuid="f7bcd185-40f5-4087-b114-bee62d2d99d2">
+					<jr:column width="67" uuid="d44f0ed7-932c-405c-898d-558f4ed58ce7">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="66" height="30" uuid="9bfef544-aa2c-4ed8-811e-05fb46b7276e"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								<reportElement uuid="d8a052b1-5e31-469a-8bb1-1009e1596d37" mode="Transparent" x="0" y="0" width="67" height="30" forecolor="#000000" backcolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
 								</textElement>
-								<text><![CDATA[عدد الصفحات]]></text>
+								<text><![CDATA[الصفحات]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="66" height="20" uuid="803ce9aa-fc65-4aae-99eb-d54ea651a2e4"/>
-								<textElement textAlignment="Center">
-									<font fontName="Arial" pdfFontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-								</textElement>
+								<reportElement uuid="13cd2922-3ff0-44ec-8b84-ef4ef7491421" x="0" y="0" width="67" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{pageCount}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -189,15 +227,13 @@
 			</componentElement>
 		</band>
 	</detail>
-	<summary>
+	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="555" height="20" uuid="43fafc73-7e2c-4417-9304-287bfea3859e"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="&lt;INHERITED&gt;" pdfEncoding="&lt;INHERITED&gt;"/>
-				</textElement>
-				<textFieldExpression><![CDATA["رقم الصفحة: "+$V{PAGE_NUMBER}]]></textFieldExpression>
+				<reportElement uuid="c19a3a78-0e28-4712-90ca-fe73c3ff7c4c" x="0" y="0" width="555" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Page:" + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
-	</summary>
+	</pageFooter>
 </jasperReport>
