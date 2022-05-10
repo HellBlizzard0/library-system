@@ -36,27 +36,39 @@
     [value]="books"
     dataKey="title"
     [paginator]="true"
-    [rows]="10"
+    [rows]="8"
     [dir]="dir"
     [(selection)]="selectedBooks"
+    styleClass="p-datatable-striped"
+    responsiveLayout="scroll"
   >
     <ng-template pTemplate="header">
       <tr [dir]="dir">
         <th width="5%" *ngIf="!isCustomer()">
           <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
         </th>
-        <th pSortableColumn="title" width="30%" [dir]="dir">
+        <th pSortableColumn="title" width="33%" [dir]="dir">
           {{ "book.title" | translate }}<p-sortIcon field="title"></p-sortIcon>
         </th>
-        <th pSortableColumn="authorName" width="18%" [dir]="dir">
+        <th pSortableColumn="authorName" width="15%" [dir]="dir">
           {{ "book.author" | translate
           }}<p-sortIcon field="authorName"></p-sortIcon>
         </th>
-        <th pSortableColumn="dateOfCreation" width="12%" [dir]="dir">
+        <th
+          pSortableColumn="dateOfCreation"
+          width="12%"
+          [dir]="dir"
+          style="text-align: center"
+        >
           {{ "book.doc" | translate
           }}<p-sortIcon field="dateOfCreation"></p-sortIcon>
         </th>
-        <th pSortableColumn="pageCount" width="8%" [dir]="dir">
+        <th
+          pSortableColumn="pageCount"
+          width="8%"
+          [dir]="dir"
+          style="text-align: center"
+        >
           {{ "book.pageCount" | translate
           }}<p-sortIcon field="pageCount"></p-sortIcon>
         </th>
@@ -64,7 +76,7 @@
           {{ "book.rating" | translate
           }}<p-sortIcon field="rating"></p-sortIcon>
         </th>
-        <th width="10%" [dir]="dir">
+        <th width="10%" [dir]="dir" style="text-align: center">
           {{ "book.status" | translate }}
         </th>
         <th></th>
@@ -77,8 +89,10 @@
         </td>
         <td [dir]="dir">{{ book.title }}</td>
         <td [dir]="dir">{{ book.authorName }}</td>
-        <td [dir]="dir">{{ book.dateOfCreation }}</td>
-        <td [dir]="dir">{{ book.pageCount }}</td>
+        <td [dir]="dir" style="text-align: center">
+          {{ book.dateOfCreation }}
+        </td>
+        <td [dir]="dir" style="text-align: center">{{ book.pageCount }}</td>
         <td [dir]="dir">
           <p-rating
             [dir]="dir"
@@ -87,7 +101,7 @@
             [(ngModel)]="book.rating"
           ></p-rating>
         </td>
-        <td [dir]="dir">
+        <td [dir]="dir" style="text-align: center">
           <span
             [class]="
               'badge rounded-pill ' +

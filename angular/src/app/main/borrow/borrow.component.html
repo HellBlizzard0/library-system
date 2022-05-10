@@ -13,7 +13,7 @@
       <td>{{ borrow.book.title }}</td>
       <td>{{ borrow.user.name }}</td>
       <td>{{ borrow.dateOfCreation }}</td>
-      <td>
+      <td style="text-align: center">
         <span [class]="'product-badge status-' + status[1]">
           {{ "borrow.status." + borrow.status.status | translate }}
         </span>
