@@ -77,5 +77,8 @@ public class BorrowService {
         return true;
     }
 
+    public int getCountByCustomerId(int id) {
+        return this.borrowDAO.findByUserId(id).size();
+    }
 
 }

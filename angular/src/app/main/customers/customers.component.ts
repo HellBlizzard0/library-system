@@ -24,9 +24,8 @@ export class CustomersComponent implements OnInit {
     });
     this.userService.userSubject.subscribe((data) => {
       this.customers = data;
-      console.log(data);
     });
-    this.userService.getAllCustomers();
+    this.userService.getAllCustomersWithBorrowCount();
     // this.customers = this.userService.users;
   }
 }

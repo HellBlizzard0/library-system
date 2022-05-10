@@ -12,6 +12,7 @@
       <th>{{ "profile.name" | translate }}</th>
       <th>{{ "profile.doc" | translate }}</th>
       <th>{{ "profile.updated" | translate }}</th>
+      <th>{{ "profile.NoBorrows" | translate }}</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-customer let-expanded="expanded">
@@ -21,6 +22,7 @@
       <td>{{ customer.name }}</td>
       <td>{{ customer.dateOfCreation }}</td>
       <td>{{ customer.lastUpdate }}</td>
+      <td>{{ customer.borrowCount }}</td>
     </tr>
   </ng-template>
 </p-table>

@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Ejadatraining.Librarysystem.entity.Customer;
+import com.Ejadatraining.Librarysystem.entity.CustomerBorrowCount;
+import com.Ejadatraining.Librarysystem.service.BorrowService;
 import com.Ejadatraining.Librarysystem.service.CustomerService;
+import java.util.ArrayList;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -20,17 +23,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class CustomerController {
 
     private CustomerService customerService;
+    private BorrowService borrowService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
-        super();
+    public CustomerController(CustomerService customerService, BorrowService borrowService) {
         this.customerService = customerService;
+        this.borrowService = borrowService;
     }
 
     @RequestMapping("/getAllCustomers")
     public List<Customer> getAllCustomers() {
         List<Customer> a = this.customerService.findAll();
         return a;
+    }
+
+    @RequestMapping("/getAllCustomersWithBorrowCount")
+    public List<CustomerBorrowCount> getAllCustomersWithBorrowCount() {
+        List<Customer> customers = this.customerService.findAll();
+        ArrayList<CustomerBorrowCount> res = new ArrayList<>();
+
+        for (Customer customer : customers) {
+            res.add(new CustomerBorrowCount(customer, borrowService.getCountByCustomerId(customer.getId())));
+        }
+        return res;
     }
 
     @GetMapping("/getCustomerByIdOrName")

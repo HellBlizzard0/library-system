@@ -40,6 +40,7 @@
   "profile.phoneNumber": "Phone",
   "profile.doc": "Creation",
   "profile.updated": "Updated",
+  "profile.NoBorrows":"No. Borrows",
 
   "edit": "Edit",
   "cancel": "Cancel",

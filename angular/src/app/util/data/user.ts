@@ -8,4 +8,5 @@ export interface User {
   name?: string;
   phoneNumber?: string;
   role?: string;
+  borrowCount?: number;
 }

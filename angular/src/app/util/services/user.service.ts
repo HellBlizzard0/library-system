@@ -52,4 +52,28 @@ export class UserService {
       this.userSubject.next(this.users);
     });
   }
+
+  getAllCustomersWithBorrowCount() {
+    this.users = [];
+    this.http
+      .get(LINKBASE_C + 'getAllCustomersWithBorrowCount')
+      .subscribe((data: any) => {
+        data.forEach((element: any) => {
+          this.users.push(this.toCustomerWithBorrowCount(element));
+        });
+        // console.log(data);
+
+        this.userSubject.next(this.users);
+      });
+  }
+  toCustomerWithBorrowCount(data: any): User {
+    return {
+      name: data.customer.name,
+      username: data.customer.username,
+      id: data.customer.id,
+      dateOfCreation: data.customer.dateOfCreation,
+      lastUpdate: data.customer.lastUpdate,
+      borrowCount: data.borrowCount,
+    };
+  }
 }
