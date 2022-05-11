@@ -65,11 +65,11 @@ public class Book implements Serializable {
     }
 
     public String getDateOfCreation() {
-        return dateOfCreation.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return dateOfCreation.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     public String getLastUpdate() {
-        return lastUpdate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return lastUpdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     public String getSerialNumber() {

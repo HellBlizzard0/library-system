@@ -162,9 +162,6 @@ export class BooksComponent implements OnInit {
   }
 
   printReport() {
-    console.log();
-    this.books[0].dateOfCreation?.getMilliseconds();
-
     this.bookService.printReport(this.selectedBooks);
   }
 }

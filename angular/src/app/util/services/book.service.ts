@@ -125,6 +125,11 @@ export class BookService {
     //     bookList: books,
     //   })
     // );
+    console.log(
+      JSON.stringify({
+        bookList: books,
+      })
+    );
 
     this.http
       .post(
