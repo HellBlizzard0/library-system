@@ -46,6 +46,10 @@
           ><i class="pi pi-user-edit" style="padding: 0% 5%"></i
           >{{ "profile" | translate }}</a
         >
+        <a class="nav-item nav-link" [routerLink]="['logout']"
+          ><i class="pi pi-power-off" style="padding: 0% 5%"></i
+          >{{ "logout" | translate }}</a
+        >
         <a
           class="nav-item nav-link"
           *ngIf="isEnglish()"
@@ -90,6 +94,13 @@
     >
     <a
       class="nav-item nav-link"
+      [routerLink]="['logout']"
+      *ngIf="getScreenWidth > maxWidth"
+      >{{ "logout" | translate
+      }}<span class="visually-hidden">(current)</span></a
+    >
+    <a
+      class="nav-item nav-link"
       *ngIf="getScreenWidth > maxWidth && isEnglish()"
       (click)="changeLocale('ar')"
       >{{ "button_ar" | translate
@@ -104,5 +115,4 @@
     >
   </div>
 </nav>
-
 <router-outlet></router-outlet>

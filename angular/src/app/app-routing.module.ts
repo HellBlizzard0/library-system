@@ -15,6 +15,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: '', redirectTo: '/customer/books', pathMatch: 'full' },
+      { path: 'logout', redirectTo: '/login', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'borrow', component: BorrowComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: '', redirectTo: '/librarian/books', pathMatch: 'full' },
+      { path: 'logout', redirectTo: '/login', pathMatch: 'full' },
       { path: 'books', component: BooksComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'profile', component: ProfileComponent },
