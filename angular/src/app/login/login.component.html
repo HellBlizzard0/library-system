@@ -1,4 +1,6 @@
 <div class="wrapper fadeInDown" [dir]="dir">
+  <h1 style="padding-bottom: 3%">{{ "title" | translate }}</h1>
+  <br />
   <div id="formContent">
     <!-- Tabs Titles -->
     <h2 [class]="isLoginMode ? 'active' : ''" (click)="switchToLogIn()">

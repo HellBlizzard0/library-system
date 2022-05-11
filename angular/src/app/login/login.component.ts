@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
     private i18n: I18nServiceService
   ) {}
   ngOnInit(): void {
-    this.i18n.dir.subscribe((newDir: Direction) => {
+    console.log('isEnglish()=' + this.isEnglish());
+
+    this.i18n.dir.subscribe((newDir) => {
       this.dir = newDir;
     });
     this.i18n.changeLocale('en');

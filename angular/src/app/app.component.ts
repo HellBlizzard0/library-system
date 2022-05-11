@@ -15,6 +15,6 @@ export class AppComponent {
     private i18nService: I18nServiceService
   ) {
     translate.setDefaultLang('en');
-    translate.use('ar');
+    translate.use('en');
   }
 }
