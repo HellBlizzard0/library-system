@@ -33,8 +33,9 @@ export class BorrowComponent implements OnInit {
   }
 
   acceptRequest(borrow: Borrow) {
+    borrow.status = { status: 'Borrowed' };
     this.borrowService.acceptRequest(borrow);
-    this.fetchData();
+    // this.fetchData();
   }
 
   rejectRequest(borrow: Borrow) {
