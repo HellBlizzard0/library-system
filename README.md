@@ -1,100 +1,38 @@
-Library System
-==============
+﻿**Library System**
+# How to run:
+## Spring REST API
+1. Make sure src/main/resources/Arial.jar is imported to your class path
+1. In your IDE, perform a Maven clean install.
+1. Run “com.​Ejadatraining.​Librarysystem.LibrarySystemApplication.java”
+## Angular Web Application
+1. In your terminal:
 
-**Technologies Used** (So Far):
+![](README-assets/Aspose.Words.c7361c5b-c587-4d72-a00a-8efab0801a4c.001.png)
 
--   Spring Boot (Embedded with Tomcat Server).
-
--   Spring Security.
-
--   Spring Validation.
-
--   Maven
-
--   JSP, for simple login pages.
-
--   Bootstrap.
-
--   JQuery.
-
-**How to run**:
-
-1. Extract the database schema "Dump20220303.zip". Create the imported to mysql using your Database client.
-
-2.  In your IDE, perform a Maven clean install.
-
-3.  Run
-    "com.​Ejadatraining.​Librarysystem.LibrarySystemApplication.java"
-    
-**Requests List**:
-
-*REST Commands "/api/XXXX/YYYY*
-
-where XXXX is the name of the Object being inspected
-and YYYY is the command selected from the ones below
-
-* GET requests
-    + /getAllBooks
-    + /getBookByNameOrIdOrAuthorname
-    + /deleteBook
-    + /getAllBorrows
-    + /getBorrowByIdOrUserIdOrBookId
-    + /deleteBorrow
-    + /getAllCustomers
-    + /getCustomerByIdOrName
-    + /deleteCustomer
-    + /getAllLibrarians
-    + /getLibrarianByIdOrName
-    + /deleteLibrarian
-    + /getAllUsers
-    + /getUserByIdOrUsername
-    + /deleteUser
-* POST requests
-    + /addBook
-    + /addBooks
-    + /updateBook
-    + /addCustomer
-    + /addCustomers
-    + /updateCustomer
-    + /addLibrarian
-    + /addLibrarians
-    + /updateLibrarian
-    + /addUser
-    + /addUsers
-    + /updateUser
-    + /addBorrow
-    + /addBorrows
-    + /updateBorrow
-
+# Technologies Used (So Far):
+- Spring Boot (Embedded with Tomcat Server), Java 17
+- Angular 13.1.0
 # Diagrams
-
 ## Class Diagrams
-
 **Package Structure**
 
-![](README-assets/image1.png){width="5.510416666666667in"
-height="4.6170745844269465in"}
+![](README-assets/Aspose.Words.c7361c5b-c587-4d72-a00a-8efab0801a4c.002.png)
 
-**Package:**
-**rest**![](media/image2.png){width="6.489583333333333in"
-height="3.8020833333333335in"}
+**Package:** **rest![](README-assets/Aspose.Words.c7361c5b-c587-4d72-a00a-8efab0801a4c.003.png)**
+
 
 **Package: Entities**
 
-![](media/image3.png){width="6.130347769028871in"
-height="4.791666666666667in"}
+![](README-assets/Aspose.Words.c7361c5b-c587-4d72-a00a-8efab0801a4c.004.png)
 
 **Package: Service**
 
-![](media/image4.png){width="6.489583333333333in"
-height="5.875in"}
+![](README-assets/Aspose.Words.c7361c5b-c587-4d72-a00a-8efab0801a4c.005.png)
 
 **Package: DAO**
 
-![](media/image5.png){width="6.489583333333333in"
-height="4.333333333333333in"}
+![](README-assets/Aspose.Words.c7361c5b-c587-4d72-a00a-8efab0801a4c.006.png)
 
 ## Entity Relation Diagram (Database)
 
-![](media/image6.png){width="6.5in"
-height="4.927083333333333in"}
+![](README-assets/Aspose.Words.c7361c5b-c587-4d72-a00a-8efab0801a4c.007.png)
