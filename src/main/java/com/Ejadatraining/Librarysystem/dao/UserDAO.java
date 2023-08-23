@@ -1,13 +1,16 @@
 package com.Ejadatraining.Librarysystem.dao;
 
-import com.Ejadatraining.Librarysystem.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.Ejadatraining.Librarysystem.entity.Users;
 
 /**
  *
  * @author aalsaqqa
  */
+@Repository
 public interface UserDAO extends JpaRepository<Users, Integer> {
 
     public Users findByUsername(String username);

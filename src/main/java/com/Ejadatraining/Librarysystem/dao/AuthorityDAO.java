@@ -4,13 +4,16 @@
  */
 package com.Ejadatraining.Librarysystem.dao;
 
-import com.Ejadatraining.Librarysystem.entity.Authority;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.Ejadatraining.Librarysystem.entity.Authority;
 
 /**
  *
  * @author aalsaqqa
  */
+@Repository
 public interface AuthorityDAO extends JpaRepository<Authority, String> {
 
 }

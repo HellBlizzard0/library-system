@@ -6,12 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import com.Ejadatraining.Librarysystem.dao.LibrarianDAO;
 import com.Ejadatraining.Librarysystem.entity.Authority;
 import com.Ejadatraining.Librarysystem.entity.Librarian;
 
-@Repository
+@Service
 public class LibrarianService {
 
     private LibrarianDAO librarianDAO;

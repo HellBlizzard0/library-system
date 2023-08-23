@@ -1,25 +1,23 @@
 package com.Ejadatraining.Librarysystem.service;
 
-import com.Ejadatraining.Librarysystem.entity.Book;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import com.Ejadatraining.Librarysystem.dao.BookDAO;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.Ejadatraining.Librarysystem.dao.BookDAO;
+import com.Ejadatraining.Librarysystem.entity.Book;
 
 /**
  *
  * @author aalsaqqa
  */
-@Repository
+@Service
 public class BookService {
 
-    private BookDAO bookDAO;
-
     @Autowired
-    public BookService(BookDAO bookDAO) {
-        this.bookDAO = bookDAO;
-    }
+    private BookDAO bookDAO;
 
     public List<Book> findAll() {
         return this.bookDAO.findAll();

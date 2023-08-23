@@ -1,15 +1,16 @@
 package com.Ejadatraining.Librarysystem.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.Ejadatraining.Librarysystem.entity.Borrow;
-import com.Ejadatraining.Librarysystem.entity.Customer;
-import org.springframework.data.jpa.repository.Query;
 
 /**
  *
  * @author aalsaqqa
  */
+@Repository
 public interface BorrowDAO extends JpaRepository<Borrow, Integer> {
     @Query(value = "select * from "
             + "Borrow b "
