@@ -1,10 +1,12 @@
 package com.Ejadatraining.Librarysystem.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.Ejadatraining.Librarysystem.entity.Customer;
-import org.springframework.data.jpa.repository.Query;
 
+@Repository
 public interface CustomerDAO extends JpaRepository<Customer, Integer> {
     public Customer findByName(String name);
 

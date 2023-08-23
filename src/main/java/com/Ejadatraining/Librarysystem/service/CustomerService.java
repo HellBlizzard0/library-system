@@ -6,17 +6,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import com.Ejadatraining.Librarysystem.dao.CustomerDAO;
 import com.Ejadatraining.Librarysystem.entity.Authority;
 import com.Ejadatraining.Librarysystem.entity.Customer;
 
-@Repository
+@Service
 public class CustomerService {
 
     private CustomerDAO customerDAO;
     private AuthorityDAO authorityDAO;
-
 
     @Autowired
     public CustomerService(CustomerDAO customerDAO, AuthorityDAO authorityDAO) {

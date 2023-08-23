@@ -8,12 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Ejadatraining.Librarysystem.dao.BorrowDAO;
 import com.Ejadatraining.Librarysystem.entity.Borrow;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author aalsaqqa
  */
-@Repository
+@Service
 public class BorrowService {
     private BorrowDAO borrowDAO;
 
@@ -27,17 +28,19 @@ public class BorrowService {
     }
 
     public Borrow getBorrowByIdOrUserIdOrBookId(Integer id, Integer userId, Integer bookId) {
-        return this.borrowDAO.findBorrowByIdOrUserIdOrBookId(id, userId, bookId
-        );
+        return this.borrowDAO.findBorrowByIdOrUserIdOrBookId(id, userId, bookId);
     }
+
     @Transactional
     public void deleteBorrow(Integer id) {
         this.borrowDAO.deleteById(id);
     }
+
     @Transactional
     public void addBorrow(Borrow borrow) {
         this.borrowDAO.save(borrow);
     }
+
     @Transactional
     public void updateBorrow(Borrow borrow) {
         this.borrowDAO.save(borrow);

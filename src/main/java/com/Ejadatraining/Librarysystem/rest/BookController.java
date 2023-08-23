@@ -19,13 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/Book")
 public class BookController {
-
-    private BookService bookService;
-
     @Autowired
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    private BookService bookService;
 
     @GetMapping("/getAllBooks")
     public List<Book> getAllBooks() {
